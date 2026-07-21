@@ -6,7 +6,7 @@ import MobileMenu from "../MobileMenu"
 export default function Header1({ scroll, isMobileMenu, handleMobileMenu, isSidebar, handlePopup, handleSidebar }) {
     return (
         <>
-            <header className={`main-header ${scroll ? "fixed-header" : ""}`}>
+            <header className={`main-header header-style-one ${scroll ? "fixed-header" : ""}`}>
                 {/* Header Top */}
                 <div className="header-top">
             <div className="auto-container">
@@ -55,10 +55,6 @@ export default function Header1({ scroll, isMobileMenu, handleMobileMenu, isSide
                         </div>
                         {/* Menu Right Content */}
                         <ul className="nav-right">
-                           
-                            <li className="search-box-outer search-toggler" onClick={handlePopup}>
-                            <i className="icon-3"></i>
-                            </li>
                             <li className="shop-cart">
                             <Link href="shop"><i className="icon-4"></i><span>3</span></Link>
                             </li>
@@ -81,10 +77,6 @@ export default function Header1({ scroll, isMobileMenu, handleMobileMenu, isSide
                                 </div>
                             </nav>
                             <ul className="nav-right">
-                           
-                            <li className="search-box-outer search-toggler" onClick={handlePopup}>
-                                <i className="icon-3"></i>
-                            </li>
                             <li className="shop-cart">
                             <Link href="shop"><i className="icon-4"></i><span>3</span></Link>
                             </li>

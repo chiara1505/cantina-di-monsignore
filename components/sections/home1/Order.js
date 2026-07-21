@@ -3,7 +3,7 @@ import React from 'react';
 export default function Order() {
   return (
     <section className="order-section bg-color-2">
-      <div className="pattern-layer" style={{ backgroundImage: 'url(assets/images/shape/shape-14.png)' }}></div>
+      <div className="pattern-layer"></div>
       <div className="shape">
         <div className="shape-1" style={{ backgroundImage: 'url(assets/images/shape/shape-15.png)' }}></div>
         <div className="shape-2" style={{ backgroundImage: 'url(assets/images/shape/shape-16.png)' }}></div>
