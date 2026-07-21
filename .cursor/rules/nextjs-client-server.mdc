@@ -1,0 +1,47 @@
+---
+description: Ottimizzazione Client/Server Components Next.js — da applicare strada facendo
+globs: app/**/*.js,components/**/*.js
+alwaysApply: false
+---
+
+# Nota sviluppo: Client vs Server Components
+
+## Regola d'oro
+`'use client'` solo se il componente usa **interattività browser**: `useState`, `useEffect`, event handler (`onClick`), API browser (`window`, `document`, `localStorage`), o librerie che le richiedono (Swiper, Isotope, WOW.js, react-modal-video).
+
+Default: **nessun** `'use client'` → Server Component.
+
+## Quando tocchi un file, controlla subito
+1. Rimuovi `'use client'` se il file è solo markup statico (testi, immagini, link).
+2. Rimuovi `useState` / `useEffect` importati ma non usati (pattern frequente nelle pagine `app/`).
+3. Se serve interattività su una sezione statica, **estrai** un sotto-componente client piccolo invece di marcare tutta la sezione.
+
+```jsx
+// ✅ About.js — Server Component (statico)
+export default function About() { return <section>...</section> }
+
+// ✅ AboutGallery.js — Client Component (solo lo slider)
+'use client'
+export default function AboutGallery() { return <Swiper>...</Swiper> }
+```
+
+## Confini client giustificati (non toccare senza refactor)
+- `Layout.js`, header, menu mobile, sidebar, search popup
+- Slider Swiper (`Banner`, `News`, `Gallery`, cartelle `slider/`)
+- Filtri gallery (`PortfolioFilter`), video popup, contatori animati
+- Form con state locale (prenotazione, FAQ accordion)
+
+## Pattern pagine (`app/`)
+- `page.js` resta **Server Component** quando possibile.
+- Passa sezioni statiche come `children` di `Layout` (client): restano server-rendered.
+- `'use client'` sulla pagina intera solo se **tutta** la pagina è interattiva.
+
+## Non fare (salvo refactor dedicato)
+- Non aggiungere jQuery o script da `public/assets/js/`.
+- Non mettere `'use client'` "per sicurezza" o per WOW.js su sezioni intere.
+- Non ottimizzare file che verranno eliminati (pagine demo shop/blog/team non usate).
+
+## Priorità
+1. Contenuti, immagini, struttura del sito
+2. Rimuovere `'use client'` superfluo sui file che modifichi
+3. Refactor architetturale (spezzare Layout, sostituire WOW con CSS) — solo se serve performance
