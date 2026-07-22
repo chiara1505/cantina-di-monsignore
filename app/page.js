@@ -6,6 +6,7 @@ import Menu from "@/components/sections/home1/Menu"
 import Philosophy from "@/components/sections/home1/Philosophy"
 import Shop from "@/components/sections/home1/Shop"
 import Promotion from "@/components/sections/home1/Promotion"
+import Team from "@/components/sections/home1/Team"
 import Order from "@/components/sections/home1/Order"
 
 
@@ -19,6 +20,7 @@ export default function Home() {
                 <Menu />
                 <Philosophy />
                 <Promotion />
+                <Team />
                 <Testimonial />
                 <Shop />
                 <Order />

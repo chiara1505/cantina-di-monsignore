@@ -6,7 +6,7 @@ export default function About() {
         <section className="about-section sec-pad" id="about">
             <div className="image_block_one">
                 <div className="image-box">
-                    <figure className="image-1 wow slideInUp animated" data-wow-delay="00ms" data-wow-duration="1500ms"><img src="assets/images/resource/about-1.png" alt="" /></figure>
+                    <figure className="image-1 wow slideInUp animated" data-wow-delay="00ms" data-wow-duration="1500ms"><img src="assets/images/resource/about-1.jpg" alt="" /></figure>
                     <figure className="image-2"><img src="assets/images/resource/about-2.png" alt="" /></figure>
                     <figure className="vector-1"><img src="assets/images/icons/vector-1.png" alt="" /></figure>
                     <div className="shape">

@@ -24,7 +24,7 @@ export default function Header1({ scroll, isMobileMenu, handleMobileMenu, isSide
                     </div>
                     <div className="right-column">
                         <div className="btn-box">
-                            <Link href="/">Book An Table</Link>
+                            <Link href="/#prenotazioni">Riserva un Tavolo</Link>
                         </div>
                     </div>
                 </div>
