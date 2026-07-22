@@ -2,16 +2,10 @@ import React from 'react';
 
 export default function Order() {
   return (
-    <section className="order-section bg-color-2">
+    <section className="order-section bg-color-brown">
       <div className="pattern-layer"></div>
-      <div className="shape">
-        <div className="shape-1" style={{ backgroundImage: 'url(assets/images/shape/shape-15.png)' }}></div>
-        <div className="shape-2" style={{ backgroundImage: 'url(assets/images/shape/shape-16.png)' }}></div>
-        <div className="shape-3" style={{ backgroundImage: 'url(assets/images/shape/shape-17.png)' }}></div>
-        <div className="shape-4" style={{ backgroundImage: 'url(assets/images/shape/shape-18.png)' }}></div>
-      </div>
       <div className="auto-container">
-        <div className="sec-title centred mb_50">
+        <div className="sec-title light centred mb_50">
           <span className="sub-title">Table Booking</span>
           <h2>Pre-Order to Make a <br />Reservation</h2>
         </div>

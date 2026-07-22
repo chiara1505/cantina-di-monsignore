@@ -1,64 +1,45 @@
-import React from 'react';
-import Link from "next/link"
-export default function Promotion() {
+import Link from 'next/link';
 
-    return (
-        <>
-            
-            <section className="promotion-section sec-pad">
+const specialtyDishes = [
+  {
+    name: 'Parmigiana Croccante',
+    image: 'assets/images/resource/promotion-1.jpg',
+  },
+  {
+    name: 'Ravioli Home Made alla Norma',
+    image: 'assets/images/resource/promotion-2.jpg',
+  },
+];
+
+export default function Promotion() {
+  return (
+    <section className="promotion-section sec-pad">
       <div className="auto-container">
         <div className="sec-title centred mb_45">
-          <span className="sub-title">Promotion</span>
-          <h2>Check Our All Flavours <br />Summer Promo</h2>
+          <span className="sub-title">Le Specialità</span>
+          <h2>I nostri Piatti d&apos;Autore</h2>
+          <p className="specialty-desc">
+            Creazioni nate per raccontare il territorio attraverso il cibo. Questi sono i nostri piatti d&apos;autore: l&apos;interpretazione più personale e autentica degli ingredienti locali, nati dalla nostra visione e custoditi nella nostra cucina.
+          </p>
         </div>
 
-        <div className="promotion-block-one">
-          <div className="inner-box">
-            <div className="shape" style={{ backgroundImage: 'url(assets/images/shape/shape-2.png)' }}></div>
-            <div className="row clearfix">
-              <div className="col-lg-6 col-md-12 col-sm-12 image-column">
-                <div className="image-box">
-                  <figure className="image"><img src="assets/images/resource/promotion-1.jpg" alt="" /></figure>
+        <div className="row clearfix specialty-dishes">
+          {specialtyDishes.map((dish) => (
+            <div key={dish.name} className="col-lg-6 col-md-6 col-sm-12 specialty-dish-column">
+              <figure className="specialty-dish">
+                <div className="specialty-dish__image">
+                  <img src={dish.image} alt={dish.name} />
                 </div>
-              </div>
-              <div className="col-lg-6 col-md-12 col-sm-12 content-column">
-                <div className="content-box">
-                  <div className="content-shape" style={{ backgroundImage: 'url(assets/images/shape/shape-9.png)' }}></div>
-                  <h2>Over <span>250</span> Delicious & Tasty Recipes</h2>
-                  <h4>Get 25% Off</h4>
-                  <p>Lorem ipsum dolor sit amet consectetur adipiscing elit purus egestas diam sit vitae egestas suspendisse amet ultricies eu. Eget at porttitor.</p>
-                  <Link href="/" className="theme-btn-one">Let’s Order Now</Link>
-                </div>
-              </div>
+                <figcaption className="specialty-dish__caption">{dish.name}</figcaption>
+              </figure>
             </div>
-          </div>
+          ))}
         </div>
 
-        <div className="promotion-block-one">
-          <div className="inner-box">
-            <div className="shape" style={{ backgroundImage: 'url(assets/images/shape/shape-2.png)' }}></div>
-            <div className="row clearfix">
-              <div className="col-lg-6 col-md-12 col-sm-12 content-column">
-                <div className="content-box">
-                  <div className="content-shape" style={{ backgroundImage: 'url(assets/images/shape/shape-9.png)' }}></div>
-                  <h2>Over <span>250</span> Delicious & Tasty Recipes</h2>
-                  <h4>Get 25% Off</h4>
-                  <p>Lorem ipsum dolor sit amet consectetur adipiscing elit purus egestas diam sit vitae egestas suspendisse amet ultricies eu. Eget at porttitor.</p>
-                  <Link href="/" className="theme-btn-one">Let’s Order Now</Link>
-                </div>
-              </div>
-              <div className="col-lg-6 col-md-12 col-sm-12 image-column">
-                <div className="image-box">
-                  <figure className="image"><img src="assets/images/resource/promotion-2.jpg" alt="" /></figure>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div className="specialty-dishes-btn">
+          <Link href="/menu" className="theme-btn-one">Scopri il menù</Link>
         </div>
       </div>
     </section>
-
-          
-        </>
-    )
+  );
 }

@@ -1,0 +1,12 @@
+@import '@fontsource/inter/latin-400.css';
+@import '@fontsource/inter/latin-500.css';
+@import '@fontsource/playfair-display/latin-400.css';
+@import '@fontsource/playfair-display/latin-500.css';
+@import '@fontsource/lora/latin-400-italic.css';
+
+:root {
+  --font-body: 'Inter', sans-serif;
+  --font-ui: 'Inter', sans-serif;
+  --font-heading: 'Playfair Display', serif;
+  --font-accent: 'Lora', serif;
+}
