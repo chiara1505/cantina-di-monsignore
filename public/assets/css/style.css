@@ -8627,6 +8627,10 @@ select  {
 
 @media only screen and (max-width: 991px){
 
+  .header-top{
+    display: none;
+  }
+
   .header-top .top-inner .right-column{
     display: none;
   }
@@ -8781,12 +8785,55 @@ select  {
 
 @media only screen and (max-width: 767px){
 
+  .auto-container,
+  .large-container,
+  .container{
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
   .header-top .top-inner .left-column .info{
     text-align: center;
   }
 
   .header-top .top-inner .left-column .info li{
     float: none;
+  }
+
+  .banner-carousel .content-box .btn-box{
+    flex-wrap: nowrap;
+    gap: 10px;
+    width: 100%;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .banner-carousel .content-box .btn-box .theme-btn-one{
+    flex: 1 1 0;
+    min-width: 0;
+    width: calc(50% - 5px);
+    padding: 11px 8px 12px;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .banner-carousel .content-box .special-text{
+    font-size: 22px;
+    line-height: 28px;
+    margin-bottom: 10px;
+  }
+
+  .sec-title .sub-title{
+    font-size: 22px;
+    line-height: 28px;
+    margin-bottom: 10px;
   }
 
   .banner-carousel .content-box h2{
@@ -8927,6 +8974,10 @@ select  {
     grid-template-columns: 1fr;
     gap: 14px;
     margin-top: 56px;
+  }
+
+  .order-section__amenity-icon{
+    display: none;
   }
 
   .order-section .form-inner{
