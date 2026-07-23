@@ -1,6 +1,7 @@
 'use client'
 import Link from "next/link";
 import Layout from "@/components/layout/Layout"
+import { PAGE_TITLE_IMAGES } from '@/lib/pageTitleImages'
 const ProgressBar = ({ label, percent }) => (
     <div className="progress-box">
       <p>{label}</p>
@@ -14,7 +15,7 @@ const ProgressBar = ({ label, percent }) => (
 export default function Home() {
     return (
         <>
-            <Layout headerStyle={1} footerStyle={1} breadcrumbTitle="Team Details">
+            <Layout headerStyle={1} footerStyle={1} breadcrumbTitle="Team Details" breadcrumbImage={PAGE_TITLE_IMAGES.teamDetails}>
                 <div>
                 <section className="team-details p_relative">
             <div className="auto-container">

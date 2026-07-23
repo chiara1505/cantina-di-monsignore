@@ -1,6 +1,7 @@
 'use client'
 import Link from "next/link";
 import Layout from "@/components/layout/Layout"
+import { PAGE_TITLE_IMAGES } from '@/lib/pageTitleImages'
 import { useState } from 'react'
 import TestimonialSlider2 from "@/components/slider/TestmonialSlider2";
 export default function Home() {
@@ -24,7 +25,7 @@ const handleToggle = (key) => {
         
     return (
         <>
-            <Layout headerStyle={1} footerStyle={1} breadcrumbTitle="Testimonials">
+            <Layout headerStyle={1} footerStyle={1} breadcrumbTitle="Testimonials" breadcrumbImage={PAGE_TITLE_IMAGES.testimonials}>
                 <div>
                 <section className="testimonial-style-four centred">
             <figure className="vector-1"><img src="assets/images/icons/vector-2.png" alt="" /></figure>

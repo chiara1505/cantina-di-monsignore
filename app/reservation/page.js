@@ -1,6 +1,7 @@
 'use client'
 import Link from "next/link";
 import Layout from "@/components/layout/Layout"
+import { PAGE_TITLE_IMAGES } from '@/lib/pageTitleImages'
 import { useState } from 'react'
 export default function Home() {
     const [isOpen, setOpen] = useState(false)
@@ -23,7 +24,7 @@ export default function Home() {
     }
     return (
         <>
-            <Layout headerStyle={1} footerStyle={1} breadcrumbTitle="Resurvation">
+            <Layout headerStyle={1} footerStyle={1} breadcrumbTitle="Resurvation" breadcrumbImage={PAGE_TITLE_IMAGES.reservation}>
                 {/* order-section */}
                 <section className="order-section reservation-page bg-color-2">
       <div className="shape">

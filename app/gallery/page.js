@@ -1,6 +1,7 @@
 // import PortfolioFilter1 from ""
 import dynamic from 'next/dynamic'
 import Layout from "@/components/layout/Layout"
+import { PAGE_TITLE_IMAGES } from '@/lib/pageTitleImages'
 const PortfolioFilter1 = dynamic(() => import('@/components/elements/PortfolioFilter1'), {
     ssr: false,
 })
@@ -10,7 +11,7 @@ export default function Gallery() {
 
     return (
         <>
-            <Layout headerStyle={1} footerStyle={1} breadcrumbTitle="Gallery">
+            <Layout headerStyle={1} footerStyle={1} breadcrumbTitle="Gallery" breadcrumbImage={PAGE_TITLE_IMAGES.gallery}>
             <section className="gallery-style-three">
                 <div className="auto-container">
                         {/*Sortable Galery*/}

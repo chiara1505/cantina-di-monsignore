@@ -2,12 +2,13 @@
 'use client'
 import Link from "next/link";
 import Layout from "@/components/layout/Layout"
+import { PAGE_TITLE_IMAGES } from '@/lib/pageTitleImages'
 
 export default function Home() {
 
     return (
         <>
-            <Layout headerStyle={1} footerStyle={1} breadcrumbTitle="Blog Standard">
+            <Layout headerStyle={1} footerStyle={1} breadcrumbTitle="Blog Standard" breadcrumbImage={PAGE_TITLE_IMAGES.blogStandard}>
                 <div>
                     {/* sidebar-page-container */}
                     <section className="sidebar-page-container p_relative">

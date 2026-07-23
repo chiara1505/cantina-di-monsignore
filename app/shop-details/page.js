@@ -1,6 +1,7 @@
 'use client'
 import QuantityInput from "@/components/elements/QuantityInput"
 import Layout from "@/components/layout/Layout"
+import { PAGE_TITLE_IMAGES } from '@/lib/pageTitleImages'
 import Link from "next/link"
 import React, { useState } from 'react';
 export default function Home() {
@@ -34,7 +35,7 @@ export default function Home() {
 
     return (
         <>
-            <Layout headerStyle={1} footerStyle={1} breadcrumbTitle="Shop Details">
+            <Layout headerStyle={1} footerStyle={1} breadcrumbTitle="Shop Details" breadcrumbImage={PAGE_TITLE_IMAGES.shopDetails}>
                 <div>
                     {/* shop-details style- */}
                     <section className="shop-details p_relative">

@@ -9,6 +9,7 @@ const WOW = dynamic(() => import('wowjs/dist/wow'));
 import BackToTop from '../elements/BackToTop';
 import DataBg from "../elements/DataBg";
 import Breadcrumb from './Breadcrumb';
+import { PAGE_TITLE_IMAGES } from '@/lib/pageTitleImages';
 import SearchPopup from "./SearchPopup";
 import Sidebar from "./Sidebar";
 import Footer1 from './footer/Footer1';
@@ -17,7 +18,7 @@ import Header2 from './header/Header2';
 import Header3 from "./header/Header3";
 import Header4 from "./header/Header4";
 
-export default function Layout({ headerStyle, footerStyle, headTitle, breadcrumbTitle, children, wrapperCls }) {
+export default function Layout({ headerStyle, footerStyle, headTitle, breadcrumbTitle, breadcrumbImage = PAGE_TITLE_IMAGES.default, children, wrapperCls }) {
     const [scroll, setScroll] = useState(0);
     const [isMobileMenu, setMobileMenu] = useState(false);
     const handleMobileMenu = () => {
@@ -56,7 +57,7 @@ export default function Layout({ headerStyle, footerStyle, headTitle, breadcrumb
                 <Sidebar isSidebar={isSidebar} handleSidebar={handleSidebar} />
                 <SearchPopup isPopup={isPopup} handlePopup={handlePopup} />
 
-                {breadcrumbTitle && <Breadcrumb breadcrumbTitle={breadcrumbTitle} />}
+                {breadcrumbTitle && <Breadcrumb breadcrumbTitle={breadcrumbTitle} breadcrumbImage={breadcrumbImage} />}
 
                 {children}
 

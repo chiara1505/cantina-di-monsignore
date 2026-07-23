@@ -2,6 +2,7 @@
 'use client'
 import Link from "next/link";
 import Layout from "@/components/layout/Layout"
+import { PAGE_TITLE_IMAGES } from '@/lib/pageTitleImages'
 import React, { useState } from 'react';
 export default function Shop() {
 
@@ -17,7 +18,7 @@ export default function Shop() {
 
     return (
         <>
-            <Layout headerStyle={1} footerStyle={1} breadcrumbTitle="Our Shop">
+            <Layout headerStyle={1} footerStyle={1} breadcrumbTitle="Our Shop" breadcrumbImage={PAGE_TITLE_IMAGES.shop}>
                 <div>
                    
                     <section className="shop-page-section">

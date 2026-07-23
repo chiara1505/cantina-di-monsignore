@@ -1,11 +1,12 @@
 'use client'
 import Link from "next/link";
 import Layout from "@/components/layout/Layout"
+import { PAGE_TITLE_IMAGES } from '@/lib/pageTitleImages'
 
 export default function Home() {
     return (
         <>
-            <Layout headerStyle={1} footerStyle={1} breadcrumbTitle="Our Team">
+            <Layout headerStyle={1} footerStyle={1} breadcrumbTitle="Our Team" breadcrumbImage={PAGE_TITLE_IMAGES.team}>
                 <div>
                 <section className="team-page-section p_relative">
             <div className="auto-container">

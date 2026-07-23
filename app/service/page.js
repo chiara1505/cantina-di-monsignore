@@ -1,5 +1,6 @@
 'use client'
 import Layout from "@/components/layout/Layout"
+import { PAGE_TITLE_IMAGES } from '@/lib/pageTitleImages'
 import MenuSlider from '@/components/slider/MenuSlider'
 import Link from "next/link"
 import { useState } from 'react'
@@ -24,7 +25,7 @@ export default function Home() {
 
     return (
         <>
-            <Layout headerStyle={1} footerStyle={1} breadcrumbTitle="Our Services">
+            <Layout headerStyle={1} footerStyle={1} breadcrumbTitle="Our Services" breadcrumbImage={PAGE_TITLE_IMAGES.services}>
                 <div>
                     {/* service-style- */}
                     <section className="service-section service-page alternat-2 centred">

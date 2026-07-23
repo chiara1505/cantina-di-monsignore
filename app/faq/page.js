@@ -1,6 +1,7 @@
 'use client'
 import Link from "next/link";
 import Layout from "@/components/layout/Layout"
+import { PAGE_TITLE_IMAGES } from '@/lib/pageTitleImages'
 import { useState } from 'react'
 export default function WhyChooseUs() {
     const [isActive, setIsActive] = useState({
@@ -22,7 +23,7 @@ export default function WhyChooseUs() {
     }
     return (
         <> 
-        <Layout headerStyle={1} footerStyle={1} breadcrumbTitle="Faq's">        
+        <Layout headerStyle={1} footerStyle={1} breadcrumbTitle="Faq's" breadcrumbImage={PAGE_TITLE_IMAGES.faq}>        
 
         <section className="faq-section">
       <figure className="vector-1">

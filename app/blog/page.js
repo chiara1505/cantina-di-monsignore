@@ -1,12 +1,13 @@
 'use client'
 import Link from "next/link";
 import Layout from "@/components/layout/Layout"
+import { PAGE_TITLE_IMAGES } from '@/lib/pageTitleImages'
 
 export default function Home() {
 
     return (
         <>
-            <Layout headerStyle={1} footerStyle={1} breadcrumbTitle="Blog Grid">
+            <Layout headerStyle={1} footerStyle={1} breadcrumbTitle="Blog Grid" breadcrumbImage={PAGE_TITLE_IMAGES.blog}>
                 <div>
                     {/* news-style-two */}
                     <section className="news-section blog-grid">
