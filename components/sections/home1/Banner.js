@@ -11,7 +11,7 @@ export default function Banner() {
                             <span className="special-text p_relative d_block">Ristorante Siciliano</span>
                             <h2 className="p_relative d_block">La Cantina di Monsignore</h2>
                             <p className="p_relative d_block">
-                                Un viaggio autentico nei sapori della tradizione siciliana, nel borgo di Castiglione di Sicilia, tra l&apos;Etna e la Valle dell&apos;Alcantara
+                                Nel borgo di Castiglione di Sicilia, tra l&apos;Etna e la Valle dell&apos;Alcantara
                             </p>
                             <div className="btn-box">
                                 <Link href="/#prenotazioni" className="theme-btn-one">Riserva un tavolo</Link>

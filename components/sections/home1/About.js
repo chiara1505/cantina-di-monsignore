@@ -98,7 +98,7 @@ export default function About() {
                   <h2>Fuori, la tranquillità del borgo. Dentro, l&apos;essenza del territorio etneo</h2>
                 </ScrollReveal>
                 <ScrollReveal className="text" delay={150}>
-                  <p>Nascosto tra i vicoli di Castiglione di Sicilia, il ristorante La Cantina di Monsignore è la ricompensa per chi sa cercare. Piatti del territorio dal tocco contemporaneo, ingredienti locali e tutto il calore dell&apos;ospitalità siciliana.</p>
+                  <p>Nascosto tra i vicoli di Castiglione di Sicilia, il ristorante La Cantina di Monsignore è la ricompensa per chi sa cercare. Piatti della tradizione dal tocco contemporaneo, ingredienti locali e tutto il calore dell&apos;ospitalità siciliana.</p>
                 </ScrollReveal>
                 <ScrollReveal className="btn-box" delay={300}>
                   <Link href="about" className="theme-btn-one">Scopri il Ristorante</Link>

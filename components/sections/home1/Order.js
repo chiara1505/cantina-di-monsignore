@@ -23,12 +23,11 @@ const bookingPhone = {
 
 export default function Order() {
   return (
-    <section className="order-section bg-color-brown" id="prenotazioni">
-      <div className="pattern-layer"></div>
+    <section className="order-section bg-color-panna" id="prenotazioni">
       <div className="auto-container">
         <div className="row clearfix order-section__layout">
           <div className="col-lg-6 col-md-12 col-sm-12 order-section__content">
-            <ScrollReveal className="sec-title light order-section__title">
+            <ScrollReveal className="sec-title order-section__title">
               <span className="sub-title">Prenotazioni</span>
               <h2>Compila il form o chiama per riservare il tuo tavolo</h2>
             </ScrollReveal>

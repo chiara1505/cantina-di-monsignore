@@ -24,10 +24,6 @@ export default function Footer1() {
                         </div>
                         <div className="col-lg-6 col-md-6 col-sm-12 footer-column">
                             <div className="footer-widget logo-widget text-center">
-                                <div className="shape">
-                                    <div className="shape-1" style={{ backgroundImage: 'url(assets/images/shape/shape-19.png)' }}></div>
-                                    <div className="shape-2" style={{ backgroundImage: 'url(assets/images/shape/shape-20.png)' }}></div>
-                                </div>
                                 <div className="widget-content">
                                     <figure className="footer-logo"><Link href="/"><img src="assets/images/footer-logo.png" alt="" /></Link></figure>
                                     <div className="text">

@@ -45,16 +45,23 @@ export default function Menu() {
             <span className="sub-title">La cucina</span>
             <h2>Una cucina per farti conoscere e riconoscere la Sicilia</h2>
             <p>
-              Valorizziamo i prodotti del territorio attraverso una cucina che rispetta profondamente la materia prima e che custodisce i sapori della tradizione, reinterpretandoli con equilibrio senza alterarne mai l&apos;identità.
-            </p>
-            <p>
-              Il ritmo della nostra cucina è scandito da quattro tempi, dall&apos;antipasto al dessert, esaltati dalle migliori etichette di vino locali. Scegli da dove iniziare.
+              La nostra cucina valorizza i prodotti del territorio, rispetta la materia prima e custodisce i sapori della tradizione, reinterpretandoli con equilibrio senza alterarne mai l&apos;identità. Ogni ingrediente è scelto con cura, ogni portata è esaltata dai migliori vini locali.
             </p>
           </ScrollReveal>
           <div className="row clearfix menu-course-grid">
             {menuCourses.map((course) => (
               <div key={course.title} className="col-lg-3 col-md-6 col-sm-12 menu-course-column">
                 <ScrollReveal className="menu-course-card" delay={course.delay}>
+                  <div className="menu-course-card__shape" aria-hidden="true">
+                    <div
+                      className="menu-course-card__shape-top"
+                      style={{ backgroundImage: 'url(assets/images/shape/shape-3.png)' }}
+                    />
+                    <div
+                      className="menu-course-card__shape-bottom"
+                      style={{ backgroundImage: 'url(assets/images/shape/shape-4.png)' }}
+                    />
+                  </div>
                   <h3 className="menu-course-card__title">{course.title}</h3>
                   <figure className="menu-course-card__image">
                     <img src={course.image} alt={course.imageAlt} />
@@ -67,6 +74,16 @@ export default function Menu() {
             ))}
           </div>
           <ScrollReveal className="menu-wine-banner" delay={150}>
+            <div className="menu-wine-banner__shape" aria-hidden="true">
+              <div
+                className="menu-wine-banner__shape-top"
+                style={{ backgroundImage: 'url(assets/images/shape/shape-3.png)' }}
+              />
+              <div
+                className="menu-wine-banner__shape-bottom"
+                style={{ backgroundImage: 'url(assets/images/shape/shape-4.png)' }}
+              />
+            </div>
             <div className="menu-wine-banner__content">
               <h3 className="menu-wine-banner__title">Carta dei Vini</h3>
               <p>

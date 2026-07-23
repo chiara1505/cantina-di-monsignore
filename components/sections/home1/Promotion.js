@@ -22,7 +22,7 @@ export default function Promotion() {
           <span className="sub-title">Le Specialità</span>
           <h2>I nostri Piatti d&apos;Autore</h2>
           <p className="specialty-desc">
-            Creazioni nate per raccontare il territorio attraverso il cibo. Questi sono i nostri piatti d&apos;autore: l&apos;interpretazione più personale e autentica degli ingredienti locali, nati dalla nostra visione e custoditi nella nostra cucina.
+            Creazioni nate per raccontare il territorio attraverso il cibo. Questi sono i nostri piatti d&apos;autore: l&apos;interpretazione più personale degli ingredienti locali, nati dalla nostra visione e custoditi nella nostra cucina.
           </p>
         </ScrollReveal>
 
