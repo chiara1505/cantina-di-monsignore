@@ -29,7 +29,7 @@ export default function Menu() {
                         </li>
                     </ul>
                 </li>
-                <li><Link href="/about-us">About us</Link></li>
+                <li><Link href="/about-us">Il Ristorante</Link></li>
                 <li><Link href="/service">Services</Link></li>
 
                 
@@ -74,7 +74,7 @@ export default function Menu() {
                     </ul>
                 </li>
                 {/* Contact */}
-                <li><Link href="/contact">Contact</Link></li>
+                <li><Link href="/contact">Contatti</Link></li>
             </ul>
 
         </>

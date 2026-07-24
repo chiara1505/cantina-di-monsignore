@@ -51,7 +51,7 @@ export default function MobileMenu({ isSidebar, handleMobileMenu, handleSidebar 
                   </ul>
                   <div className={isActive.key == 1 ? "dropdown-btn open" : "dropdown-btn"} onClick={() => handleToggle(1)}><span className="fa fa-angle-right" /></div>
                 </li>
-                <li><Link href="/about-us" onClick={handleMobileMenu}>About US</Link></li>
+                <li><Link href="/about-us" onClick={handleMobileMenu}>Il Ristorante</Link></li>
                 <li><Link href="/service" onClick={handleMobileMenu}>Services</Link></li>
 
                 <li className={isActive.key == 3 ? "dropdown current" : "dropdown"}>
@@ -100,7 +100,7 @@ export default function MobileMenu({ isSidebar, handleMobileMenu, handleSidebar 
                     <div className={isActive.key == 5 ? "dropdown-btn open" : "dropdown-btn"} onClick={() => handleToggle(5)}><span className="fa fa-angle-right" /></div>
                 </li>
                
-                <li><Link href="/contact" onClick={handleMobileMenu}>Contact</Link></li>
+                <li><Link href="/contact" onClick={handleMobileMenu}>Contatti</Link></li>
               </ul>
             </div>
           </div>

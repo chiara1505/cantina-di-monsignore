@@ -11,7 +11,7 @@ import { PAGE_TITLE_IMAGES } from '@/lib/pageTitleImages'
 export default function Home() {
     return (
         <>
-            <Layout headerStyle={1} footerStyle={1} breadcrumbTitle="About Us" breadcrumbImage={PAGE_TITLE_IMAGES.about}>
+            <Layout headerStyle={1} footerStyle={1} breadcrumbTitle="Il Ristorante" breadcrumbImage={PAGE_TITLE_IMAGES.about} wrapperCls="about-page">
                 {/* about-section */}
                 <section className="about-style-two sec-pad">
             <div className="auto-container">
