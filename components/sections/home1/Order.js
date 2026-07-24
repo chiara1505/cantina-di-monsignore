@@ -1,4 +1,5 @@
 import ScrollReveal from '@/components/elements/ScrollReveal';
+import BookingReservationForm from '@/components/sections/home1/BookingReservationForm';
 
 const amenities = [
   { label: 'Menù vegetariano', icon: 'fa-leaf' },
@@ -15,15 +16,24 @@ const amenities = [
   { label: 'Location per eventi privati', icon: 'fa-glass-cheers' },
 ]
 
-const bookingPhone = {
-  label: '+39 000 000 0000',
-  href: 'tel:+390000000000',
-  icon: 'fa-phone',
-}
+const bookingContacts = [
+  {
+    label: '0942 09 05 38',
+    href: 'tel:+390942090538',
+    icon: 'fa-phone',
+    iconStyle: 'fas',
+  },
+  {
+    label: '+39 388 89 88 098',
+    href: 'https://wa.me/393888988098',
+    icon: 'fa-whatsapp',
+    iconStyle: 'fab',
+  },
+]
 
-export default function Order() {
+export default function Order({ sectionClassName = '', sectionId = 'prenotazioni' }) {
   return (
-    <section className="order-section bg-color-panna" id="prenotazioni">
+    <section className={`order-section bg-color-panna ${sectionClassName}`.trim()} id={sectionId}>
       <div className="auto-container">
         <div className="row clearfix order-section__layout">
           <div className="col-lg-6 col-md-12 col-sm-12 order-section__content">
@@ -33,12 +43,20 @@ export default function Order() {
             </ScrollReveal>
             <ScrollReveal delay={150}>
               <ul className="order-section__contacts clearfix">
-                <li className="order-section__contact">
-                  <span className="order-section__contact-icon" aria-hidden="true">
-                    <i className={`fas ${bookingPhone.icon}`}></i>
-                  </span>
-                  <a href={bookingPhone.href} className="order-section__contact-link">{bookingPhone.label}</a>
-                </li>
+                {bookingContacts.map((contact) => (
+                  <li key={contact.label} className="order-section__contact">
+                    <span className="order-section__contact-icon" aria-hidden="true">
+                      <i className={`${contact.iconStyle} ${contact.icon}`}></i>
+                    </span>
+                    <a
+                      href={contact.href}
+                      className="order-section__contact-link"
+                      {...(contact.href.startsWith('https://') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                    >
+                      {contact.label}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </ScrollReveal>
             <ScrollReveal delay={300}>
@@ -57,73 +75,7 @@ export default function Order() {
           <div className="col-lg-6 col-md-12 col-sm-12 order-section__form-column">
             <ScrollReveal delay={150}>
               <div className="form-inner">
-              <form action="/" method="post">
-                <div className="row clearfix">
-                  <div className="col-lg-6 col-md-6 col-sm-12 form-group">
-                    <input type="text" name="name" placeholder="Full name" required="" />
-                  </div>
-                  <div className="col-lg-6 col-md-6 col-sm-12 form-group">
-                    <input type="email" name="email" placeholder="Email address" required="" />
-                  </div>
-                  <div className="col-lg-6 col-md-6 col-sm-12 form-group">
-                    <input type="text" name="phone" placeholder="Phone number" required="" />
-                  </div>
-                  <div className="col-lg-6 col-md-6 col-sm-12 form-group">
-                    <div className="select-box">
-                      <select className="wide">
-                        <option data-display="Occasion">Occasion</option>
-                        <option value="1">Occasion 01</option>
-                        <option value="2">Occasion 02</option>
-                        <option value="3">Occasion 03</option>
-                        <option value="4">Occasion 04</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div className="col-lg-6 col-md-6 col-sm-12 form-group">
-                    <div className="select-box">
-                      <select className="wide">
-                        <option data-display="Preferred food">Preferred food</option>
-                        <option value="1">Preferred food 01</option>
-                        <option value="2">Preferred food 02</option>
-                        <option value="3">Preferred food 03</option>
-                        <option value="4">Preferred food 04</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div className="col-lg-6 col-md-6 col-sm-12 form-group">
-                    <div className="select-box">
-                      <select className="wide">
-                        <option data-display="Number of persons">Number of persons</option>
-                        <option value="1">Number of persons 01</option>
-                        <option value="2">Number of persons 02</option>
-                        <option value="3">Number of persons 03</option>
-                        <option value="4">Number of persons 04</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div className="col-lg-6 col-md-6 col-sm-12 form-group">
-                    <div className="select-box">
-                      <select className="wide">
-                        <option data-display="Booking type">Booking type</option>
-                        <option value="1">Booking type 01</option>
-                        <option value="2">Booking type 02</option>
-                        <option value="3">Booking type 03</option>
-                        <option value="4">Booking type 04</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div className="col-lg-6 col-md-6 col-sm-12 form-group">
-                    <div className="icon"><i className="icon-13"></i></div>
-                    <input type="text" name="date" placeholder="Booking date" id="datepicker" />
-                  </div>
-                  <div className="col-lg-12 col-md-12 col-sm-12 form-group">
-                    <textarea name="message" placeholder="Special request"></textarea>
-                  </div>
-                  <div className="col-lg-12 col-md-12 col-sm-12 form-group message-btn centred">
-                    <button type="submit" className="theme-btn-one">Make a Reservation</button>
-                  </div>
-                </div>
-              </form>
+              <BookingReservationForm />
               </div>
             </ScrollReveal>
           </div>

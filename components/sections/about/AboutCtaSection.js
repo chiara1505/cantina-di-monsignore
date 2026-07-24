@@ -12,7 +12,7 @@ export default function AboutCtaSection() {
         </ScrollReveal>
         <ScrollReveal delay={150} className="about-cta-section__buttons">
           <Link href="/menu" className="theme-btn-one">Scopri il Menù</Link>
-          <Link href="/#prenotazioni" className="about-cta-section__btn-reserve">Riserva il tuo tavolo</Link>
+          <Link href="/reservation" className="about-cta-section__btn-reserve">Riserva il tuo tavolo</Link>
         </ScrollReveal>
       </div>
     </section>

@@ -13,18 +13,14 @@ export default function Header1({ scroll, isMobileMenu, handleMobileMenu, isSide
                 <div className="top-inner">
                     <div className="left-column">
                         <ul className="info clearfix">
-                            <li><i className="icon-1"></i><Link href="mailto:info@example.com">info@example.com</Link></li>
-                            <li><i className="icon-2"></i>Open Hours: Mon - Fri 8.00 am - 6.00 pm</li>
-                        </ul>
-                        <ul className="social-links clearfix">
-                            <li><Link href="/"><i className="fab fa-facebook-f"></i></Link></li>
-                            <li><Link href="/"><i className="fab fa-twitter"></i></Link></li>
-                            <li><Link href="/"><i className="fab fa-instagram"></i></Link></li>
+                            <li><i className="icon-40"></i><Link href="tel:+390942090538">0942 09 05 38</Link></li>
+                            <li><i className="fab fa-whatsapp"></i><Link href="https://wa.me/393888988098">+39 388 89 88 098</Link></li>
+                            <li><i className="icon-2"></i>Chiuso il Martedì</li>
                         </ul>
                     </div>
                     <div className="right-column">
                         <div className="btn-box">
-                            <Link href="/#prenotazioni">Riserva un Tavolo</Link>
+                            <Link href="/reservation">Riserva un Tavolo</Link>
                         </div>
                     </div>
                 </div>

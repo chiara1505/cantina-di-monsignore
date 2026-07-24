@@ -479,25 +479,47 @@ img {
   margin: 0px !important;
 }
 
-/** scroll-to-top **/
+/** floating actions (WhatsApp + scroll-to-top) **/
 
-.scroll-to-top{
+.floating-actions{
   position: fixed;
   right: 20px;
   bottom: 60px;
-  transform: rotate(0deg);
   z-index: 99;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.floating-action,
+.scroll-to-top{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 50px;
   height: 50px;
-  background:#E1A730;
+  background: #E1A730;
   text-align: center;
   color: #fff;
-  line-height: 50px;
+  line-height: 1;
   border-radius: 50%;
+  transition: all 500ms ease;
 }
-.scroll-to-top:hover {
+
+.floating-action:hover,
+.scroll-to-top:hover{
   color: #fff;
-  background: #222;
+  background: #48372A;
+}
+
+.floating-action--whatsapp i{
+  font-size: 22px;
+}
+
+.scroll-to-top i{
+  font-size: 24px;
 }
 
 .scroll-to-top .visible {
@@ -3451,17 +3473,18 @@ div#mCSB_1_container{
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 22px;
+  width: 24px;
   flex-shrink: 0;
   color: #E1A730;
-  font-size: 16px;
-  line-height: 22px;
+  font-size: 20px;
+  line-height: 28px;
 }
 
 .order-section__contact-link{
   display: block;
-  font-size: 16px;
-  line-height: 22px;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 500;
   color: #48372A;
   white-space: nowrap;
   transition: color 0.3s ease;
@@ -3605,6 +3628,143 @@ select  {
   min-height: 53px;
 }
 
+.booking-date-field{
+  position: relative;
+}
+
+.booking-date-field__trigger{
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 53px;
+  padding: 0;
+  border: none;
+  border-bottom: 1px solid #e5e5e5;
+  background: transparent;
+  font-size: 16px;
+  line-height: 53px;
+  font-family: var(--font-body);
+  color: #676767;
+  text-align: left;
+  cursor: pointer;
+  transition: all 500ms ease;
+}
+
+.booking-date-field__trigger.has-value{
+  color: #48372A;
+}
+
+.booking-date-field__calendar{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 8px);
+  z-index: 20;
+  padding: 18px 16px 16px;
+  background: #fff;
+  border: 1px solid #ece3d6;
+  box-shadow: 0 18px 40px rgba(72, 55, 42, 0.14);
+}
+
+.booking-date-field__header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.booking-date-field__month{
+  font-size: 16px;
+  line-height: 24px;
+  font-family: var(--font-heading, serif);
+  color: #48372A;
+}
+
+.booking-date-field__nav{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid #e5e5e5;
+  border-radius: 50%;
+  background: #fff;
+  color: #48372A;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.booking-date-field__nav:hover{
+  background: #E1A730;
+  border-color: #E1A730;
+  color: #fff;
+}
+
+.booking-date-field__weekdays,
+.booking-date-field__days{
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 4px;
+}
+
+.booking-date-field__weekdays{
+  margin-bottom: 8px;
+}
+
+.booking-date-field__weekday{
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 600;
+  color: #A97142;
+  text-align: center;
+}
+
+.booking-date-field__day{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 1;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  font-size: 14px;
+  line-height: 1;
+  color: #48372A;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.booking-date-field__day.is-empty{
+  pointer-events: none;
+}
+
+.booking-date-field__day.is-today:not(.is-selected){
+  border: 1px solid #E1A730;
+}
+
+.booking-date-field__day.is-selected{
+  background: #E1A730;
+  color: #fff;
+}
+
+.booking-date-field__day.is-disabled{
+  color: #c8c8c8;
+  cursor: not-allowed;
+}
+
+.booking-date-field__day:not(.is-disabled):not(.is-empty):hover{
+  background: #48372A;
+  color: #fff;
+}
+
+.booking-time-field select:disabled{
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
 .order-section .pattern-layer{
   display: none;
 }
@@ -3666,16 +3826,16 @@ select  {
 }
 
 .footer-top .widget-title h3{
-  font-size: 24px;
-  line-height: 28px;
+  font-size: 22px;
+  line-height: 26px;
   color: #fff;
 }
 
 .footer-top .schedule-widget .widget-content .list li{
   position: relative;
   display: block;
-  font-size: 16px;
-  line-height: 36px;
+  font-size: 14px;
+  line-height: 32px;
   color: #fff;
 }
 
@@ -3711,8 +3871,8 @@ select  {
 }
 
 .footer-top .logo-widget .text p{
-  font-size: 16px;
-  line-height: 28px;
+  font-size: 14px;
+  line-height: 26px;
   color: #fff;
 }
 
@@ -3760,8 +3920,8 @@ select  {
 .footer-top .contact-widget .info-list li{
   position: relative;
   display: block;
-  font-size: 16px;
-  line-height: 36px;
+  font-size: 14px;
+  line-height: 32px;
   color: #fff;
 }
 
@@ -3783,8 +3943,8 @@ select  {
 }
 
 .footer-bottom p{
-  font-size: 16px;
-  line-height: 36px;
+  font-size: 14px;
+  line-height: 32px;
   color: #ffffff;
 }
 
@@ -9017,6 +9177,12 @@ select  {
   .contact-page .contact-section--info .info-inner{
     margin-bottom: 0;
   }
+
+  .contact-section .info-inner .info-list li:nth-child(4) p,
+  .contact-section .info-inner .info-list li:nth-child(4) p a{
+    font-size: 17px;
+    line-height: 26px;
+  }
 }
 
 
@@ -9412,6 +9578,26 @@ select  {
     padding-right: 24px;
   }
 
+  .floating-actions{
+    right: 16px;
+    bottom: 24px;
+    gap: 10px;
+  }
+
+  .floating-action,
+  .scroll-to-top{
+    width: 46px;
+    height: 46px;
+  }
+
+  .floating-action--whatsapp i{
+    font-size: 20px;
+  }
+
+  .scroll-to-top i{
+    font-size: 22px;
+  }
+
   .contact-section .info-inner .text h2{
     font-size: 36px;
     line-height: 46px;
@@ -9560,6 +9746,14 @@ select  {
     max-width: 100%;
   }
 
+  .about-section .content_block_one .content-box .btn-box .theme-btn-one,
+  .promotion-section .specialty-dishes-btn .theme-btn-one,
+  .order-section .form-inner .message-btn .theme-btn-one{
+    font-size: 16px;
+    line-height: 22px;
+    padding: 14px 28px 13px 27px;
+  }
+
   .sec-title h2{
     font-size: 36px;
     line-height: 46px;
@@ -9573,20 +9767,39 @@ select  {
     margin-bottom: 0;
   }
 
-  .menu-course-grid{
-    padding-top: 40px;
-    padding-bottom: 20px;
+  .menu-section .menu-course-grid{
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 24px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    margin: 0 -24px;
+    padding: 50px 24px 50px;
+    gap: 16px;
   }
 
-  .menu-course-column{
-    margin-bottom: 72px;
+  .menu-section .menu-course-grid::-webkit-scrollbar{
+    display: none;
   }
 
-  .menu-course-column:last-child{
-    margin-bottom: 40px;
+  .menu-section .menu-course-grid .menu-course-column{
+    flex: 0 0 280px;
+    width: 280px;
+    max-width: 280px;
+    margin-bottom: 0;
+    padding: 0;
+    scroll-snap-align: start;
   }
 
-  .menu-course-column:nth-child(even){
+  .menu-section .menu-course-grid .menu-course-column:last-child{
+    margin-bottom: 0;
+  }
+
+  .menu-section .menu-course-grid .menu-course-column:nth-child(even){
     margin-top: 0;
   }
 
@@ -9594,7 +9807,7 @@ select  {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin-top: 30px;
+    margin-top: 90px;
     margin-bottom: 72px;
     padding: 30px 24px;
     gap: 24px;
@@ -9677,8 +9890,14 @@ select  {
   }
 
   .order-section__contact-link{
-    font-size: 15px;
+    font-size: 18px;
+    line-height: 26px;
     white-space: normal;
+  }
+
+  .order-section__contact-icon{
+    font-size: 18px;
+    line-height: 26px;
   }
 
   .order-section__amenities{

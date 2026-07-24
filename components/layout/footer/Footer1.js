@@ -10,14 +10,15 @@ export default function Footer1() {
                         <div className="col-lg-3 col-md-6 col-sm-12 footer-column">
                             <div className="footer-widget schedule-widget text-right">
                                 <div className="widget-title">
-                                    <h3>Opening Times</h3>
+                                    <h3>Orari di Apertura</h3>
                                 </div>
                                 <div className="widget-content">
                                     <ul className="list clearfix">
-                                        <li>Monday – Thursday: 08AM – 10PM</li>
-                                        <li>Friday – Saturday: 10AM–11:30PM</li>
-                                        <li>Sunday: <span>Closed</span></li>
-                                        <li>Booking Time: 24/7 Hours</li>
+                                        <li>Lunedì 18:30-22:30</li>
+                                        <li>Mercoledì 18:30-22:30</li>
+                                        <li>Giovedì — Sabato 12:30-14:30 / 18:30-22:30</li>
+                                        <li>Domenica 18:30-22:30</li>
+                                        <li>Martedì: <span>Chiuso</span></li>
                                     </ul>
                                 </div>
                             </div>
@@ -27,7 +28,7 @@ export default function Footer1() {
                                 <div className="widget-content">
                                     <figure className="footer-logo"><Link href="/"><img src="assets/images/footer-logo.png" alt="" /></Link></figure>
                                     <div className="text">
-                                        <p>Tincidunt neque pretium lectus donec risus. Mauris mi tempor nunc orc leo consequat vitae erat gravida lobortis nec et sagittis.</p>
+                                        <p>Ristorante siciliano a Castiglione di Sicilia, vicino al vulcano Etna e alla Valle dell&apos;Alcantara. Piatti della tradizione rivisitati in chiave moderna.</p>
                                     </div>
                                     <ul className="social-links clearfix">
                                         <li><Link href="/"><i className="fab fa-facebook-f"></i></Link></li>
@@ -40,13 +41,14 @@ export default function Footer1() {
                         <div className="col-lg-3 col-md-6 col-sm-12 footer-column">
                             <div className="footer-widget contact-widget text-left">
                                 <div className="widget-title">
-                                    <h3>Contact Info</h3>
+                                    <h3>Indirizzo e Contatti</h3>
                                 </div>
                                 <div className="widget-content">
                                     <ul className="info-list clearfix">
-                                        <li><span>Address: </span>New Hyde Park, NY 11040</li>
-                                        <li><span>Email: </span><Link href="mailto:example@info.com">example@info.com</Link></li>
-                                        <li><span>Call: </span><Link href="tel:912136660027">(+91) 213 666 0027</Link></li>
+                                        <li><span>Indirizzo: </span>Piazza Sant&apos;Antonio n. 5, Castiglione di Sicilia (ME)</li>
+                                        <li><span>Telefono: </span><Link href="tel:+390942090538">0942 09 05 38</Link></li>
+                                        <li><span>WhatsApp: </span><Link href="https://wa.me/393888988098">+39 388 89 88 098</Link></li>
+                                        <li><span>Email: </span><Link href="mailto:lacantinadimonsignore@gmail.com">lacantinadimonsignore@gmail.com</Link></li>
                                     </ul>
                                 </div>
                             </div>
