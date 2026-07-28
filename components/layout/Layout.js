@@ -19,7 +19,7 @@ import Header3 from "./header/Header3";
 import Header4 from "./header/Header4";
 
 export default function Layout({ headerStyle, footerStyle, headTitle, breadcrumbTitle, breadcrumbImage = PAGE_TITLE_IMAGES.default, children, wrapperCls }) {
-    const [scroll, setScroll] = useState(0);
+    const [scroll, setScroll] = useState(false);
     const [isMobileMenu, setMobileMenu] = useState(false);
     const handleMobileMenu = () => {
         setMobileMenu(!isMobileMenu);
