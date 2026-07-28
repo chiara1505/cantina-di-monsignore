@@ -32,7 +32,7 @@ export default function Header1({ scroll, mobileHeaderHidden = false, isMobileMe
                     <div className="auto-container">
                     <div className="outer-box">
                         <div className="logo-box">
-                            <figure className="logo"><Link href="/"><img src="assets/images/logo.png" alt="" /></Link></figure>
+                            <figure className="logo"><Link href="/"><img src="/assets/images/logo.png" alt="Cantina di Monsignore" /></Link></figure>
                         </div>
                         <div className="menu-area">
                         {/* Mobile Navigation Toggler */}
@@ -64,7 +64,7 @@ export default function Header1({ scroll, mobileHeaderHidden = false, isMobileMe
                     <div className="auto-container">
                         <div className="outer-box">
                         <div className="logo-box">
-                            <figure className="logo"><Link href="/"><img src="assets/images/logo.png" alt="" /></Link></figure>
+                            <figure className="logo"><Link href="/"><img src="/assets/images/logo.png" alt="Cantina di Monsignore" /></Link></figure>
                         </div>
                        
                             <nav className="main-menu navbar-expand-md navbar-light clearfix">

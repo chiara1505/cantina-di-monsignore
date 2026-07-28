@@ -43,22 +43,23 @@ export default function Layout({ headerStyle, footerStyle, headTitle, breadcrumb
 
         const onScroll = () => {
             const isDesktop = desktopHeaderQuery.matches
-            const scrolled = window.scrollY > 100
+            const scrollY = window.scrollY
+            const scrolled = scrollY > 100
 
             setShowBackToTop(scrolled)
             setFixedHeader(isDesktop && scrolled)
             setMobileHeaderHidden(
                 !isDesktop &&
-                window.scrollY > 80 &&
+                scrollY > 40 &&
                 !document.body.classList.contains('mobile-menu-visible')
             )
         }
 
         onScroll()
-        document.addEventListener('scroll', onScroll, { passive: true })
+        window.addEventListener('scroll', onScroll, { passive: true })
         desktopHeaderQuery.addEventListener('change', onScroll)
         return () => {
-            document.removeEventListener('scroll', onScroll)
+            window.removeEventListener('scroll', onScroll)
             desktopHeaderQuery.removeEventListener('change', onScroll)
         }
     }, [])

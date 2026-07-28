@@ -91,7 +91,7 @@ export default function Menu() {
               </p>
             </div>
             <div className="menu-wine-banner__btn">
-              <Link href="/menu" className="theme-btn-one">Scopri i Vini</Link>
+              <Link href="/menu/vini" className="theme-btn-one">Scopri i Vini</Link>
             </div>
           </ScrollReveal>
         </div>

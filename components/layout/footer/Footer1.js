@@ -26,7 +26,7 @@ export default function Footer1() {
                         <div className="col-lg-6 col-md-6 col-sm-12 footer-column">
                             <div className="footer-widget logo-widget text-center">
                                 <div className="widget-content">
-                                    <figure className="footer-logo"><Link href="/"><img src="assets/images/footer-logo.png" alt="" /></Link></figure>
+                                    <figure className="footer-logo"><Link href="/"><img src="/assets/images/footer-logo.png" alt="Cantina di Monsignore" /></Link></figure>
                                     <div className="text">
                                         <p>Ristorante siciliano a Castiglione di Sicilia, vicino al vulcano Etna e alla Valle dell&apos;Alcantara. Piatti della tradizione rivisitati in chiave moderna.</p>
                                     </div>

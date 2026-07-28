@@ -52,7 +52,14 @@ export default function MobileMenu({ isSidebar, handleMobileMenu, handleSidebar 
                   <div className={isActive.key == 1 ? "dropdown-btn open" : "dropdown-btn"} onClick={() => handleToggle(1)}><span className="fa fa-angle-right" /></div>
                 </li>
                 <li><Link href="/about-us" onClick={handleMobileMenu}>Il Ristorante</Link></li>
-                <li><Link href="/service" onClick={handleMobileMenu}>Services</Link></li>
+                <li className={isActive.key == 2 ? "dropdown current" : "dropdown"}>
+                  <Link href="/menu" onClick={handleMobileMenu}>Il Menù</Link>
+                  <ul style={{ display: `${isActive.key == 2 ? "block" : "none"}` }}>
+                    <li><Link href="/menu" onClick={handleMobileMenu}>I Piatti</Link></li>
+                    <li><Link href="/menu/vini" onClick={handleMobileMenu}>La Carta dei Vini</Link></li>
+                  </ul>
+                  <div className={isActive.key == 2 ? "dropdown-btn open" : "dropdown-btn"} onClick={() => handleToggle(2)}><span className="fa fa-angle-right" /></div>
+                </li>
 
                 <li className={isActive.key == 3 ? "dropdown current" : "dropdown"}>
                   <Link href="/#">Pages</Link>

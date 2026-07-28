@@ -30,7 +30,12 @@ export default function Menu() {
                     </ul>
                 </li>
                 <li><Link href="/about-us">Il Ristorante</Link></li>
-                <li><Link href="/service">Services</Link></li>
+                <li className="dropdown"><Link href="/menu">Il Menù</Link>
+                    <ul>
+                        <li><Link href="/menu">I Piatti</Link></li>
+                        <li><Link href="/menu/vini">La Carta dei Vini</Link></li>
+                    </ul>
+                </li>
 
                 
                 {/* Pages */}
