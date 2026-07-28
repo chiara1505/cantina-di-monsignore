@@ -923,6 +923,23 @@ img {
   display: none;
 }
 
+@media only screen and (max-width: 1200px){
+  .header-style-one.fixed-header .header-lower{
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background: #fff;
+    box-shadow: 0 2px 12px rgba(72, 55, 42, 0.1);
+  }
+
+  .header-style-one.fixed-header .header-lower .menu-area .mobile-nav-toggler .icon-bar{
+    background-color: #48372A;
+  }
+}
+
 .header-style-one .sticky-header{
   background-color: #ffffff;
   border-bottom: none;

@@ -37,12 +37,13 @@ export default function Layout({ headerStyle, footerStyle, headTitle, breadcrumb
         })
         window.wow.init()
 
-        document.addEventListener("scroll", () => {
-            const scrollCheck = window.scrollY > 100
-            if (scrollCheck !== scroll) {
-                setScroll(scrollCheck)
-            }
-        })
+        const onScroll = () => {
+            setScroll(window.scrollY > 100)
+        }
+
+        onScroll()
+        document.addEventListener("scroll", onScroll, { passive: true })
+        return () => document.removeEventListener("scroll", onScroll)
     }, [])
 
     return (
