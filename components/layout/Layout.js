@@ -37,13 +37,19 @@ export default function Layout({ headerStyle, footerStyle, headTitle, breadcrumb
         })
         window.wow.init()
 
+        const desktopHeaderQuery = window.matchMedia('(min-width: 1201px)')
+
         const onScroll = () => {
-            setScroll(window.scrollY > 100)
+            setScroll(desktopHeaderQuery.matches && window.scrollY > 100)
         }
 
         onScroll()
-        document.addEventListener("scroll", onScroll, { passive: true })
-        return () => document.removeEventListener("scroll", onScroll)
+        document.addEventListener('scroll', onScroll, { passive: true })
+        desktopHeaderQuery.addEventListener('change', onScroll)
+        return () => {
+            document.removeEventListener('scroll', onScroll)
+            desktopHeaderQuery.removeEventListener('change', onScroll)
+        }
     }, [])
 
     return (
