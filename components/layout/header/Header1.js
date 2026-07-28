@@ -3,10 +3,10 @@ import Link from "next/link";
 import Menu from "../Menu"
 import MobileMenu from "../MobileMenu"
 
-export default function Header1({ scroll, isMobileMenu, handleMobileMenu, isSidebar, handlePopup, handleSidebar }) {
+export default function Header1({ scroll, mobileHeaderHidden = false, isMobileMenu, handleMobileMenu, isSidebar, handlePopup, handleSidebar }) {
     return (
         <>
-            <header className={`main-header header-style-one ${scroll ? "fixed-header" : ""}`}>
+            <header className={`main-header header-style-one${scroll ? ' fixed-header' : ''}${mobileHeaderHidden ? ' mobile-header-hidden' : ''}`}>
                 {/* Header Top */}
                 <div className="header-top">
             <div className="auto-container">

@@ -9228,6 +9228,7 @@ select  {
     right: 0;
     z-index: 999;
     background: transparent;
+    transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
   }
 
   .main-header.header-style-one .header-lower{
@@ -9254,6 +9255,14 @@ select  {
 
   .main-header.header-style-one .header-lower .nav-right li a{
     color: #fff;
+  }
+
+  .main-header.header-style-one.mobile-header-hidden{
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
   }
 
   .megamenu ul li:first-child{

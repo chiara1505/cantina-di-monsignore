@@ -19,7 +19,9 @@ import Header3 from "./header/Header3";
 import Header4 from "./header/Header4";
 
 export default function Layout({ headerStyle, footerStyle, headTitle, breadcrumbTitle, breadcrumbImage = PAGE_TITLE_IMAGES.default, children, wrapperCls }) {
-    const [scroll, setScroll] = useState(false);
+    const [fixedHeader, setFixedHeader] = useState(false);
+    const [showBackToTop, setShowBackToTop] = useState(false);
+    const [mobileHeaderHidden, setMobileHeaderHidden] = useState(false);
     const [isMobileMenu, setMobileMenu] = useState(false);
     const handleMobileMenu = () => {
         setMobileMenu(!isMobileMenu);
@@ -40,7 +42,16 @@ export default function Layout({ headerStyle, footerStyle, headTitle, breadcrumb
         const desktopHeaderQuery = window.matchMedia('(min-width: 1201px)')
 
         const onScroll = () => {
-            setScroll(desktopHeaderQuery.matches && window.scrollY > 100)
+            const isDesktop = desktopHeaderQuery.matches
+            const scrolled = window.scrollY > 100
+
+            setShowBackToTop(scrolled)
+            setFixedHeader(isDesktop && scrolled)
+            setMobileHeaderHidden(
+                !isDesktop &&
+                window.scrollY > 80 &&
+                !document.body.classList.contains('mobile-menu-visible')
+            )
         }
 
         onScroll()
@@ -56,10 +67,10 @@ export default function Layout({ headerStyle, footerStyle, headTitle, breadcrumb
         <>
             <DataBg />
             <div className={`boxed_wrapper ${wrapperCls ? wrapperCls : ""}`} id="#top">
-                {(headerStyle === 1 || !headerStyle) && <Header1 scroll={scroll} isMobileMenu={isMobileMenu} handleMobileMenu={handleMobileMenu} handlePopup={handlePopup} isSidebar={isSidebar} handleSidebar={handleSidebar} />}
-                {headerStyle === 2 && <Header2 scroll={scroll} isMobileMenu={isMobileMenu} handleMobileMenu={handleMobileMenu} handlePopup={handlePopup} isSidebar={isSidebar} handleSidebar={handleSidebar} />}
-                {headerStyle === 3 && <Header3 scroll={scroll} isMobileMenu={isMobileMenu} handleMobileMenu={handleMobileMenu} handlePopup={handlePopup} isSidebar={isSidebar} handleSidebar={handleSidebar} />}
-                {headerStyle === 4 && <Header4 scroll={scroll} isMobileMenu={isMobileMenu} handleMobileMenu={handleMobileMenu} handlePopup={handlePopup} isSidebar={isSidebar} handleSidebar={handleSidebar} />}
+                {(headerStyle === 1 || !headerStyle) && <Header1 scroll={fixedHeader} mobileHeaderHidden={mobileHeaderHidden} isMobileMenu={isMobileMenu} handleMobileMenu={handleMobileMenu} handlePopup={handlePopup} isSidebar={isSidebar} handleSidebar={handleSidebar} />}
+                {headerStyle === 2 && <Header2 scroll={fixedHeader} isMobileMenu={isMobileMenu} handleMobileMenu={handleMobileMenu} handlePopup={handlePopup} isSidebar={isSidebar} handleSidebar={handleSidebar} />}
+                {headerStyle === 3 && <Header3 scroll={fixedHeader} isMobileMenu={isMobileMenu} handleMobileMenu={handleMobileMenu} handlePopup={handlePopup} isSidebar={isSidebar} handleSidebar={handleSidebar} />}
+                {headerStyle === 4 && <Header4 scroll={fixedHeader} isMobileMenu={isMobileMenu} handleMobileMenu={handleMobileMenu} handlePopup={handlePopup} isSidebar={isSidebar} handleSidebar={handleSidebar} />}
 
                 <Sidebar isSidebar={isSidebar} handleSidebar={handleSidebar} />
                 <SearchPopup isPopup={isPopup} handlePopup={handlePopup} />
@@ -70,7 +81,7 @@ export default function Layout({ headerStyle, footerStyle, headTitle, breadcrumb
 
                 {(footerStyle === 1 || !footerStyle) && <Footer1 />}
             </div>
-            <BackToTop scroll={scroll} />
+            <BackToTop scroll={showBackToTop} />
         </>
     );
 }
