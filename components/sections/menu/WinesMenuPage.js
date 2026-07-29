@@ -8,6 +8,7 @@ import {
   getWinesByCategory,
 } from '@/lib/menuWinesData';
 import { PAGE_SECTION_BACKGROUNDS } from '@/lib/pageTitleImages';
+import MenuDecorativePanel from '@/components/sections/menu/MenuDecorativePanel';
 
 function WineItem({ wine }) {
   return (
@@ -64,51 +65,62 @@ export default function WinesMenuPage() {
     window.history.replaceState(null, '', `#${tabId}`);
   };
 
+  const activeTabLabel = WINES_MENU_TABS.find((tab) => tab.id === activeTab)?.label ?? '';
+
   return (
     <section className="dishes-menu-page">
       <div
         className="bg-layer parallax-bg"
         style={{ backgroundImage: `url(${PAGE_SECTION_BACKGROUNDS.menuWines})` }}
       />
+
+      <div className="dishes-menu-page__intro-band">
+        <div className="auto-container">
+          <div className="dishes-menu-page__intro">
+            <div className="sec-title centred dishes-menu-page__title">
+              <span className="sub-title">La nostra cantina</span>
+              <h2>Vini e Champagne</h2>
+            </div>
+            <p>
+              Selezioniamo le migliori etichette del territorio etneo e siciliano, affiancandole a
+              proposte nazionali e internazionali scelte con cura.
+            </p>
+            <p>
+              Questo è un estratto della nostra Carta dei Vini: esplora la nostra cantina per tipologia
+              e{' '}
+              <a
+                href={WINES_PDF_URL}
+                className="dishes-menu-page__intro-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Scarica la carta completa in PDF
+              </a>
+              .
+            </p>
+          </div>
+
+          <div className="dishes-menu-tabs" role="tablist" aria-label="Tipologie di vino">
+            {WINES_MENU_TABS.map((tab) => (
+              <button
+                key={tab.id}
+                type="button"
+                role="tab"
+                aria-selected={activeTab === tab.id}
+                className={`dishes-menu-tabs__btn${activeTab === tab.id ? ' is-active' : ''}`}
+                onClick={() => handleTabClick(tab.id)}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
       <div className="auto-container dishes-menu-page__content">
-        <div className="dishes-menu-page__intro">
-          <p>
-            Selezioniamo le migliori etichette del territorio etneo e siciliano, affiancandole a
-            proposte nazionali e internazionali scelte con cura.
-          </p>
-          <p>
-            Questo è un estratto della nostra Carta dei Vini: esplora la nostra cantina per tipologia
-            e{' '}
-            <a
-              href={WINES_PDF_URL}
-              className="dishes-menu-page__intro-link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Scarica la carta completa in PDF
-            </a>
-            .
-          </p>
-        </div>
-
-        <div className="dishes-menu-tabs" role="tablist" aria-label="Tipologie di vino">
-          {WINES_MENU_TABS.map((tab) => (
-            <button
-              key={tab.id}
-              type="button"
-              role="tab"
-              aria-selected={activeTab === tab.id}
-              className={`dishes-menu-tabs__btn${activeTab === tab.id ? ' is-active' : ''}`}
-              onClick={() => handleTabClick(tab.id)}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
-
-        <div className="dishes-menu-panel">
+        <MenuDecorativePanel title={activeTabLabel}>
           <WineList wines={getWinesByCategory(activeTab)} />
-        </div>
+        </MenuDecorativePanel>
 
         <div className="dishes-menu-page__cta">
           <a

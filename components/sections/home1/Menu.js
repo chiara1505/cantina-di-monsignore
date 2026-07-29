@@ -3,15 +3,15 @@ import ScrollReveal from '@/components/elements/ScrollReveal';
 
 const menuCourses = [
   {
-    title: '01. Per cominciare',
-    image: 'assets/images/resource/menu-antipasti.jpg',
+    title: 'Antipasti',
+    image: 'assets/images/resource/menu-antipasti.png',
     imageAlt: 'Antipasti',
     button: 'Scopri gli Antipasti',
     href: '/menu',
     delay: 0,
   },
   {
-    title: '02. Primi Piatti',
+    title: 'Primi Piatti',
     image: 'assets/images/resource/menu-primi.jpg',
     imageAlt: 'Primi piatti',
     button: 'Scopri i Primi',
@@ -19,7 +19,7 @@ const menuCourses = [
     delay: 100,
   },
   {
-    title: '03. Secondi Piatti',
+    title: 'Secondi Piatti',
     image: 'assets/images/resource/menu-secondi.png',
     imageAlt: 'Secondi piatti',
     button: 'Scopri i Secondi',
@@ -27,7 +27,7 @@ const menuCourses = [
     delay: 200,
   },
   {
-    title: '04. Dessert',
+    title: 'Dessert',
     image: 'assets/images/resource/menu-dolci.png',
     imageAlt: 'Dessert',
     button: 'Scopri i Dolci',

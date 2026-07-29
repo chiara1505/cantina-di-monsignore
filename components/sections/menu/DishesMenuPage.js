@@ -9,6 +9,7 @@ import {
   menuServiceCharges,
 } from '@/lib/menuDishesData';
 import { PAGE_SECTION_BACKGROUNDS } from '@/lib/pageTitleImages';
+import MenuDecorativePanel from '@/components/sections/menu/MenuDecorativePanel';
 
 function DishItem({ dish }) {
   return (
@@ -90,37 +91,49 @@ export default function DishesMenuPage() {
     window.history.replaceState(null, '', `#${tabId}`);
   };
 
+  const activeTabLabel =
+    DISHES_MENU_TABS.find((tab) => tab.id === activeTab)?.label ?? '';
+
   return (
     <section className="dishes-menu-page">
       <div
         className="bg-layer parallax-bg"
         style={{ backgroundImage: `url(${PAGE_SECTION_BACKGROUNDS.menuDishes})` }}
       />
+
+      <div className="dishes-menu-page__intro-band">
+        <div className="auto-container">
+          <div className="dishes-menu-page__intro">
+            <div className="sec-title centred dishes-menu-page__title">
+              <span className="sub-title">Le nostre proposte</span>
+              <h2>Menù alla Carta</h2>
+            </div>
+            <p>
+              Piatti preparati con prodotti del territorio e ricette della tradizione siciliana,
+              reinterpretate con equilibrio e rispetto della materia prima.
+            </p>
+            <p>Scegli la portata per consultare le nostre proposte.</p>
+          </div>
+
+          <div className="dishes-menu-tabs" role="tablist" aria-label="Portate del menù">
+            {DISHES_MENU_TABS.map((tab) => (
+              <button
+                key={tab.id}
+                type="button"
+                role="tab"
+                aria-selected={activeTab === tab.id}
+                className={`dishes-menu-tabs__btn${activeTab === tab.id ? ' is-active' : ''}`}
+                onClick={() => handleTabClick(tab.id)}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
       <div className="auto-container dishes-menu-page__content">
-        <div className="dishes-menu-page__intro">
-          <p>
-            Piatti preparati con prodotti del territorio e ricette della tradizione siciliana,
-            reinterpretate con equilibrio e rispetto della materia prima.
-          </p>
-          <p>Scegli la portata per consultare le nostre proposte.</p>
-        </div>
-
-        <div className="dishes-menu-tabs" role="tablist" aria-label="Portate del menù">
-          {DISHES_MENU_TABS.map((tab) => (
-            <button
-              key={tab.id}
-              type="button"
-              role="tab"
-              aria-selected={activeTab === tab.id}
-              className={`dishes-menu-tabs__btn${activeTab === tab.id ? ' is-active' : ''}`}
-              onClick={() => handleTabClick(tab.id)}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
-
-        <div className="dishes-menu-panel">
+        <MenuDecorativePanel title={activeTabLabel}>
           {activeTab === 'secondi' ? (
             <SecondiPanel />
           ) : (
@@ -133,7 +146,7 @@ export default function DishesMenuPage() {
               aggiuntive chiedere al personale di sala.
             </p>
           ) : null}
-        </div>
+        </MenuDecorativePanel>
 
         <div className="dishes-menu-page__footer">
           <div className="dishes-menu-service-charges">
