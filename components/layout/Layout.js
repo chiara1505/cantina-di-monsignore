@@ -18,7 +18,7 @@ import Header2 from './header/Header2';
 import Header3 from "./header/Header3";
 import Header4 from "./header/Header4";
 
-export default function Layout({ headerStyle, footerStyle, headTitle, breadcrumbTitle, breadcrumbImage = PAGE_TITLE_IMAGES.default, children, wrapperCls }) {
+export default function Layout({ headerStyle, footerStyle, headTitle, breadcrumbTitle, breadcrumbImage = PAGE_TITLE_IMAGES.default, breadcrumbImagePosition, breadcrumbClassName, children, wrapperCls }) {
     const [fixedHeader, setFixedHeader] = useState(false);
     const [showBackToTop, setShowBackToTop] = useState(false);
     const [mobileHeaderHidden, setMobileHeaderHidden] = useState(false);
@@ -76,7 +76,14 @@ export default function Layout({ headerStyle, footerStyle, headTitle, breadcrumb
                 <Sidebar isSidebar={isSidebar} handleSidebar={handleSidebar} />
                 <SearchPopup isPopup={isPopup} handlePopup={handlePopup} />
 
-                {breadcrumbTitle && <Breadcrumb breadcrumbTitle={breadcrumbTitle} breadcrumbImage={breadcrumbImage} />}
+                {breadcrumbTitle && (
+                  <Breadcrumb
+                    breadcrumbTitle={breadcrumbTitle}
+                    breadcrumbImage={breadcrumbImage}
+                    breadcrumbImagePosition={breadcrumbImagePosition}
+                    breadcrumbClassName={breadcrumbClassName}
+                  />
+                )}
 
                 {children}
 

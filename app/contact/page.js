@@ -1,20 +1,29 @@
 'use client'
 import Link from "next/link";
 import Layout from "@/components/layout/Layout"
-import { PAGE_TITLE_IMAGES } from '@/lib/pageTitleImages';
+import { PAGE_TITLE_IMAGES, PAGE_SECTION_BACKGROUNDS } from '@/lib/pageTitleImages';
+import { CONTACT_MAP_EMBED_URL } from '@/lib/contactInfo';
 import ScrollReveal from '@/components/elements/ScrollReveal';
 
 export default function Home() {
 
     return (
         <>
-            <Layout headerStyle={1} footerStyle={1} breadcrumbTitle="Contatti" breadcrumbImage={PAGE_TITLE_IMAGES.contact}>
+            <Layout
+              headerStyle={1}
+              footerStyle={1}
+              breadcrumbTitle="Contatti"
+              breadcrumbImage={PAGE_TITLE_IMAGES.contact}
+              breadcrumbImagePosition="center 38%"
+              breadcrumbClassName="page-title--contact"
+            >
                 <div className="contact-page">
                     <div className="contact-page__columns">
-                    <section className="contact-section contact-section--info bg-color-panna">
+                    <section className="contact-section contact-section--info">
                         <div className="auto-container">
                             <div className="info-inner">
-                                <div className="text">
+                                <div className="sec-title contact-section__title">
+                                    <span className="sub-title">Contatti</span>
                                     <h2>Ci trovi qui</h2>
                                     <p>I nostri indirizzi e recapiti per rimanere in contatto</p>
                                 </div>
@@ -63,7 +72,9 @@ export default function Home() {
                                         <p>Martedì</p>
                                     </li>
                                 </ul>
-                                <ul className="social-links clearfix">
+                                <div className="contact-section__social">
+                                    <h3 className="contact-section__social-title">Seguici sui social</h3>
+                                    <ul className="social-links clearfix">
                                     <li>
                                         <Link href="contact">
                                             <i className="fab fa-facebook-f"></i>
@@ -85,11 +96,12 @@ export default function Home() {
                                         </Link>
                                     </li>
                                 </ul>
+                                </div>
                             </div>
                         </div>
                     </section>
 
-                    <section className="contact-section contact-section--form bg-color-panna">
+                    <section className="contact-section contact-section--form">
                         <div className="auto-container">
                             <div className="form-inner centred">
                                 <h2>Scrivici per qualsiasi informazione</h2>
@@ -119,8 +131,12 @@ export default function Home() {
                     </section>
                     </div>
 
-                    <section className="contact-directions-section bg-color-panna">
-                        <div className="auto-container">
+                    <section className="contact-directions-section">
+                        <div
+                            className="bg-layer parallax-bg"
+                            style={{ backgroundImage: `url(${PAGE_SECTION_BACKGROUNDS.contactDirections})` }}
+                        />
+                        <div className="auto-container contact-directions-section__content">
                             <ScrollReveal className="sec-title centred contact-directions-section__header">
                                 <span className="sub-title">Raggiungici</span>
                                 <h2>Nel centro storico di Castiglione di Sicilia</h2>
@@ -133,12 +149,16 @@ export default function Home() {
                                     Questa riservatezza è il nostro valore più grande: ci permette di custodire un&apos;atmosfera intima e di garantirti la tranquillità necessaria per goderti il piacere della tavola, senza fretta.
                                 </p>
                             </ScrollReveal>
-                        </div>
-                    </section>
 
-                    <section className="google-map-section">
-                        <div className="map-inner p_relative d_block">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2643.6895046810805!2d-122.52642526124438!3d38.00014098339506!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085976736097a2f%3A0xbe014d20e6e22654!2sSan Rafael%2C California%2C Hoa Kỳ!5e0!3m2!1svi!2s!4v1678975266976!5m2!1svi!2s" height={570} style={{ border: 0, width: "100%" }} allowFullScreen loading={true} referrerPolicy="no-referrer-when-downgrade" />
+                            <ScrollReveal delay={300} className="contact-directions-section__map">
+                                <iframe
+                                    title="Mappa La Cantina di Monsignore"
+                                    src={CONTACT_MAP_EMBED_URL}
+                                    loading="lazy"
+                                    allowFullScreen
+                                    referrerPolicy="no-referrer-when-downgrade"
+                                />
+                            </ScrollReveal>
                         </div>
                     </section>
 

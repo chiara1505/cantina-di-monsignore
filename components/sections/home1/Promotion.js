@@ -3,14 +3,15 @@ import ScrollReveal from '@/components/elements/ScrollReveal';
 
 const specialtyDishes = [
   {
-    name: 'Parmigiana Croccante',
+    name: 'Lingotto di Parmigiana',
     image: 'assets/images/resource/promotion-1.jpg',
     delay: 0,
   },
   {
-    name: 'Ravioli Home Made alla Norma',
+    name: 'Mezze lune “Home Made”',
     image: 'assets/images/resource/promotion-2.jpg',
     delay: 150,
+    imageZoom: true,
   },
 ];
 
@@ -31,7 +32,11 @@ export default function Promotion() {
             <div key={dish.name} className="col-lg-6 col-md-6 col-sm-12 specialty-dish-column">
               <ScrollReveal delay={dish.delay} as="figure" className="specialty-dish">
                 <div className="specialty-dish__image">
-                  <img src={dish.image} alt={dish.name} />
+                  <img
+                    src={dish.image}
+                    alt={dish.name}
+                    className={dish.imageZoom ? 'specialty-dish__image-zoom' : undefined}
+                  />
                 </div>
                 <figcaption className="specialty-dish__caption">{dish.name}</figcaption>
               </ScrollReveal>

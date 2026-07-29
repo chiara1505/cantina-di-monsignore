@@ -1,11 +1,22 @@
 import Link from "next/link"
 import { PAGE_TITLE_IMAGES } from '@/lib/pageTitleImages'
 
-export default function Breadcrumb({ breadcrumbTitle, breadcrumbImage = PAGE_TITLE_IMAGES.default }) {
+export default function Breadcrumb({
+  breadcrumbTitle,
+  breadcrumbImage = PAGE_TITLE_IMAGES.default,
+  breadcrumbImagePosition = 'center',
+  breadcrumbClassName = '',
+}) {
     return (
         <>
-            <section className="page-title centred">
-            <div className="bg-layer" style={{ backgroundImage: `url(${breadcrumbImage})` }}></div>
+            <section className={`page-title centred${breadcrumbClassName ? ` ${breadcrumbClassName}` : ''}`}>
+            <div
+              className="bg-layer"
+              style={{
+                backgroundImage: `url(${breadcrumbImage})`,
+                backgroundPosition: breadcrumbImagePosition,
+              }}
+            ></div>
             <div className="auto-container">
                 <div className="content-box">
                     <h2>{breadcrumbTitle}</h2>
