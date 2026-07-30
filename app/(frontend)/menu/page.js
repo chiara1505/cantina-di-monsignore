@@ -1,13 +1,20 @@
-'use client';
+import { getMenuDishes } from '@/lib/getMenuDishes';
+import { generateMenuSchema } from '@/lib/generateMenuSchema';
+import MenuPiattiPageClient from './MenuPiattiPageClient';
 
-import Layout from '@/components/layout/Layout';
-import DishesMenuPage from '@/components/sections/menu/DishesMenuPage';
-import { PAGE_TITLE_IMAGES } from '@/lib/pageTitleImages';
+export const revalidate = 60;
 
-export default function MenuPiattiPage() {
+export default async function MenuPiattiPage() {
+  const dishes = await getMenuDishes();
+  const menuSchema = generateMenuSchema(dishes);
+
   return (
-    <Layout headerStyle={1} footerStyle={1} breadcrumbTitle="I Piatti" breadcrumbImage={PAGE_TITLE_IMAGES.menu}>
-      <DishesMenuPage />
-    </Layout>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(menuSchema) }}
+      />
+      <MenuPiattiPageClient dishes={dishes} />
+    </>
   );
 }

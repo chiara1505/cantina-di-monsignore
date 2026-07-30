@@ -1,10 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import {
   DISHES_MENU_TABS,
-  getDishesByCategory,
   getSecondiTabSections,
   menuServiceCharges,
 } from '@/lib/menuDishesData';
@@ -52,7 +51,7 @@ function DishList({ dishes }) {
   );
 }
 
-function SecondiPanel() {
+function SecondiPanel({ getDishesByCategory }) {
   const sections = getSecondiTabSections();
 
   return (
@@ -70,8 +69,13 @@ function SecondiPanel() {
   );
 }
 
-export default function DishesMenuPage() {
+export default function DishesMenuPage({ dishes = [] }) {
   const [activeTab, setActiveTab] = useState('antipasti');
+
+  const getDishesByCategory = useCallback(
+    (category) => dishes.filter((dish) => dish.category === category),
+    [dishes],
+  );
 
   const syncTabFromHash = useCallback(() => {
     const hash = window.location.hash.replace('#', '');
@@ -93,6 +97,11 @@ export default function DishesMenuPage() {
 
   const activeTabLabel =
     DISHES_MENU_TABS.find((tab) => tab.id === activeTab)?.label ?? '';
+
+  const activeDishes = useMemo(
+    () => getDishesByCategory(activeTab),
+    [activeTab, getDishesByCategory],
+  );
 
   return (
     <section className="dishes-menu-page">
@@ -135,9 +144,9 @@ export default function DishesMenuPage() {
       <div className="auto-container dishes-menu-page__content">
         <MenuDecorativePanel title={activeTabLabel}>
           {activeTab === 'secondi' ? (
-            <SecondiPanel />
+            <SecondiPanel getDishesByCategory={getDishesByCategory} />
           ) : (
-            <DishList dishes={getDishesByCategory(activeTab)} />
+            <DishList dishes={activeDishes} />
           )}
 
           {activeTab !== 'bevande' ? (

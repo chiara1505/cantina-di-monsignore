@@ -15,6 +15,9 @@ export const MenuDishes: CollectionConfig = {
     singular: 'Piatto',
     plural: 'Piatti',
   },
+  access: {
+    read: () => true,
+  },
   admin: {
     useAsTitle: 'name',
     defaultColumns: ['name', 'category', 'price', 'published'],
