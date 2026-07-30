@@ -1,3 +1,5 @@
+'use client';
+
 // import PortfolioFilter1 from ""
 import dynamic from 'next/dynamic'
 import Layout from "@/components/layout/Layout"

@@ -29,3 +29,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# payload
+payload.db
+payload.db-*
+payload-v2.db
+payload-v2.db-*
+payload-types.ts

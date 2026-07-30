@@ -1,3 +1,5 @@
+'use client';
+
 // import PortfolioFilter1 from ""
 import Layout from "@/components/layout/Layout"
 import { PAGE_TITLE_IMAGES } from '@/lib/pageTitleImages'

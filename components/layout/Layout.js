@@ -1,10 +1,6 @@
 
 'use client'
 import { useEffect, useState } from "react";
-import dynamic from 'next/dynamic';
-
-// Dynamic import for the WOW library
-const WOW = dynamic(() => import('wowjs/dist/wow'));
 
 import BackToTop from '../elements/BackToTop';
 import DataBg from "../elements/DataBg";
@@ -33,11 +29,23 @@ export default function Layout({ headerStyle, footerStyle, headTitle, breadcrumb
     const handleSidebar = () => setSidebar(!isSidebar);
 
     useEffect(() => {
-        const WOW = require('wowjs')
-        window.wow = new WOW.WOW({
-            live: false
+        let cancelled = false
+
+        import('wowjs/dist/wow.js').then((mod) => {
+            if (cancelled) return
+
+            const WowConstructor =
+                (typeof mod?.WOW === 'function' && mod.WOW) ||
+                (typeof mod?.default?.WOW === 'function' && mod.default.WOW) ||
+                (typeof mod?.default === 'function' && mod.default) ||
+                (typeof window.WOW === 'function' && window.WOW)
+
+            if (!WowConstructor) return
+
+            const wow = new WowConstructor({ live: false })
+            wow.init()
+            window.wow = wow
         })
-        window.wow.init()
 
         const desktopHeaderQuery = window.matchMedia('(min-width: 1201px)')
 
@@ -59,6 +67,7 @@ export default function Layout({ headerStyle, footerStyle, headTitle, breadcrumb
         window.addEventListener('scroll', onScroll, { passive: true })
         desktopHeaderQuery.addEventListener('change', onScroll)
         return () => {
+            cancelled = true
             window.removeEventListener('scroll', onScroll)
             desktopHeaderQuery.removeEventListener('change', onScroll)
         }
