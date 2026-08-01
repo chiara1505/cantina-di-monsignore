@@ -2,8 +2,8 @@
 import Link from "next/link";
 import Layout from "@/components/layout/Layout"
 import { PAGE_TITLE_IMAGES, PAGE_SECTION_BACKGROUNDS } from '@/lib/pageTitleImages';
-import { CONTACT_MAP_EMBED_URL } from '@/lib/contactInfo';
 import ScrollReveal from '@/components/elements/ScrollReveal';
+import ContactDirectionsMap from '@/components/sections/contact/ContactDirectionsMap';
 
 export default function Home() {
 
@@ -151,13 +151,7 @@ export default function Home() {
                             </ScrollReveal>
 
                             <ScrollReveal delay={300} className="contact-directions-section__map">
-                                <iframe
-                                    title="Mappa La Cantina di Monsignore"
-                                    src={CONTACT_MAP_EMBED_URL}
-                                    loading="lazy"
-                                    allowFullScreen
-                                    referrerPolicy="no-referrer-when-downgrade"
-                                />
+                                <ContactDirectionsMap />
                             </ScrollReveal>
                         </div>
                     </section>
