@@ -24,20 +24,24 @@ export default function Home() {
                         <div className="col-lg-6 col-md-12 col-sm-12 text-column">
                             <div className="text mr_30">
                                 <p>
-                                    La Cantina di Monsignore deve il suo nome a una figura centrale della storia di questo borgo, Monsignor Gaetano Alibrandi, Arcivescovo e Nunzio Apostolico d&apos;Irlanda, da sempre legato all&apos;Etna e alla sua tradizione vitivinicola.
+                                    La Cantina di Monsignore deve il suo nome a una figura centrale per la storia di Castiglione di Sicilia: Monsignor Gaetano Alibrandi, Arcivescovo e Nunzio Apostolico d&apos;Irlanda, da sempre legato all&apos;Etna e alla sua tradizione vitivinicola.
                                 </p>
                                 <p>
-                                    Nel centro del borgo, l&apos;Arcivescovo possedeva un antico palazzotto dove aveva allestito la sua cantina personale.
+                                    Nel cuore del borgo possedeva un antico palazzotto, dove aveva allestito la propria cantina.
+                                    <br />
+                                    Dopo anni di abbandono, il fascino di questa antica bottaia ci ha conquistati.
                                 </p>
                             </div>
                         </div>
                         <div className="col-lg-6 col-md-12 col-sm-12 text-column">
                             <div className="text ml_30">
                                 <p>
-                                    Dopo molti anni di abbandono, il fascino di questa antica bottaia ci ha conquistati. Il restauro conservativo è durato due anni: un percorso lungo e impegnativo, guidato dall&apos;obiettivo di non alterare l&apos;anima del luogo.
+                                    Da qui è iniziato un lungo percorso di recupero durato due anni, un restauro conservativo pensato per rispettare l&apos;identità del luogo senza alterarne l&apos;anima.
                                 </p>
                                 <p>
-                                    Oggi quel palazzo è tornato a nuova vita. Abbiamo riaperto queste porte nel 2021 per far rivivere l&apos;atmosfera di questo posto storico e offrire ai nostri ospiti un punto di ritrovo autentico dedicato alla cucina del nostro territorio e ai suoi prodotti d&apos;eccellenza.
+                                    Nel 2021 abbiamo riaperto queste porte, riportando a nuova vita un posto storico.
+                                    <br />
+                                    Oggi quella stessa atmosfera accoglie chi arriva a La Cantina di Monsignore: un luogo dove incontrarsi, fermarsi e scoprire il territorio attraverso i suoi prodotti d&apos;eccellenza.
                                 </p>
                             </div>
                         </div>

@@ -2,16 +2,56 @@
 
 import ScrollReveal from '@/components/elements/ScrollReveal'
 
+const philosophyDishes = [
+  {
+    image: 'assets/images/about/chef-philosophy-1.jpg',
+    alt: 'Piatto dello chef — La Cantina di Monsignore',
+    delay: 0,
+  },
+  {
+    image: 'assets/images/about/chef-philosophy-2.jpg',
+    alt: 'Piatto dello chef — La Cantina di Monsignore',
+    delay: 100,
+  },
+  {
+    image: 'assets/images/about/chef-philosophy-3.jpg',
+    alt: 'Piatto dello chef — La Cantina di Monsignore',
+    delay: 200,
+  },
+  {
+    image: 'assets/images/about/chef-philosophy-4.jpg',
+    alt: 'Piatto dello chef — La Cantina di Monsignore',
+    delay: 300,
+  },
+]
+
 export default function AboutChefPhilosophy() {
   return (
     <section className="about-chef-philosophy">
       <div className="auto-container">
-        <ScrollReveal className="sec-title centred about-chef-philosophy__title">
-          <span className="sub-title">La Filosofia dello Chef</span>
-        </ScrollReveal>
-        <ScrollReveal delay={150} as="blockquote" className="about-chef-philosophy__quote">
-          <p>&ldquo;La frase dello chef arriverà presto.&rdquo;</p>
-        </ScrollReveal>
+        <div className="about-chef-philosophy__inner">
+          <ScrollReveal className="sec-title light centred mb_100">
+            <span className="sub-title">La Filosofia dello Chef</span>
+            <blockquote className="about-chef-philosophy__quote">
+              <p>
+                &ldquo;Cucinare significa trovare quell&apos;equilibrio in cui la creatività e la semplicità convivono in ogni portata. Nei nostri piatti la tradizione incontra idee nuove, evolvendosi lungo un percorso che guarda al futuro pur mantenendo sempre vivido il carattere della Sicilia.&rdquo;
+              </p>
+            </blockquote>
+          </ScrollReveal>
+
+          <div className="row clearfix about-chef-philosophy__grid">
+            {philosophyDishes.map((dish, index) => (
+              <div
+                key={dish.image}
+                className="col-lg-3 col-md-6 col-sm-12 about-chef-philosophy__column"
+              >
+                <ScrollReveal delay={dish.delay} className="about-chef-philosophy__photo">
+                  <img src={dish.image} alt={dish.alt} loading={index === 0 ? 'eager' : 'lazy'} />
+                </ScrollReveal>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   )

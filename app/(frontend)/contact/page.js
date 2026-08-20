@@ -14,7 +14,7 @@ export default function Home() {
               footerStyle={1}
               breadcrumbTitle="Contatti"
               breadcrumbImage={PAGE_TITLE_IMAGES.contact}
-              breadcrumbImagePosition="center 38%"
+              breadcrumbImagePosition="center 85%"
               breadcrumbClassName="page-title--contact"
             >
                 <div className="contact-page">

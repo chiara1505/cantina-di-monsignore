@@ -14,13 +14,16 @@ export default function AboutOwnerSection() {
             </ScrollReveal>
             <ScrollReveal delay={150} className="about-owner-section__text">
               <p>
-                A guidare La Cantina di Monsignore c&apos;è Giuseppe, fondatore e anima della sala.
+                Dietro La Cantina di Monsignore ci sono persone che condividono la stessa idea di ospitalità e di ristorazione.
               </p>
               <p>
-                Per lui, far rivivere l&apos;antica bottaia significa mettere al centro un&apos;idea diversa di ristorazione che rifiuta i ritmi frettolosi e crede nel rispetto degli ingredienti, del territorio e dell&apos;ospite.
+                Da una parte c&apos;è chi accoglie, ascolta e accompagna ogni ospite durante la sua esperienza. Dall&apos;altra c&apos;è chi, in cucina, trasforma ingredienti, tecnica e creatività in piatti capaci di raccontare la propria terra.
               </p>
               <p>
-                Saranno Giuseppe e tutta la squadra ad accoglierti, a consigliarti il calice adatto per completare la tua esperienza culinaria e ad accompagnarti alla scoperta dei sapori della tradizione siciliana in una veste nuova.
+                Ogni giorno lavoriamo insieme per mantenere un equilibrio preciso tra sala e cucina, tra attenzione al cliente e ricerca gastronomica.
+              </p>
+              <p>
+                È questo lavoro di squadra a dare forma all&apos;esperienza che vogliamo offrire in sala: accogliente, curata e soprattutto autentica.
               </p>
             </ScrollReveal>
           </div>

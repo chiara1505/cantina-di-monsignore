@@ -20,8 +20,8 @@ export default function Home() {
                 <Menu />
                 <Philosophy />
                 <Promotion />
-                <Team />
                 <Testimonial />
+                <Team />
                 <Shop />
                 <Order />
                

@@ -4520,25 +4520,34 @@ select  {
 
 .about-chef-philosophy{
   position: relative;
-  padding: 90px 0;
+  padding: 111px 0 120px;
+  overflow: visible;
   background: #48372A;
   text-align: center;
 }
 
-.about-chef-philosophy__title{
-  margin-bottom: 36px;
+.about-chef-philosophy .auto-container{
+  position: relative;
+  z-index: 1;
 }
 
-.about-chef-philosophy__title .sub-title{
+.about-chef-philosophy__inner{
+  position: relative;
+  display: inline-grid;
+  width: 100%;
+  z-index: 1;
+}
+
+.about-chef-philosophy .sec-title .sub-title{
   color: #E1A730;
   margin-bottom: 0;
 }
 
 .about-chef-philosophy__quote{
   display: block;
-  max-width: 820px;
-  margin: 0 auto;
-  padding: 0 20px;
+  max-width: 920px;
+  margin: 28px auto 0;
+  padding: 0;
   border: none;
 }
 
@@ -4547,9 +4556,42 @@ select  {
   font-size: 28px;
   line-height: 42px;
   font-family: var(--font-heading, serif);
-  font-style: italic;
   font-weight: 400;
   color: #FFF6EA;
+  text-align: center;
+}
+
+.about-chef-philosophy__grid{
+  margin: 0 -10px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.about-chef-philosophy__column{
+  padding: 0 10px;
+  margin-bottom: 20px;
+}
+
+.about-chef-philosophy__column:nth-child(even){
+  margin-top: 36px;
+}
+
+.about-chef-philosophy__photo{
+  display: block;
+  aspect-ratio: 4 / 5;
+  background: #F3EBDF;
+  overflow: hidden;
+  box-shadow:
+    0 22px 48px rgba(0, 0, 0, 0.22),
+    0 8px 20px rgba(0, 0, 0, 0.14);
+}
+
+.about-chef-philosophy__photo img{
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
 }
 
 
@@ -5668,19 +5710,41 @@ select  {
 }
 
 .team-section-home__intro{
-  max-width: 820px;
-  margin: 28px auto 0;
+  margin: 0;
+  text-align: center;
   color: #676767;
 }
 
-.team-section-home__carousel{
-  position: relative;
-  padding-bottom: 20px;
+.team-section-home__intro p{
+  font-size: 17px;
+  line-height: 30px;
+  margin-bottom: 22px;
 }
 
-.team-section-home__carousel .swiper-pagination{
-  position: relative;
-  margin-top: 30px;
+.team-section-home__intro p:last-child{
+  margin-bottom: 0;
+}
+
+.team-section-home__layout{
+  margin: 0 -15px;
+}
+
+.team-section-home__column{
+  padding: 0 15px;
+  margin-bottom: 30px;
+}
+
+.team-section-home__text-column{
+  padding: 0 24px;
+  margin-bottom: 30px;
+  align-self: center;
+  transform: translateY(-36px);
+}
+
+@media only screen and (max-width: 991px){
+  .team-section-home__text-column{
+    transform: none;
+  }
 }
 
 .team-member-card{
@@ -5701,11 +5765,22 @@ select  {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center center;
   transition: all 500ms ease;
+}
+
+.team-member-card__image--owner img{
+  object-position: center 96%;
+  transform: scale(1.28);
+  transform-origin: center 72%;
 }
 
 .team-member-card:hover .team-member-card__image img{
   transform: scale(1.05);
+}
+
+.team-member-card:hover .team-member-card__image--owner img{
+  transform: scale(1.34);
 }
 
 .team-member-card__name{
@@ -9825,7 +9900,44 @@ select  {
   }
 
   .about-page .about-chef-philosophy{
-    padding: 80px 0;
+    padding: 80px 0 88px;
+  }
+
+  .about-page .about-chef-philosophy__grid{
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 24px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    margin: 0 -24px;
+    padding: 40px 24px 40px;
+    gap: 16px;
+  }
+
+  .about-page .about-chef-philosophy__grid::-webkit-scrollbar{
+    display: none;
+  }
+
+  .about-page .about-chef-philosophy__column{
+    flex: 0 0 240px;
+    width: 240px;
+    max-width: 240px;
+    margin-bottom: 0;
+    padding: 0;
+    scroll-snap-align: start;
+  }
+
+  .about-page .about-chef-philosophy__column:nth-child(even){
+    margin-top: 0;
+  }
+
+  .about-page .about-chef-philosophy__quote p{
+    font-size: 22px;
+    line-height: 34px;
   }
 
   .about-values-section__image{
@@ -9886,12 +9998,7 @@ select  {
   }
 
   .about-chef-philosophy{
-    padding: 64px 0;
-  }
-
-  .about-chef-philosophy__title .sub-title{
-    font-size: 22px;
-    line-height: 32px;
+    padding: 64px 0 70px;
   }
 
   .about-chef-philosophy__quote p{
@@ -10133,7 +10240,12 @@ select  {
   }
 
   .about-page .about-chef-philosophy{
-    padding: 72px 0;
+    padding: 72px 0 76px;
+  }
+
+  .about-chef-philosophy__quote p{
+    font-size: 22px;
+    line-height: 34px;
   }
 
   .content_block_one .content-box{
@@ -10469,7 +10581,7 @@ select  {
   }
 
   .page-title--contact .bg-layer{
-    background-position: center 30% !important;
+    background-position: center 85% !important;
   }
 
   .service-section.alternat-2{
