@@ -2,6 +2,7 @@
 import { Autoplay, Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import ScrollReveal from '@/components/elements/ScrollReveal'
+import { PAGE_SECTION_BACKGROUNDS } from '@/lib/pageTitleImages'
 
 const swiperOptions = {
   modules: [Autoplay, Pagination, Navigation],
@@ -42,7 +43,11 @@ const testimonials = [
 
 export default function Testimonial() {
   return (
-    <section className="testimonial-section sec-pad bg-color-brown" id="testmonial">
+    <section className="testimonial-section testimonial-section--photo sec-pad" id="testmonial">
+      <div
+        className="bg-layer parallax-bg"
+        style={{ backgroundImage: `url(${PAGE_SECTION_BACKGROUNDS.testimonials})` }}
+      />
       <div className="auto-container">
         <div className="row clearfix">
           <div className="col-lg-6 col-md-10 col-sm-12 offset-lg-3 offset-md-1 content-column">

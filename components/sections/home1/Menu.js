@@ -4,8 +4,9 @@ import ScrollReveal from '@/components/elements/ScrollReveal';
 const menuCourses = [
   {
     title: 'Antipasti',
-    image: 'assets/images/resource/menu-antipasti.png',
+    image: 'assets/images/resource/menu-antipasti.jpg',
     imageAlt: 'Antipasti',
+    imagePosition: 'center 68%',
     button: 'Scopri gli Antipasti',
     href: '/menu',
     delay: 0,
@@ -20,7 +21,7 @@ const menuCourses = [
   },
   {
     title: 'Secondi Piatti',
-    image: 'assets/images/resource/menu-secondi.png',
+    image: 'assets/images/resource/menu-secondi.jpg',
     imageAlt: 'Secondi piatti',
     button: 'Scopri i Secondi',
     href: '/menu',
@@ -28,7 +29,7 @@ const menuCourses = [
   },
   {
     title: 'Dessert',
-    image: 'assets/images/resource/menu-dolci.png',
+    image: 'assets/images/resource/menu-dolci.jpg',
     imageAlt: 'Dessert',
     button: 'Scopri i Dolci',
     href: '/menu',
@@ -64,7 +65,11 @@ export default function Menu() {
                   </div>
                   <h3 className="menu-course-card__title">{course.title}</h3>
                   <figure className="menu-course-card__image">
-                    <img src={course.image} alt={course.imageAlt} />
+                    <img
+                      src={course.image}
+                      alt={course.imageAlt}
+                      style={course.imagePosition ? { objectPosition: course.imagePosition } : undefined}
+                    />
                   </figure>
                   <div className="menu-course-card__btn">
                     <Link href={course.href} className="theme-btn-one">{course.button}</Link>
