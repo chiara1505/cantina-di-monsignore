@@ -1,5 +1,6 @@
 'use client'
 import Link from "next/link";
+import { SITE_CONTACT_INFO } from '@/lib/siteNavigation';
 export default function Footer1() {
     return (
         <>
@@ -46,7 +47,7 @@ export default function Footer1() {
                                 <div className="widget-content">
                                     <ul className="info-list clearfix">
                                         <li><span>Indirizzo: </span>Piazza Sant&apos;Antonio n. 5, Castiglione di Sicilia (ME)</li>
-                                        <li><span>Telefono: </span><Link href="tel:+390942090538">0942 09 05 38</Link></li>
+                                        <li><span>Telefono: </span><Link href={SITE_CONTACT_INFO.phoneHref}>{SITE_CONTACT_INFO.phone}</Link></li>
                                         <li><span>WhatsApp: </span><Link href="https://wa.me/393888988098">+39 388 89 88 098</Link></li>
                                         <li><span>Email: </span><Link href="mailto:lacantinadimonsignore@gmail.com">lacantinadimonsignore@gmail.com</Link></li>
                                     </ul>

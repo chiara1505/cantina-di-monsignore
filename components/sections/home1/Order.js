@@ -1,5 +1,6 @@
 import ScrollReveal from '@/components/elements/ScrollReveal';
 import BookingReservationForm from '@/components/sections/home1/BookingReservationForm';
+import { SITE_CONTACT_INFO } from '@/lib/siteNavigation';
 
 const amenities = [
   { label: 'Menù vegetariano', icon: 'fa-leaf' },
@@ -18,14 +19,14 @@ const amenities = [
 
 const bookingContacts = [
   {
-    label: '0942 09 05 38',
-    href: 'tel:+390942090538',
+    label: SITE_CONTACT_INFO.phone,
+    href: SITE_CONTACT_INFO.phoneHref,
     icon: 'fa-phone',
     iconStyle: 'fas',
   },
   {
-    label: '+39 388 89 88 098',
-    href: 'https://wa.me/393888988098',
+    label: SITE_CONTACT_INFO.whatsapp,
+    href: SITE_CONTACT_INFO.whatsappHref,
     icon: 'fa-whatsapp',
     iconStyle: 'fab',
   },

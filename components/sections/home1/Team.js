@@ -4,17 +4,17 @@ import ScrollReveal from '@/components/elements/ScrollReveal'
 
 const teamMembers = [
   {
-    name: 'Giuseppe',
-    role: 'Proprietario',
+    name: 'Giuseppe Mercia',
+    role: 'Titolare',
     image: 'assets/images/team/team-1.jpg',
-    alt: 'Giuseppe — proprietario de La Cantina di Monsignore',
+    alt: 'Giuseppe Mercia — titolare de La Cantina di Monsignore',
     delay: 0,
   },
   {
     name: 'Nome Cognome',
-    role: 'Chef',
+    role: 'Chef de Cuisine',
     image: 'assets/images/team/team-2.jpg',
-    alt: 'Lo chef de La Cantina di Monsignore',
+    alt: 'Lo chef de cuisine de La Cantina di Monsignore',
     delay: 300,
   },
 ]
@@ -31,7 +31,7 @@ export default function Team() {
         </ScrollReveal>
 
         <div className="row clearfix team-section-home__layout align-items-center">
-          <div className="col-lg-4 col-md-12 col-sm-12 team-section-home__column">
+          <div className="col-lg-4 col-md-12 col-sm-12 team-section-home__column team-section-home__column--owner">
             <ScrollReveal delay={owner.delay} className="team-member-card">
               <figure className="team-member-card__image team-member-card__image--owner">
                 <img src={owner.image} alt={owner.alt} />
@@ -55,7 +55,7 @@ export default function Team() {
             </ScrollReveal>
           </div>
 
-          <div className="col-lg-4 col-md-12 col-sm-12 team-section-home__column">
+          <div className="col-lg-4 col-md-12 col-sm-12 team-section-home__column team-section-home__column--chef">
             <ScrollReveal delay={chef.delay} className="team-member-card">
               <figure className="team-member-card__image">
                 <img src={chef.image} alt={chef.alt} />

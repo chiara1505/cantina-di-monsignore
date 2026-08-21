@@ -31,7 +31,7 @@ export default function AboutOwnerSection() {
             <ScrollReveal delay={200} className="about-owner-section__image">
               <img
                 src="assets/images/about/owner-placeholder.jpg"
-                alt="Giuseppe — fondatore de La Cantina di Monsignore"
+                alt="Giuseppe Mercia — titolare de La Cantina di Monsignore"
               />
             </ScrollReveal>
           </div>

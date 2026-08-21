@@ -2,6 +2,7 @@
 import Link from "next/link";
 import Layout from "@/components/layout/Layout"
 import { PAGE_TITLE_IMAGES, PAGE_SECTION_BACKGROUNDS } from '@/lib/pageTitleImages';
+import { SITE_CONTACT_INFO } from '@/lib/siteNavigation';
 import ScrollReveal from '@/components/elements/ScrollReveal';
 import ContactDirectionsMap from '@/components/sections/contact/ContactDirectionsMap';
 
@@ -37,7 +38,7 @@ export default function Home() {
                                         <i className="icon-40"></i>
                                         <h5>Telefono</h5>
                                         <p>
-                                            <Link href="tel:+390942090538">0942 09 05 38</Link>
+                                            <Link href={SITE_CONTACT_INFO.phoneHref}>{SITE_CONTACT_INFO.phone}</Link>
                                         </p>
                                     </li>
                                     <li>
@@ -108,20 +109,20 @@ export default function Home() {
                                 <form method="post" action="sendemail.php" id="contact-form">
                                     <div className="row clearfix">
                                         <div className="col-lg-6 col-md-6 col-sm-12 form-group">
-                                            <input type="text" name="username" placeholder="Your Name" required="" />
+                                            <input type="text" name="username" placeholder="Nome e Cognome" required="" />
                                         </div>
                                         <div className="col-lg-6 col-md-6 col-sm-12 form-group">
-                                            <input type="email" name="email" placeholder="Your email" required="" />
+                                            <input type="email" name="email" placeholder="Email" required="" />
                                         </div>
                                         <div className="col-lg-12 col-md-12 col-sm-12 form-group">
-                                            <input type="text" name="phone" required="" placeholder="Phone" />
+                                            <input type="text" name="phone" required="" placeholder="Telefono" />
                                         </div>
                                         <div className="col-lg-12 col-md-12 col-sm-12 form-group">
-                                            <textarea name="message" placeholder="Message"></textarea>
+                                            <textarea name="message" placeholder="Messaggio"></textarea>
                                         </div>
                                         <div className="col-lg-12 col-md-12 col-sm-12 form-group message-btn mr-0">
                                             <button className="theme-btn-one" type="submit" name="submit-form">
-                                                Submit Now
+                                                Invia Richiesta
                                             </button>
                                         </div>
                                     </div>

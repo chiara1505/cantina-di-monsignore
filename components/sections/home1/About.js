@@ -93,14 +93,14 @@ export default function About() {
           <div className="col-lg-6 col-md-12 col-sm-12 content-column">
             <div className="content_block_one">
               <div className="content-box">
-                <ScrollReveal className="sec-title mb_30">
+                <ScrollReveal className="about-section__heading sec-title mb_30">
                   <span className="sub-title">La Location</span>
                   <h2>Fuori, la tranquillità del borgo. Dentro, l&apos;essenza del territorio etneo</h2>
                 </ScrollReveal>
-                <ScrollReveal className="text" delay={150}>
+                <ScrollReveal className="about-section__copy text" delay={150}>
                   <p>Nascosto tra i vicoli di Castiglione di Sicilia, il ristorante La Cantina di Monsignore è la ricompensa per chi sa cercare. Piatti della tradizione dal tocco contemporaneo, ingredienti locali e tutto il calore dell&apos;ospitalità siciliana.</p>
                 </ScrollReveal>
-                <ScrollReveal className="btn-box" delay={300}>
+                <ScrollReveal className="about-section__cta btn-box" delay={300}>
                   <Link href="/about-us" className="theme-btn-one">Scopri il Ristorante</Link>
                 </ScrollReveal>
               </div>

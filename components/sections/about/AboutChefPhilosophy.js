@@ -6,6 +6,7 @@ const philosophyDishes = [
   {
     image: 'assets/images/about/chef-philosophy-1.jpg',
     alt: 'Piatto dello chef — La Cantina di Monsignore',
+    imagePosition: 'center 88%',
     delay: 0,
   },
   {
@@ -30,8 +31,7 @@ export default function AboutChefPhilosophy() {
     <section className="about-chef-philosophy">
       <div className="auto-container">
         <div className="about-chef-philosophy__inner">
-          <ScrollReveal className="sec-title light centred mb_100">
-            <span className="sub-title">La Filosofia dello Chef</span>
+          <ScrollReveal className="about-chef-philosophy__intro centred mb_100">
             <blockquote className="about-chef-philosophy__quote">
               <p>
                 &ldquo;Cucinare significa trovare quell&apos;equilibrio in cui la creatività e la semplicità convivono in ogni portata. Nei nostri piatti la tradizione incontra idee nuove, evolvendosi lungo un percorso che guarda al futuro pur mantenendo sempre vivido il carattere della Sicilia.&rdquo;
@@ -45,9 +45,16 @@ export default function AboutChefPhilosophy() {
                 key={dish.image}
                 className="col-lg-3 col-md-6 col-sm-12 about-chef-philosophy__column"
               >
-                <ScrollReveal delay={dish.delay} className="about-chef-philosophy__photo">
-                  <img src={dish.image} alt={dish.alt} loading={index === 0 ? 'eager' : 'lazy'} />
-                </ScrollReveal>
+              <ScrollReveal delay={dish.delay}>
+                <div className="about-chef-philosophy__photo">
+                  <img
+                    src={dish.image}
+                    alt={dish.alt}
+                    loading={index === 0 ? 'eager' : 'lazy'}
+                    style={dish.imagePosition ? { objectPosition: dish.imagePosition } : undefined}
+                  />
+                </div>
+              </ScrollReveal>
               </div>
             ))}
           </div>

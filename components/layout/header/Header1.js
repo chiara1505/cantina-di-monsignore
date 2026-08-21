@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Menu from '../Menu';
 import MobileMenu from '../MobileMenu';
-import { RESERVATION_LINK } from '@/lib/siteNavigation';
+import { RESERVATION_LINK, SITE_CONTACT_INFO } from '@/lib/siteNavigation';
 
 export default function Header1({
   scroll,
@@ -26,7 +26,7 @@ export default function Header1({
                 <ul className="info clearfix">
                   <li>
                     <i className="icon-40"></i>
-                    <Link href="tel:+390942090538">0942 09 05 38</Link>
+                    <Link href={SITE_CONTACT_INFO.phoneHref}>{SITE_CONTACT_INFO.phone}</Link>
                   </li>
                   <li>
                     <i className="fab fa-whatsapp"></i>

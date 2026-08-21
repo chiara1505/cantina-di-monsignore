@@ -4538,15 +4538,10 @@ select  {
   z-index: 1;
 }
 
-.about-chef-philosophy .sec-title .sub-title{
-  color: #E1A730;
-  margin-bottom: 0;
-}
-
 .about-chef-philosophy__quote{
   display: block;
   max-width: 920px;
-  margin: 28px auto 0;
+  margin: 0 auto;
   padding: 0;
   border: none;
 }
@@ -4579,8 +4574,9 @@ select  {
 .about-chef-philosophy__photo{
   display: block;
   aspect-ratio: 4 / 5;
-  background: #F3EBDF;
+  background: #48372A;
   overflow: hidden;
+  line-height: 0;
   box-shadow:
     0 22px 48px rgba(0, 0, 0, 0.22),
     0 8px 20px rgba(0, 0, 0, 0.14);
@@ -4592,6 +4588,8 @@ select  {
   height: 100%;
   object-fit: cover;
   object-position: center center;
+  transform: scale(1.02);
+  transform-origin: center center;
 }
 
 
@@ -5742,8 +5740,36 @@ select  {
 }
 
 @media only screen and (max-width: 991px){
+  .testimonial-section--photo.sec-pad{
+    padding-bottom: 92px;
+  }
+
+  .team-section-home.sec-pad{
+    padding-top: 84px;
+  }
+
+  .team-section-home .sec-title.mb_70{
+    margin-bottom: 38px;
+  }
+
+  .team-section-home__layout{
+    display: flex;
+    flex-direction: column;
+  }
+
   .team-section-home__text-column{
+    order: 1;
     transform: none;
+    margin-bottom: 52px;
+  }
+
+  .team-section-home__column--owner{
+    order: 2;
+    margin-bottom: 52px;
+  }
+
+  .team-section-home__column--chef{
+    order: 3;
   }
 }
 
@@ -9903,6 +9929,10 @@ select  {
     padding: 80px 0 88px;
   }
 
+  .about-page .about-chef-philosophy__intro.mb_100{
+    margin-bottom: 56px;
+  }
+
   .about-page .about-chef-philosophy__grid{
     display: flex;
     flex-wrap: nowrap;
@@ -9914,7 +9944,7 @@ select  {
     scrollbar-width: none;
     -ms-overflow-style: none;
     margin: 0 -24px;
-    padding: 40px 24px 40px;
+    padding: 24px 24px 40px;
     gap: 16px;
   }
 
@@ -9940,9 +9970,22 @@ select  {
     line-height: 34px;
   }
 
+  .about-values-section .row.align-items-start{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .about-values-section .content-column{
+    order: 1;
+  }
+
+  .about-values-section .image-column{
+    order: 2;
+  }
+
   .about-values-section__image{
     max-width: 320px;
-    margin: 0 auto 48px;
+    margin: 48px auto 0;
   }
 
   .about-values-section__item{
@@ -10231,6 +10274,22 @@ select  {
     padding: 60px 0px 70px 0px;
   }
 
+  .testimonial-section--photo.sec-pad{
+    padding-bottom: 92px;
+  }
+
+  .team-section-home.sec-pad{
+    padding-top: 84px;
+  }
+
+  .specialty-dish-column{
+    margin-bottom: 48px;
+  }
+
+  .specialty-dish-column:last-child{
+    margin-bottom: 0;
+  }
+
   .about-page .sec-pad{
     padding: 76px 0 88px;
   }
@@ -10252,12 +10311,58 @@ select  {
     margin-right: 0px;
   }
 
-  .about-section .about-image{
-    margin: 40px auto 0;
-    max-width: 100%;
+  .about-section .row.align-items-center{
+    display: flex;
+    flex-direction: column;
   }
 
-  .about-section .content_block_one .content-box .btn-box .theme-btn-one,
+  .about-section .content-column,
+  .about-section .content-column .content_block_one,
+  .about-section .content-column .content-box{
+    display: contents;
+  }
+
+  .about-section__heading{
+    order: 1;
+    width: 100%;
+  }
+
+  .about-section__copy{
+    order: 2;
+    width: 100%;
+  }
+
+  .about-section .image-column{
+    order: 3;
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: calc(50% - 50vw);
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .about-section__cta{
+    order: 4;
+    width: 100%;
+    margin-top: 52px;
+  }
+
+  .about-section .about-image{
+    margin: 16px 0 0;
+    max-width: none;
+    width: 100%;
+  }
+
+  .about-section .about-image-slider{
+    max-width: none;
+    box-shadow: none;
+  }
+
+  .about-section.sec-pad{
+    padding-bottom: 100px;
+  }
+
+  .about-section .content_block_one .content-box .about-section__cta .theme-btn-one,
   .promotion-section .specialty-dishes-btn .theme-btn-one,
   .order-section .form-inner .message-btn .theme-btn-one{
     font-size: 16px;
