@@ -11,10 +11,10 @@ const teamMembers = [
     delay: 0,
   },
   {
-    name: 'Nome Cognome',
+    name: 'Dario Greco',
     role: 'Chef de Cuisine',
     image: 'assets/images/team/team-2.jpg',
-    alt: 'Lo chef de cuisine de La Cantina di Monsignore',
+    alt: 'Dario Greco — chef de cuisine de La Cantina di Monsignore',
     delay: 300,
   },
 ]
