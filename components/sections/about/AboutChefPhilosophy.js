@@ -5,23 +5,23 @@ import ScrollReveal from '@/components/elements/ScrollReveal'
 const philosophyDishes = [
   {
     image: 'assets/images/about/chef-philosophy-1.jpg',
-    alt: 'Piatto dello chef — La Cantina di Monsignore',
+    alt: 'Ravioli Home Made, specialità unica del Ristorante La Cantina di Monsignore',
     imagePosition: 'center 88%',
     delay: 0,
   },
   {
     image: 'assets/images/about/chef-philosophy-2.jpg',
-    alt: 'Piatto dello chef — La Cantina di Monsignore',
+    alt: 'Babà siciliano, rivisitazione del ristorante La Cantina di Monsignore',
     delay: 100,
   },
   {
     image: 'assets/images/about/chef-philosophy-3.jpg',
-    alt: 'Piatto dello chef — La Cantina di Monsignore',
+    alt: 'Fusillone al ragù di coniglio, La Cantina di Monsignore a Castiglione di Sicilia',
     delay: 200,
   },
   {
     image: 'assets/images/about/chef-philosophy-4.jpg',
-    alt: 'Piatto dello chef — La Cantina di Monsignore',
+    alt: 'Semifreddo agli agrumi del ristorante La Cantina di Monsignore a Castiglione di Sicilia',
     delay: 300,
   },
 ]

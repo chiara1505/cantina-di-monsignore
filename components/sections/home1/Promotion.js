@@ -34,7 +34,7 @@ export default function Promotion() {
                 <div className="specialty-dish__image">
                   <img
                     src={dish.image}
-                    alt={dish.name}
+                    alt={`${dish.name} — La Cantina di Monsignore`}
                     className={dish.imageZoom ? 'specialty-dish__image-zoom' : undefined}
                   />
                 </div>

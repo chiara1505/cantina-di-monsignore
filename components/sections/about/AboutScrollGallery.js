@@ -9,39 +9,39 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 const galleryImages = [
   {
     src: 'assets/images/about/gallery-1.jpg',
-    alt: 'La Cantina di Monsignore — location',
+    alt: 'La Cantina di Monsignore, Ristorante a Castiglione di Sicilia',
   },
   {
     src: 'assets/images/about/gallery-2.jpg',
-    alt: 'La Cantina di Monsignore — interni',
+    alt: 'Gli interni accoglienti del ristorante',
   },
   {
     src: 'assets/images/about/gallery-3.jpg',
-    alt: 'Castiglione di Sicilia — borgo',
+    alt: 'Alcuni spazi esterni ottimi per una cena intima e romantica di coppia',
   },
   {
     src: 'assets/images/about/gallery-4.jpg',
-    alt: 'La Cantina di Monsignore — ristorante',
+    alt: 'Gli spazi esterni all\'aperto della Cantina di Monsignore',
   },
   {
     src: 'assets/images/about/gallery-5.jpg',
-    alt: 'La Cantina di Monsignore — dettaglio',
+    alt: 'La lavorazione attenta e rispettosa della materia prima da parte dello chef',
   },
   {
     src: 'assets/images/about/gallery-6.jpg',
-    alt: 'La Cantina di Monsignore — atmosfera',
+    alt: 'L\'atmosfera accogliente, intima ed elegante ma senza ostentazioni del ristorante',
   },
   {
     src: 'assets/images/about/gallery-7.jpg',
-    alt: 'La Cantina di Monsignore — cucina e sapori',
+    alt: 'Primi piatti siciliani del ristorante',
   },
   {
     src: 'assets/images/about/gallery-8.jpg',
-    alt: 'La Cantina di Monsignore — tavoli e sala',
+    alt: 'L\'ingresso del ristorante nel centro storico di Castiglione di Sicilia',
   },
   {
     src: 'assets/images/about/gallery-9.jpg',
-    alt: 'La Cantina di Monsignore — piatti e tradizione',
+    alt: 'La cantina del ristorante con le migliori etichette di vini e champagne',
   },
   {
     src: 'assets/images/about/gallery-10.jpg',
@@ -49,11 +49,11 @@ const galleryImages = [
   },
   {
     src: 'assets/images/about/gallery-11.jpg',
-    alt: 'La Cantina di Monsignore — angolo del borgo',
+    alt: 'Un angolo tranquillo e intimo nella terrazza del ristorante',
   },
   {
     src: 'assets/images/about/gallery-12.jpg',
-    alt: 'La Cantina di Monsignore — esperienza a tavola',
+    alt: 'Gli spazi accoglienti e calorosi del ristorante La Cantina di Monsignore a Castiglione di Sicilia',
   },
 ]
 

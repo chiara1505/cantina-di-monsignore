@@ -6,11 +6,9 @@ import "../../public/assets/css/style.css"
 import 'swiper/css'
 import "swiper/css/pagination"
 import 'swiper/css/free-mode';
+import { DEFAULT_METADATA } from '@/lib/pageMetadata';
 
-export const metadata = {
-    title: 'Cantina di Monsignore',
-    description: 'Ristorante a Castiglione di Sicilia',
-}
+export const metadata = DEFAULT_METADATA;
 
 export default function FrontendLayout({ children }) {
     return (

@@ -17,11 +17,11 @@ const locationSlides = [
   },
   {
     src: 'assets/images/resource/about-4.jpg',
-    alt: 'Castiglione di Sicilia — location',
+    alt: 'La Cantina di Monsignore — L\'ospitalità intima e accogliente a Castiglione di Sicilia',
   },
   {
     src: 'assets/images/resource/about-5.jpg',
-    alt: 'La Cantina di Monsignore — location',
+    alt: 'La Cantina di Monsignore — la terrazza del ristorante',
   },
 ]
 

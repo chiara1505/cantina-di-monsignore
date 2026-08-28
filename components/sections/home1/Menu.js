@@ -5,7 +5,7 @@ const menuCourses = [
   {
     title: 'Antipasti',
     image: 'assets/images/resource/menu-antipasti.jpg',
-    imageAlt: 'Antipasti',
+    imageAlt: 'Antipasti siciliani — La Cantina di Monsignore, Castiglione di Sicilia',
     imagePosition: 'center 68%',
     button: 'Scopri gli Antipasti',
     href: '/menu',
@@ -14,7 +14,7 @@ const menuCourses = [
   {
     title: 'Primi Piatti',
     image: 'assets/images/resource/menu-primi.jpg',
-    imageAlt: 'Primi piatti',
+    imageAlt: 'Primi Piatti siciliani — La Cantina di Monsignore, Castiglione di Sicilia',
     button: 'Scopri i Primi',
     href: '/menu',
     delay: 100,
@@ -22,7 +22,7 @@ const menuCourses = [
   {
     title: 'Secondi Piatti',
     image: 'assets/images/resource/menu-secondi.jpg',
-    imageAlt: 'Secondi piatti',
+    imageAlt: 'Secondi Piatti siciliani — La Cantina di Monsignore, Castiglione di Sicilia',
     button: 'Scopri i Secondi',
     href: '/menu',
     delay: 200,
@@ -30,7 +30,7 @@ const menuCourses = [
   {
     title: 'Dessert',
     image: 'assets/images/resource/menu-dolci.jpg',
-    imageAlt: 'Dessert',
+    imageAlt: 'Dolci — La Cantina di Monsignore, Castiglione di Sicilia',
     button: 'Scopri i Dolci',
     href: '/menu',
     delay: 300,
