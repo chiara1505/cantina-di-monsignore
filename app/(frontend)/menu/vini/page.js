@@ -10,6 +10,7 @@ export default function MenuViniPage() {
       headerStyle={1}
       footerStyle={1}
       breadcrumbTitle="La Carta dei Vini"
+      breadcrumbPath="/menu/vini"
       breadcrumbImage={PAGE_TITLE_IMAGES.menuWines}
     >
       <WinesMenuPage />

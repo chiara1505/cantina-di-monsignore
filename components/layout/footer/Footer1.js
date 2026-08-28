@@ -1,6 +1,7 @@
 'use client'
 import Link from "next/link";
 import { SITE_CONTACT_INFO } from '@/lib/siteNavigation';
+import SocialLinks from '@/components/elements/SocialLinks';
 export default function Footer1() {
     return (
         <>
@@ -31,11 +32,7 @@ export default function Footer1() {
                                     <div className="text">
                                         <p>Ristorante siciliano a Castiglione di Sicilia, vicino al vulcano Etna e alla Valle dell&apos;Alcantara. Piatti della tradizione rivisitati in chiave moderna.</p>
                                     </div>
-                                    <ul className="social-links clearfix">
-                                        <li><Link href="/"><i className="fab fa-facebook-f"></i></Link></li>
-                                        <li><Link href="/"><i className="fab fa-twitter"></i></Link></li>
-                                        <li><Link href="/"><i className="fab fa-instagram"></i></Link></li>
-                                    </ul>
+                                    <SocialLinks />
                                 </div>
                             </div>
                         </div>

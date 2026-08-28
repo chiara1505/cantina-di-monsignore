@@ -5,6 +5,7 @@ import { PAGE_TITLE_IMAGES, PAGE_SECTION_BACKGROUNDS } from '@/lib/pageTitleImag
 import { SITE_CONTACT_INFO } from '@/lib/siteNavigation';
 import ScrollReveal from '@/components/elements/ScrollReveal';
 import ContactDirectionsMap from '@/components/sections/contact/ContactDirectionsMap';
+import SocialLinks from '@/components/elements/SocialLinks';
 
 export default function Home() {
 
@@ -14,6 +15,7 @@ export default function Home() {
               headerStyle={1}
               footerStyle={1}
               breadcrumbTitle="Contatti"
+              breadcrumbPath="/contact"
               breadcrumbImage={PAGE_TITLE_IMAGES.contact}
               breadcrumbImagePosition="center 85%"
               breadcrumbClassName="page-title--contact"
@@ -75,28 +77,7 @@ export default function Home() {
                                 </ul>
                                 <div className="contact-section__social">
                                     <h3 className="contact-section__social-title">Seguici sui social</h3>
-                                    <ul className="social-links clearfix">
-                                    <li>
-                                        <Link href="contact">
-                                            <i className="fab fa-facebook-f"></i>
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link href="contact">
-                                            <i className="fab fa-twitter"></i>
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link href="contact">
-                                            <i className="fab fa-pinterest"></i>
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link href="contact">
-                                            <i className="fab fa-instagram"></i>
-                                        </Link>
-                                    </li>
-                                </ul>
+                                    <SocialLinks />
                                 </div>
                             </div>
                         </div>

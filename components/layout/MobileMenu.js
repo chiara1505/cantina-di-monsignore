@@ -7,6 +7,7 @@ import {
   SITE_CONTACT_INFO,
   SITE_NAV_ITEMS,
 } from '@/lib/siteNavigation';
+import SocialLinks from '@/components/elements/SocialLinks';
 
 export default function MobileMenu({ isSidebar, handleMobileMenu, handleSidebar }) {
   const [openDropdown, setOpenDropdown] = useState('');
@@ -98,18 +99,7 @@ export default function MobileMenu({ isSidebar, handleMobileMenu, handleSidebar 
           </div>
 
           <div className="social-links">
-            <ul className="clearfix">
-              <li>
-                <Link href="/#">
-                  <span className="fab fa-facebook-square" />
-                </Link>
-              </li>
-              <li>
-                <Link href="/#">
-                  <span className="fab fa-instagram" />
-                </Link>
-              </li>
-            </ul>
+            <SocialLinks className="clearfix" useSpan />
           </div>
         </nav>
       </div>
