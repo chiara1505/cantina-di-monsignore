@@ -1,9 +1,4 @@
-import Preloader from '@/components/elements/Preloader'
-
-export default function loading() {
-    return (
-        <>
-            <Preloader />
-        </>
-    )
+/** Il preloader del template non è usato: causava un flash con testo "Preloader Close". */
+export default function Loading() {
+  return null
 }

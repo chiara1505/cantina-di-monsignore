@@ -1,3 +1,5 @@
+import HeroPreload from '@/components/elements/HeroPreload'
+import { HOME_HERO_IMAGE } from '@/lib/heroImages'
 import Layout from "@/components/layout/Layout"
 import About from "@/components/sections/home1/About"
 import Banner from "@/components/sections/home1/Banner"
@@ -18,6 +20,7 @@ export default function Home() {
 
     return (
         <>
+            <HeroPreload href={HOME_HERO_IMAGE} />
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(homeSchema) }}

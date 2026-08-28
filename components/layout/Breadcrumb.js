@@ -1,4 +1,5 @@
 import Link from "next/link"
+import HeroPreload from '@/components/elements/HeroPreload'
 import { buildTwoLevelBreadcrumb } from '@/lib/generateBreadcrumbSchema'
 import { PAGE_TITLE_IMAGES } from '@/lib/pageTitleImages'
 
@@ -14,6 +15,7 @@ export default function Breadcrumb({
 
     return (
         <>
+            <HeroPreload href={breadcrumbImage} />
             {breadcrumbSchema ? (
               <script
                 type="application/ld+json"
