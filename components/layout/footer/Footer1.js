@@ -57,7 +57,23 @@ export default function Footer1() {
             <div className="footer-bottom centred">
                 <div className="auto-container">
                     <div className="copyright">
-                        <p>Copyright 2024 by <Link href="/">ticrou</Link> All Right Reserved.</p>
+                        <p className="footer-bottom__line">
+                            Copyright {new Date().getFullYear()} La Cantina di Monsignore
+                            {' · '}
+                            Designed by{' '}
+                            <Link href="https://www.copyosity.it/" target="_blank" rel="noopener noreferrer">
+                                Copyosity
+                            </Link>
+                        </p>
+                        <p className="footer-bottom__line">
+                            <Link href="/privacy-policy">Privacy Policy</Link>
+                            {' · '}
+                            <Link href="/cookie-policy">Cookie Policy</Link>
+                            {' · '}
+                            <button type="button" className="footer-cookie-settings" onClick={() => window.dispatchEvent(new Event('open-cookie-settings'))}>
+                                Gestisci cookie
+                            </button>
+                        </p>
                     </div>
                 </div>
             </div>

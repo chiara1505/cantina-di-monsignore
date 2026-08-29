@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import BookingDateField from '@/components/elements/BookingDateField'
 import BookingTimeField from '@/components/elements/BookingTimeField'
+import LegalFormConsent from '@/components/elements/LegalFormConsent'
 
 export default function BookingReservationForm() {
   const [selectedDate, setSelectedDate] = useState(null)
@@ -76,6 +77,9 @@ export default function BookingReservationForm() {
         </div>
         <div className="col-lg-12 col-md-12 col-sm-12 form-group">
           <textarea name="notes" placeholder="Note per segnalare eventuali informazioni"></textarea>
+        </div>
+        <div className="col-lg-12 col-md-12 col-sm-12 form-group form-group--legal-consent">
+          <LegalFormConsent id="booking-legal-consent" name="bookingPrivacyConsent" />
         </div>
         <div className="col-lg-12 col-md-12 col-sm-12 form-group message-btn centred">
           <button type="submit" className="theme-btn-one">Invia richiesta</button>

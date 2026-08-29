@@ -6,6 +6,7 @@ import { SITE_CONTACT_INFO } from '@/lib/siteNavigation';
 import ScrollReveal from '@/components/elements/ScrollReveal';
 import ContactDirectionsMap from '@/components/sections/contact/ContactDirectionsMap';
 import SocialLinks from '@/components/elements/SocialLinks';
+import LegalFormConsent from '@/components/elements/LegalFormConsent';
 
 export default function Home() {
 
@@ -100,6 +101,9 @@ export default function Home() {
                                         </div>
                                         <div className="col-lg-12 col-md-12 col-sm-12 form-group">
                                             <textarea name="message" placeholder="Messaggio"></textarea>
+                                        </div>
+                                        <div className="col-lg-12 col-md-12 col-sm-12 form-group form-group--legal-consent">
+                                            <LegalFormConsent id="contact-legal-consent" name="contactPrivacyConsent" />
                                         </div>
                                         <div className="col-lg-12 col-md-12 col-sm-12 form-group message-btn mr-0">
                                             <button className="theme-btn-one" type="submit" name="submit-form">
