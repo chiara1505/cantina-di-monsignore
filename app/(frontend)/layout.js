@@ -6,10 +6,13 @@ import "../../public/assets/css/style.css"
 import 'swiper/css'
 import "swiper/css/pagination"
 import 'swiper/css/free-mode';
-import { DEFAULT_METADATA } from '@/lib/pageMetadata';
+import { DEFAULT_METADATA, getMetadataBaseUrl } from '@/lib/pageMetadata';
 import CookieConsent from '@/components/elements/CookieConsent';
 
-export const metadata = DEFAULT_METADATA;
+export const metadata = {
+  metadataBase: getMetadataBaseUrl(),
+  ...DEFAULT_METADATA,
+};
 
 export default function FrontendLayout({ children }) {
     return (
