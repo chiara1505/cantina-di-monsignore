@@ -7,6 +7,7 @@ import sharp from 'sharp'
 import { Users } from './collections/Users'
 import { MenuDishes } from './collections/MenuDishes'
 import { Wines } from './collections/Wines'
+import { ShopProducts } from './collections/ShopProducts'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -22,7 +23,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, MenuDishes, Wines],
+  collections: [Users, MenuDishes, Wines, ShopProducts],
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
