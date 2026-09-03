@@ -1,8 +1,7 @@
-import { getPayload } from 'payload'
-import config from '../payload.config'
+import { getPayload, type SanitizedConfig } from 'payload'
 import { menuDishes } from '../lib/menuDishesData.js'
 
-async function seed() {
+export async function script(config: SanitizedConfig) {
   const payload = await getPayload({ config })
 
   let created = 0
@@ -45,10 +44,4 @@ async function seed() {
   }
 
   console.log(`Seed completato: ${created} creati, ${updated} aggiornati (${menuDishes.length} piatti totali).`)
-  process.exit(0)
 }
-
-seed().catch((error) => {
-  console.error(error)
-  process.exit(1)
-})

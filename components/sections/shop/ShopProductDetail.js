@@ -1,6 +1,7 @@
 import {
   formatShopPrice,
 } from '@/lib/shopProducts';
+import { formatShopProductDescription } from '@/lib/formatShopProductDescription';
 import ShopProductAccordion from '@/components/sections/shop/ShopProductAccordion';
 import ShopProductAvailability from '@/components/sections/shop/ShopProductAvailability';
 import ShopProductBreadcrumb from '@/components/sections/shop/ShopProductBreadcrumb';
@@ -9,6 +10,8 @@ import ShopProductSpecs from '@/components/sections/shop/ShopProductSpecs';
 import ShopRelatedProducts from '@/components/sections/shop/ShopRelatedProducts';
 
 export default function ShopProductDetail({ product, relatedProducts }) {
+  const description = formatShopProductDescription(product.description, product.alcohol);
+
   return (
     <section className="shop-details p_relative shop-product-page">
       <div className="shop-details-content">
@@ -41,7 +44,7 @@ export default function ShopProductDetail({ product, relatedProducts }) {
       <div className="shop-product-accordion-section">
         <div className="auto-container">
           <ShopProductAccordion
-            description={product.description}
+            description={description}
             characteristics={product.characteristics}
             pairings={product.pairings}
           />

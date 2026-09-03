@@ -13,6 +13,20 @@ const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 export default buildConfig({
+  bin: [
+    {
+      key: 'seed:dishes',
+      scriptPath: path.resolve(dirname, 'scripts/seed-menu-dishes.ts'),
+    },
+    {
+      key: 'seed:wines',
+      scriptPath: path.resolve(dirname, 'scripts/seed-menu-wines.ts'),
+    },
+    {
+      key: 'seed:shop',
+      scriptPath: path.resolve(dirname, 'scripts/seed-shop-products.ts'),
+    },
+  ],
   admin: {
     user: Users.slug,
     suppressHydrationWarning: true,

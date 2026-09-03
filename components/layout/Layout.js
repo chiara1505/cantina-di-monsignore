@@ -18,6 +18,9 @@ export default function Layout({ headerStyle, footerStyle, headTitle, breadcrumb
     const [fixedHeader, setFixedHeader] = useState(false);
     const [showBackToTop, setShowBackToTop] = useState(false);
     const [mobileHeaderHidden, setMobileHeaderHidden] = useState(false);
+    const disableFixedHeader = ['shop-product-page', 'legal-page'].some((cls) =>
+        wrapperCls?.split(/\s+/).includes(cls)
+    );
     const [isMobileMenu, setMobileMenu] = useState(false);
     const handleMobileMenu = () => {
         setMobileMenu(!isMobileMenu);
@@ -30,6 +33,7 @@ export default function Layout({ headerStyle, footerStyle, headTitle, breadcrumb
 
     useEffect(() => {
         let cancelled = false
+        const fixedHeaderRef = { current: false }
 
         import('wowjs/dist/wow.js').then((mod) => {
             if (cancelled) return
@@ -48,19 +52,36 @@ export default function Layout({ headerStyle, footerStyle, headTitle, breadcrumb
         })
 
         const desktopHeaderQuery = window.matchMedia('(min-width: 1201px)')
+        const FIXED_HEADER_ON = 120
+        const FIXED_HEADER_OFF = 80
 
         const onScroll = () => {
             const isDesktop = desktopHeaderQuery.matches
             const scrollY = window.scrollY
-            const scrolled = scrollY > 100
+            const showBackToTopNext = scrollY > 100
 
-            setShowBackToTop(scrolled)
-            setFixedHeader(isDesktop && scrolled)
-            setMobileHeaderHidden(
+            let fixedHeaderNext = fixedHeaderRef.current
+            if (!isDesktop || disableFixedHeader) {
+                fixedHeaderNext = false
+            } else if (fixedHeaderRef.current) {
+                if (scrollY < FIXED_HEADER_OFF) fixedHeaderNext = false
+            } else if (scrollY > FIXED_HEADER_ON) {
+                fixedHeaderNext = true
+            }
+
+            setShowBackToTop((prev) => (prev === showBackToTopNext ? prev : showBackToTopNext))
+
+            if (fixedHeaderNext !== fixedHeaderRef.current) {
+                fixedHeaderRef.current = fixedHeaderNext
+                setFixedHeader(fixedHeaderNext)
+            }
+
+            const mobileHeaderHiddenNext =
                 !isDesktop &&
                 scrollY > 40 &&
                 !document.body.classList.contains('mobile-menu-visible')
-            )
+
+            setMobileHeaderHidden((prev) => (prev === mobileHeaderHiddenNext ? prev : mobileHeaderHiddenNext))
         }
 
         onScroll()
@@ -71,7 +92,7 @@ export default function Layout({ headerStyle, footerStyle, headTitle, breadcrumb
             window.removeEventListener('scroll', onScroll)
             desktopHeaderQuery.removeEventListener('change', onScroll)
         }
-    }, [])
+    }, [disableFixedHeader])
 
     return (
         <>

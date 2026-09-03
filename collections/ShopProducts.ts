@@ -121,6 +121,14 @@ export const ShopProducts: CollectionConfig = {
       },
     },
     {
+      name: 'alcohol',
+      type: 'text',
+      label: 'Gradazione alcolica',
+      admin: {
+        description: 'Es. 13,0 — viene mostrata in coda alla descrizione',
+      },
+    },
+    {
       name: 'characteristics',
       type: 'array',
       label: 'Caratteristiche',

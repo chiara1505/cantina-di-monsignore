@@ -665,11 +665,6 @@ img {
   right: 0px;
   z-index:999;
   width:100%;
-  transition:all 500ms ease;
-  -moz-transition:all 500ms ease;
-  -webkit-transition:all 500ms ease;
-  -ms-transition:all 500ms ease;
-  -o-transition:all 500ms ease;
 }
 
 .sticky-header{
@@ -682,37 +677,19 @@ img {
   z-index:0;
   background-color: #fff;
   border-bottom: 1px solid rgba(0, 0, 0, 0.10);
-  transition:all 500ms ease;
-  -moz-transition:all 500ms ease;
-  -webkit-transition:all 500ms ease;
-  -ms-transition:all 500ms ease;
-  -o-transition:all 500ms ease;
+  transform: translateY(-8px);
+  transition: opacity 220ms ease, visibility 220ms ease, transform 220ms ease;
+  -moz-transition: opacity 220ms ease, visibility 220ms ease, transform 220ms ease;
+  -webkit-transition: opacity 220ms ease, visibility 220ms ease, transform 220ms ease;
+  -ms-transition: opacity 220ms ease, visibility 220ms ease, transform 220ms ease;
+  -o-transition: opacity 220ms ease, visibility 220ms ease, transform 220ms ease;
 }
 
 .fixed-header .sticky-header{
   z-index:999;
   opacity:1;
   visibility:visible;
-  -ms-animation-name: fadeInDown;
-  -moz-animation-name: fadeInDown;
-  -op-animation-name: fadeInDown;
-  -webkit-animation-name: fadeInDown;
-  animation-name: fadeInDown;
-  -ms-animation-duration: 500ms;
-  -moz-animation-duration: 500ms;
-  -op-animation-duration: 500ms;
-  -webkit-animation-duration: 500ms;
-  animation-duration: 500ms;
-  -ms-animation-timing-function: linear;
-  -moz-animation-timing-function: linear;
-  -op-animation-timing-function: linear;
-  -webkit-animation-timing-function: linear;
-  animation-timing-function: linear;
-  -ms-animation-iteration-count: 1;
-  -moz-animation-iteration-count: 1;
-  -op-animation-iteration-count: 1;
-  -webkit-animation-iteration-count: 1;
-  animation-iteration-count: 1;
+  transform: translateY(0);
 }
 
 @media only screen and (max-width: 1200px){
@@ -934,6 +911,12 @@ img {
 
 .header-style-one.fixed-header .header-lower{
   display: none;
+}
+
+@media only screen and (min-width: 1201px){
+  .header-style-one.fixed-header .header-top{
+    display: none;
+  }
 }
 
 .header-style-one .sticky-header{
@@ -2700,12 +2683,85 @@ div#mCSB_1_container{
 .shop-section .bg-layer:before{
   position: absolute;
   content: '';
-  background: #fff;
+  background: #000;
   width: 100%;
   height: 100%;
   left: 0px;
   top: 0px;
-  opacity: 0.76;
+  opacity: 0.7;
+}
+
+/* Home shop carousel: immagine + testo sulla striscia scura */
+.shop-section .shop-slider .shop-product-card--overlay .inner-box{
+  background: transparent;
+  box-shadow: none;
+  text-align: center;
+}
+
+.shop-section .shop-slider .shop-product-card--overlay .image-box{
+  margin-bottom: 18px;
+}
+
+.shop-section .shop-slider .shop-product-card__image-link{
+  display: block;
+}
+
+.shop-section .shop-slider .shop-product-card--overlay .image-box img{
+  width: auto;
+  max-width: 100%;
+  max-height: 280px;
+  margin: 0 auto;
+  display: block;
+  background: transparent;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.35));
+  transition: transform 400ms ease, filter 400ms ease;
+}
+
+.shop-section .shop-slider .shop-product-card--overlay .inner-box:hover .image-box img{
+  opacity: 1;
+  transform: scale(1.04) translateY(-4px);
+  filter: drop-shadow(0 16px 28px rgba(0, 0, 0, 0.45));
+}
+
+.shop-section .shop-slider .shop-product-card--overlay .lower-content{
+  padding: 0 8px 12px;
+}
+
+.shop-section .shop-slider .shop-product-card--overlay .lower-content:before{
+  display: none;
+}
+
+.shop-section .shop-slider .shop-product-card--overlay .shop-product-card__category{
+  color: #E1A730;
+  margin-bottom: 10px;
+}
+
+.shop-section .shop-slider .shop-product-card--overlay .lower-content h5{
+  font-size: 17px;
+  line-height: 1.35;
+  margin-bottom: 6px;
+}
+
+.shop-section .shop-slider .shop-product-card--overlay .lower-content h5 a{
+  color: #FFF6EA;
+}
+
+.shop-section .shop-slider .shop-product-card--overlay .lower-content h5 a:hover{
+  color: #E1A730;
+}
+
+.shop-section .shop-slider .shop-product-card--overlay .lower-content .price{
+  color: rgba(255, 246, 234, 0.85);
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.shop-section__btn{
+  position: relative;
+  z-index: 1;
+  margin-top: 50px;
+  text-align: center;
 }
 
 .shop-block-one .inner-box{
@@ -9801,7 +9857,9 @@ select  {
   }
 
   .shop-product-page .main-header.header-style-one{
-    position: relative;
+    position: sticky;
+    top: 0;
+    z-index: 999;
     background: #ffffff;
     transform: none !important;
     opacity: 1 !important;
@@ -10636,6 +10694,10 @@ select  {
 
   .shop-section .sec-title{
     text-align: center;
+  }
+
+  .shop-section .shop-slider .shop-product-card--overlay .image-box img{
+    max-height: 220px;
   }
 
   .testimonial-section .image-box,
@@ -11666,9 +11728,22 @@ select  {
 }
 
 .legal-page .main-header.header-style-one{
-  position: relative;
-  left: auto;
-  top: auto;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+@media only screen and (min-width: 1201px){
+  .legal-page .main-header.header-style-one .sticky-header{
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+
+  .legal-page .main-header.header-style-one.fixed-header .header-top,
+  .legal-page .main-header.header-style-one.fixed-header .header-lower{
+    display: block;
+  }
 }
 
 .legal-page .main-header.header-style-one:not(.fixed-header) .header-lower{
@@ -11992,9 +12067,22 @@ select  {
 }
 
 .shop-product-page .main-header.header-style-one{
-  position: relative;
-  left: auto;
-  top: auto;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+@media only screen and (min-width: 1201px){
+  .shop-product-page .main-header.header-style-one .sticky-header{
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+
+  .shop-product-page .main-header.header-style-one.fixed-header .header-top,
+  .shop-product-page .main-header.header-style-one.fixed-header .header-lower{
+    display: block;
+  }
 }
 
 .shop-product-page .main-header.header-style-one:not(.fixed-header) .header-lower{

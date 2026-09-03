@@ -9,7 +9,6 @@ import { SHOP_CATEGORIES } from '@/lib/shopProducts';
 
 export default function ShopPageClient({ products }) {
   const searchParams = useSearchParams();
-  const [viewType, setViewType] = useState('grid');
   const [activeCategory, setActiveCategory] = useState('all');
 
   useEffect(() => {
@@ -54,26 +53,6 @@ export default function ShopPageClient({ products }) {
                 </p>
               </div>
             </div>
-            <div className="right-column pull-right clearfix">
-              <div className="menu-box">
-                <button
-                  type="button"
-                  className={`grid-view ${viewType === 'grid' ? 'on' : ''}`}
-                  onClick={() => setViewType('grid')}
-                  aria-label="Vista griglia"
-                >
-                  <i className="icon-27" />
-                </button>
-                <button
-                  type="button"
-                  className={`list-view ${viewType === 'list' ? 'on' : ''}`}
-                  onClick={() => setViewType('list')}
-                  aria-label="Vista lista"
-                >
-                  <i className="icon-28" />
-                </button>
-              </div>
-            </div>
           </div>
 
           <div className="shop-catalog__filters">
@@ -89,20 +68,11 @@ export default function ShopPageClient({ products }) {
             ))}
           </div>
 
-          <div className={`wrapper ${viewType}`}>
-            <div className="shop-grid-content">
-              <div className="row clearfix">
-                {filteredProducts.map((product) => (
-                  <ShopProductCard key={product.slug} product={product} />
-                ))}
-              </div>
-            </div>
-            <div className="shop-list-content">
-              <div className="row clearfix">
-                {filteredProducts.map((product) => (
-                  <ShopProductCard key={product.slug} product={product} />
-                ))}
-              </div>
+          <div className="shop-grid-content">
+            <div className="row clearfix">
+              {filteredProducts.map((product) => (
+                <ShopProductCard key={product.slug} product={product} />
+              ))}
             </div>
           </div>
 

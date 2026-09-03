@@ -9,7 +9,9 @@
     "lint": "next lint",
     "sass": "sass --watch public/assets/scss/main.scss:public/assets/css/main.css",
     "generate:importmap": "payload generate:importmap",
-    "seed:dishes": "tsx scripts/seed-menu-dishes.ts"
+    "seed:dishes": "payload seed:dishes",
+    "seed:wines": "payload seed:wines",
+    "seed:shop": "payload seed:shop"
   },
   "dependencies": {
     "@fontsource/inter": "^5.3.0",
