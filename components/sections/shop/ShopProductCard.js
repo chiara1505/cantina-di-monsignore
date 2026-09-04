@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
+import { SHOP_FALLBACK_IMAGE } from '@/lib/resolvePayloadMediaUrl';
 import { formatShopPrice, getShopCategoryLabel, getShopProductImage } from '@/lib/shopProducts';
 
 export default function ShopProductCard({ product, buttonLabel = 'Scopri', variant = 'grid' }) {
@@ -10,9 +11,16 @@ export default function ShopProductCard({ product, buttonLabel = 'Scopri', varia
   const preferredImage = getShopProductImage(product, variant);
   const [imageSrc, setImageSrc] = useState(preferredImage);
 
+  const staticJpg = `/assets/images/shop/${product.slug}.jpg`;
+
   const handleImageError = () => {
-    if (isCarousel && imageSrc !== product.image) {
-      setImageSrc(product.image);
+    if (imageSrc !== staticJpg) {
+      setImageSrc(staticJpg);
+      return;
+    }
+
+    if (imageSrc !== SHOP_FALLBACK_IMAGE) {
+      setImageSrc(SHOP_FALLBACK_IMAGE);
     }
   };
 

@@ -1,6 +1,8 @@
-import {
-  formatShopPrice,
-} from '@/lib/shopProducts';
+'use client';
+
+import { useState } from 'react';
+import { SHOP_FALLBACK_IMAGE } from '@/lib/resolvePayloadMediaUrl';
+import { formatShopPrice } from '@/lib/shopProducts';
 import { formatShopProductDescription } from '@/lib/formatShopProductDescription';
 import ShopProductAccordion from '@/components/sections/shop/ShopProductAccordion';
 import ShopProductAvailability from '@/components/sections/shop/ShopProductAvailability';
@@ -11,6 +13,19 @@ import ShopRelatedProducts from '@/components/sections/shop/ShopRelatedProducts'
 
 export default function ShopProductDetail({ product, relatedProducts }) {
   const description = formatShopProductDescription(product.description, product.alcohol);
+  const staticJpg = `/assets/images/shop/${product.slug}.jpg`;
+  const [imageSrc, setImageSrc] = useState(product.image || staticJpg);
+
+  const handleImageError = () => {
+    if (imageSrc !== staticJpg) {
+      setImageSrc(staticJpg);
+      return;
+    }
+
+    if (imageSrc !== SHOP_FALLBACK_IMAGE) {
+      setImageSrc(SHOP_FALLBACK_IMAGE);
+    }
+  };
 
   return (
     <section className="shop-details p_relative shop-product-page">
@@ -19,7 +34,11 @@ export default function ShopProductDetail({ product, relatedProducts }) {
           <div className="row clearfix">
             <div className="col-lg-6 col-md-12 col-sm-12 image-column">
               <figure className="image-box shop-product-page__image">
-                <img src={product.image} alt={product.imageAlt ?? product.name} />
+                <img
+                  src={imageSrc}
+                  alt={product.imageAlt ?? product.name}
+                  onError={handleImageError}
+                />
               </figure>
             </div>
             <div className="col-lg-6 col-md-12 col-sm-12 content-column">
