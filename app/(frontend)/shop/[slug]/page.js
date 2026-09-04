@@ -3,18 +3,21 @@ import {
   getAllShopProductSlugs,
   getRelatedShopProducts,
   getShopProductBySlug,
-} from '@/lib/shopProducts';
+} from '@/lib/getShopProductsFromCms';
 import { buildShopProductMetadata } from '@/lib/pageMetadata';
 import { generateBreadcrumbSchema } from '@/lib/generateBreadcrumbSchema';
 import ShopProductPageClient from './ShopProductPageClient';
 
-export function generateStaticParams() {
-  return getAllShopProductSlugs().map((slug) => ({ slug }));
+export const revalidate = 60;
+
+export async function generateStaticParams() {
+  const slugs = await getAllShopProductSlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const product = getShopProductBySlug(slug);
+  const product = await getShopProductBySlug(slug);
 
   if (!product) {
     return {};
@@ -25,13 +28,13 @@ export async function generateMetadata({ params }) {
 
 export default async function ShopProductPage({ params }) {
   const { slug } = await params;
-  const product = getShopProductBySlug(slug);
+  const product = await getShopProductBySlug(slug);
 
   if (!product) {
     notFound();
   }
 
-  const relatedProducts = getRelatedShopProducts(slug);
+  const relatedProducts = await getRelatedShopProducts(slug);
   const breadcrumbItems = [
     { name: 'Home', path: '/' },
     { name: 'Shop', path: '/shop' },

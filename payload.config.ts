@@ -4,9 +4,12 @@ import { postgresAdapter } from '@payloadcms/db-postgres'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
 
+import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
+
 import { Users } from './collections/Users'
 import { MenuDishes } from './collections/MenuDishes'
 import { Wines } from './collections/Wines'
+import { Media } from './collections/Media'
 import { ShopProducts } from './collections/ShopProducts'
 
 const filename = fileURLToPath(import.meta.url)
@@ -26,6 +29,10 @@ export default buildConfig({
       key: 'seed:shop',
       scriptPath: path.resolve(dirname, 'scripts/seed-shop-products.ts'),
     },
+    {
+      key: 'sync:schema',
+      scriptPath: path.resolve(dirname, 'scripts/sync-payload-schema.ts'),
+    },
   ],
   admin: {
     user: Users.slug,
@@ -37,7 +44,17 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, MenuDishes, Wines, ShopProducts],
+  collections: [Users, MenuDishes, Wines, Media, ShopProducts],
+  plugins: [
+    vercelBlobStorage({
+      enabled: Boolean(process.env.BLOB_READ_WRITE_TOKEN),
+      collections: {
+        media: true,
+      },
+      token: process.env.BLOB_READ_WRITE_TOKEN || '',
+      clientUploads: true,
+    }),
+  ],
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),

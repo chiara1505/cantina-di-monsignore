@@ -1,5 +1,12 @@
+import fs from 'fs'
+import path from 'path'
+import { fileURLToPath } from 'url'
 import { getPayload, type SanitizedConfig } from 'payload'
 import { SHOP_PRODUCTS } from '../lib/shopProducts.js'
+
+const filename = fileURLToPath(import.meta.url)
+const dirname = path.dirname(filename)
+const publicDir = path.resolve(dirname, '../public')
 
 const DEPRECATED_SHOP_SLUGS = [
   'etna-rosato-giovanni-rosso',
@@ -9,7 +16,56 @@ const DEPRECATED_SHOP_SLUGS = [
   'langhe-nebbiolo-giovanni-rosso',
 ]
 
-function mapShopProductToPayload(product, sortOrder) {
+async function findOrCreateMediaFromPath(payload, absolutePath, alt) {
+  if (!fs.existsSync(absolutePath)) {
+    return null
+  }
+
+  const filename = path.basename(absolutePath)
+  const existing = await payload.find({
+    collection: 'media',
+    where: {
+      filename: {
+        equals: filename,
+      },
+    },
+    limit: 1,
+  })
+
+  if (existing.docs[0]) {
+    return existing.docs[0].id
+  }
+
+  const media = await payload.create({
+    collection: 'media',
+    data: {
+      alt,
+    },
+    filePath: absolutePath,
+  })
+
+  return media.id
+}
+
+async function resolveMediaId(payload, publicPath, alt) {
+  if (!publicPath?.startsWith('/')) {
+    return null
+  }
+
+  const absolutePath = path.join(publicDir, publicPath.replace(/^\//, ''))
+  return findOrCreateMediaFromPath(payload, absolutePath, alt)
+}
+
+async function mapShopProductToPayload(payload, product, sortOrder) {
+  const alt = product.imageAlt ?? product.name
+  const imageId = await resolveMediaId(payload, product.image, alt)
+  const carouselPath = `/assets/images/shop/${product.slug}.png`
+  const carouselId = await resolveMediaId(payload, carouselPath, alt)
+
+  if (!imageId) {
+    throw new Error(`Immagine mancante per ${product.slug}: ${product.image}`)
+  }
+
   return {
     name: product.name,
     slug: product.slug,
@@ -17,6 +73,8 @@ function mapShopProductToPayload(product, sortOrder) {
     price: product.price,
     availability: product.availability,
     image: product.image,
+    productImage: imageId,
+    ...(carouselId ? { carouselImage: carouselId } : {}),
     imageAlt: product.imageAlt ?? '',
     shortDescription: product.shortDescription,
     specs: product.specs ?? [],
@@ -54,7 +112,7 @@ export async function script(config: SanitizedConfig) {
   }
 
   for (const [index, product] of products.entries()) {
-    const data = mapShopProductToPayload(product, index)
+    const data = await mapShopProductToPayload(payload, product, index)
 
     const existing = await payload.find({
       collection: 'shop-products',
@@ -78,7 +136,5 @@ export async function script(config: SanitizedConfig) {
     }
   }
 
-  console.log(
-    `Seed shop completato: ${created} creati, ${updated} aggiornati, ${removed} rimossi (${products.length} vini shop).`,
-  )
+  console.log(`Shop seed completato: ${created} creati, ${updated} aggiornati, ${removed} rimossi.`)
 }

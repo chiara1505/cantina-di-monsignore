@@ -1,19 +1,12 @@
-'use client';
+import { getMenuWines } from '@/lib/getMenuWines';
+import { PAGE_METADATA } from '@/lib/pageMetadata';
+import MenuViniPageClient from './MenuViniPageClient';
 
-import Layout from '@/components/layout/Layout';
-import WinesMenuPage from '@/components/sections/menu/WinesMenuPage';
-import { PAGE_TITLE_IMAGES } from '@/lib/pageTitleImages';
+export const metadata = PAGE_METADATA.wines;
+export const revalidate = 60;
 
-export default function MenuViniPage() {
-  return (
-    <Layout
-      headerStyle={1}
-      footerStyle={1}
-      breadcrumbTitle="La Carta dei Vini"
-      breadcrumbPath="/menu/vini"
-      breadcrumbImage={PAGE_TITLE_IMAGES.menuWines}
-    >
-      <WinesMenuPage />
-    </Layout>
-  );
+export default async function MenuViniPage() {
+  const wines = await getMenuWines();
+
+  return <MenuViniPageClient wines={wines} />;
 }

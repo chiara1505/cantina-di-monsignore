@@ -11,7 +11,8 @@
     "generate:importmap": "payload generate:importmap",
     "seed:dishes": "payload seed:dishes",
     "seed:wines": "payload seed:wines",
-    "seed:shop": "payload seed:shop"
+    "seed:shop": "payload seed:shop",
+    "sync:schema": "payload sync:schema"
   },
   "dependencies": {
     "@fontsource/inter": "^5.3.0",
@@ -19,6 +20,7 @@
     "@fontsource/playfair-display": "^5.3.0",
     "@payloadcms/db-postgres": "^3.86.0",
     "@payloadcms/next": "^3.86.0",
+    "@payloadcms/storage-vercel-blob": "^3.86.0",
     "bootstrap-touchspin": "^4.7.3",
     "graphql": "^16.14.2",
     "isotope-layout": "^3.0.6",
@@ -29,6 +31,7 @@
     "react-curved-text": "^2.0.2",
     "react-dom": "^19.0.1",
     "react-modal-video": "^2.0.1",
+    "resend": "^6.26.0",
     "sass": "^1.66.1",
     "sharp": "^0.35.3",
     "swiper": "^10.2.0",

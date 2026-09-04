@@ -1,11 +1,10 @@
 'use client';
 
 import Link from 'next/link';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import {
   WINES_MENU_TABS,
   WINES_PDF_URL,
-  getWinesByCategory,
 } from '@/lib/menuWinesData';
 import { PAGE_SECTION_BACKGROUNDS } from '@/lib/pageTitleImages';
 import MenuDecorativePanel from '@/components/sections/menu/MenuDecorativePanel';
@@ -44,8 +43,15 @@ function WineList({ wines }) {
   );
 }
 
-export default function WinesMenuPage() {
+export default function WinesMenuPage({ wines = [] }) {
   const [activeTab, setActiveTab] = useState('bollicine');
+
+  const winesByCategory = useMemo(() => {
+    return WINES_MENU_TABS.reduce((groups, tab) => {
+      groups[tab.id] = wines.filter((wine) => wine.category === tab.id);
+      return groups;
+    }, {});
+  }, [wines]);
 
   const syncTabFromHash = useCallback(() => {
     const hash = window.location.hash.replace('#', '');
@@ -119,7 +125,7 @@ export default function WinesMenuPage() {
 
       <div className="auto-container dishes-menu-page__content">
         <MenuDecorativePanel title={activeTabLabel}>
-          <WineList wines={getWinesByCategory(activeTab)} />
+          <WineList wines={winesByCategory[activeTab] ?? []} />
         </MenuDecorativePanel>
 
         <div className="dishes-menu-page__cta">

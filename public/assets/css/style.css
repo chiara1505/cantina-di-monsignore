@@ -12047,6 +12047,42 @@ select  {
   text-align: left;
 }
 
+.booking-form-honeypot{
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.booking-form-status{
+  margin: 0;
+  padding: 14px 18px;
+  border-radius: 6px;
+  font-size: 15px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.booking-form-status--success{
+  color: #1f4d2d;
+  background: rgba(47, 125, 74, 0.12);
+  border: 1px solid rgba(47, 125, 74, 0.25);
+}
+
+.booking-form-status--error{
+  color: #6b1f1f;
+  background: rgba(180, 55, 55, 0.1);
+  border: 1px solid rgba(180, 55, 55, 0.22);
+}
+
+.order-section .theme-btn-one:disabled{
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
 .contact-directions-map__placeholder{
   display: flex;
   flex-direction: column;

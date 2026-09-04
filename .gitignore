@@ -36,3 +36,7 @@ payload.db-*
 payload-v2.db
 payload-v2.db-*
 payload-types.ts
+
+# uploaded media (managed via Payload admin)
+/public/media/*
+!/public/media/.gitkeep

@@ -70,16 +70,39 @@ export const ShopProducts: CollectionConfig = {
     {
       name: 'image',
       type: 'text',
-      label: 'Immagine',
-      required: true,
+      label: 'Immagine (legacy)',
       admin: {
-        description: 'Percorso pubblico del file, es. /assets/images/shop/nome-prodotto.jpg',
+        hidden: true,
+        readOnly: true,
+        description: 'Campo deprecato: usare “Immagine prodotto”.',
+      },
+    },
+    {
+      name: 'productImage',
+      type: 'upload',
+      relationTo: 'media',
+      label: 'Immagine prodotto',
+      admin: {
+        description: 'Carica la foto del prodotto dal computer (JPG, PNG o WebP)',
+      },
+    },
+    {
+      name: 'carouselImage',
+      type: 'upload',
+      relationTo: 'media',
+      label: 'Immagine carosello Home (opzionale)',
+      admin: {
+        description:
+          'PNG con sfondo trasparente per la homepage. Se vuota, viene usata l’immagine prodotto.',
       },
     },
     {
       name: 'imageAlt',
       type: 'text',
       label: 'Testo alternativo immagine',
+      admin: {
+        description: 'Opzionale. Se vuoto, usa il testo alternativo dell’immagine caricata.',
+      },
     },
     {
       name: 'shortDescription',

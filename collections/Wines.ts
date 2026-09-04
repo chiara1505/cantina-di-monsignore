@@ -14,6 +14,9 @@ export const Wines: CollectionConfig = {
     singular: 'Vino',
     plural: 'Vini',
   },
+  access: {
+    read: () => true,
+  },
   admin: {
     useAsTitle: 'name',
     defaultColumns: ['name', 'category', 'price', 'published'],
