@@ -5,7 +5,7 @@ import {
   getShopProductBySlug,
 } from '@/lib/getShopProductsFromCms';
 import { buildShopProductMetadata } from '@/lib/pageMetadata';
-import { generateBreadcrumbSchema } from '@/lib/generateBreadcrumbSchema';
+import { generateShopProductSchema } from '@/lib/generateShopSchema';
 import ShopProductPageClient from './ShopProductPageClient';
 
 export const revalidate = 60;
@@ -40,13 +40,13 @@ export default async function ShopProductPage({ params }) {
     { name: 'Shop', path: '/shop' },
     { name: product.name, path: `/shop/${product.slug}` },
   ];
-  const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbItems);
+  const productSchema = generateShopProductSchema(product, breadcrumbItems);
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
       />
       <ShopProductPageClient
         product={product}
