@@ -1,5 +1,6 @@
 import { getMenuDishes } from '@/lib/getMenuDishes';
 import { generateMenuSchema } from '@/lib/generateMenuSchema';
+import { getRestaurantSettings } from '@/lib/getRestaurantSettings';
 import { PAGE_METADATA } from '@/lib/pageMetadata';
 import MenuPiattiPageClient from './MenuPiattiPageClient';
 
@@ -7,8 +8,8 @@ export const metadata = PAGE_METADATA.menu;
 export const revalidate = 60;
 
 export default async function MenuPiattiPage() {
-  const dishes = await getMenuDishes();
-  const menuSchema = generateMenuSchema(dishes);
+  const [dishes, settings] = await Promise.all([getMenuDishes(), getRestaurantSettings()]);
+  const menuSchema = generateMenuSchema(settings);
 
   return (
     <>
