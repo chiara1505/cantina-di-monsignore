@@ -94,6 +94,8 @@ export default function Footer1() {
                 {' · '}
                 <Link href="/cookie-policy">Cookie Policy</Link>
                 {' · '}
+                <Link href="/termini-e-condizioni">Termini e condizioni</Link>
+                {' · '}
                 <button
                   type="button"
                   className="footer-cookie-settings"

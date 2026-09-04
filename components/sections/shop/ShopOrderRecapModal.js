@@ -70,6 +70,11 @@ export default function ShopOrderRecapModal({ isOpen, onClose, product, quantity
 
         <p className="shop-order-modal__note">
           Scegli come inviarci l&apos;ordine: completeremo insieme disponibilità, consegna o ritiro.
+          Inviando la richiesta dichiari di aver letto i{' '}
+          <Link href="/termini-e-condizioni" onClick={onClose}>
+            Termini e condizioni
+          </Link>{' '}
+          dello Shop.
         </p>
 
         <div className="shop-order-modal__actions">
