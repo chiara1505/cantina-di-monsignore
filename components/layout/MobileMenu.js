@@ -2,14 +2,12 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import {
-  RESERVATION_LINK,
-  SITE_CONTACT_INFO,
-  SITE_NAV_ITEMS,
-} from '@/lib/siteNavigation';
+import { RESERVATION_LINK, SITE_NAV_ITEMS } from '@/lib/siteNavigation';
+import { useRestaurantSettings } from '@/components/providers/RestaurantSettingsProvider';
 import SocialLinks from '@/components/elements/SocialLinks';
 
 export default function MobileMenu({ isSidebar, handleMobileMenu, handleSidebar }) {
+  const { contact } = useRestaurantSettings();
   const [openDropdown, setOpenDropdown] = useState('');
 
   const handleToggle = (key) => {
@@ -85,29 +83,22 @@ export default function MobileMenu({ isSidebar, handleMobileMenu, handleSidebar 
           <div className="contact-info">
             <h4>Contatti</h4>
             <ul>
-              <li>{SITE_CONTACT_INFO.address}</li>
+              <li>{contact.address}</li>
               <li>
-                <Link href={SITE_CONTACT_INFO.phoneHref}>{SITE_CONTACT_INFO.phone}</Link>
+                <Link href={contact.phoneHref}>{contact.phone}</Link>
               </li>
               <li>
-                <Link href={SITE_CONTACT_INFO.whatsappHref}>{SITE_CONTACT_INFO.whatsapp}</Link>
+                <Link href={contact.whatsappHref}>{contact.whatsapp}</Link>
               </li>
               <li>
-                <Link href={SITE_CONTACT_INFO.emailHref}>{SITE_CONTACT_INFO.email}</Link>
+                <Link href={contact.emailHref}>{contact.email}</Link>
               </li>
             </ul>
           </div>
 
-          <div className="social-links">
-            <SocialLinks className="clearfix" useSpan />
-          </div>
+          <SocialLinks className="social-links centred clearfix" useSpan />
         </nav>
       </div>
-      <div
-        className="nav-overlay"
-        style={{ display: `${isSidebar ? 'block' : 'none'}` }}
-        onClick={handleSidebar}
-      />
     </>
   );
 }

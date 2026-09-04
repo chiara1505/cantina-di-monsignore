@@ -1,10 +1,9 @@
 'use client'
-import Link from "next/link";
 import Layout from "@/components/layout/Layout"
 import { PAGE_TITLE_IMAGES, PAGE_SECTION_BACKGROUNDS } from '@/lib/pageTitleImages';
-import { SITE_CONTACT_INFO } from '@/lib/siteNavigation';
 import ScrollReveal from '@/components/elements/ScrollReveal';
 import ContactDirectionsMap from '@/components/sections/contact/ContactDirectionsMap';
+import ContactInfoList from '@/components/sections/contact/ContactInfoList';
 import SocialLinks from '@/components/elements/SocialLinks';
 import LegalFormConsent from '@/components/elements/LegalFormConsent';
 
@@ -31,51 +30,7 @@ export default function Home() {
                                     <h2>Ci trovi qui</h2>
                                     <p>I nostri indirizzi e recapiti per rimanere in contatto</p>
                                 </div>
-                                <ul className="info-list clearfix">
-                                    <li>
-                                        <i className="icon-39"></i>
-                                        <h5>Indirizzo</h5>
-                                        <p>Piazza Sant&apos;Antonio n. 5, Castiglione di Sicilia (ME)</p>
-                                    </li>
-                                    <li>
-                                        <i className="icon-40"></i>
-                                        <h5>Telefono</h5>
-                                        <p>
-                                            <Link href={SITE_CONTACT_INFO.phoneHref}>{SITE_CONTACT_INFO.phone}</Link>
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <i className="fab fa-whatsapp"></i>
-                                        <h5>WhatsApp</h5>
-                                        <p>
-                                            <Link href="https://wa.me/393888988098">+39 388 89 88 098</Link>
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <i className="icon-1"></i>
-                                        <h5>Email</h5>
-                                        <p>
-                                            <Link href="mailto:lacantinadimonsignore@gmail.com">lacantinadimonsignore@gmail.com</Link>
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <i className="icon-2"></i>
-                                        <h5>Orari di Apertura</h5>
-                                        <p>
-                                            Lunedì 18:30 - 22:30<br />
-                                            Mercoledì 18:30 - 22:30<br />
-                                            Giovedì 12:30 - 14:30 / 18:30 - 22:30<br />
-                                            Venerdì 12:30 - 14:30 / 18:30 - 22:30<br />
-                                            Sabato 12:30 - 14:30 / 18:30 - 22:30<br />
-                                            Domenica 18:30 - 22:30
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <i className="fas fa-calendar-times"></i>
-                                        <h5>Giorno di Chiusura</h5>
-                                        <p>Martedì</p>
-                                    </li>
-                                </ul>
+                                <ContactInfoList />
                                 <div className="contact-section__social">
                                     <h3 className="contact-section__social-title">Seguici sui social</h3>
                                     <SocialLinks />

@@ -3,7 +3,8 @@
 import Link from 'next/link';
 import Menu from '../Menu';
 import MobileMenu from '../MobileMenu';
-import { RESERVATION_LINK, SITE_CONTACT_INFO } from '@/lib/siteNavigation';
+import { RESERVATION_LINK } from '@/lib/siteNavigation';
+import { useRestaurantSettings } from '@/components/providers/RestaurantSettingsProvider';
 
 export default function Header1({
   scroll,
@@ -14,6 +15,8 @@ export default function Header1({
   handlePopup,
   handleSidebar,
 }) {
+  const { contact, headerClosedText } = useRestaurantSettings();
+
   return (
     <>
       <header
@@ -26,14 +29,15 @@ export default function Header1({
                 <ul className="info clearfix">
                   <li>
                     <i className="icon-40"></i>
-                    <Link href={SITE_CONTACT_INFO.phoneHref}>{SITE_CONTACT_INFO.phone}</Link>
+                    <Link href={contact.phoneHref}>{contact.phone}</Link>
                   </li>
                   <li>
                     <i className="fab fa-whatsapp"></i>
-                    <Link href="https://wa.me/393888988098">+39 388 89 88 098</Link>
+                    <Link href={contact.whatsappHref}>{contact.whatsapp}</Link>
                   </li>
                   <li>
-                    <i className="icon-2"></i>Chiuso il Martedì
+                    <i className="icon-2"></i>
+                    {headerClosedText}
                   </li>
                 </ul>
               </div>

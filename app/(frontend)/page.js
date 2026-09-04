@@ -13,12 +13,14 @@ import Order from "@/components/sections/home1/Order"
 import { PAGE_METADATA } from '@/lib/pageMetadata'
 import { generateHomeSchema } from '@/lib/generateHomeSchema'
 import { getShopCatalogProducts } from '@/lib/getShopProductsFromCms'
+import { getRestaurantSettings } from '@/lib/getRestaurantSettings'
 
 export const metadata = PAGE_METADATA.home
 export const revalidate = 60
 
 export default async function Home() {
-    const homeSchema = generateHomeSchema()
+    const settings = await getRestaurantSettings()
+    const homeSchema = generateHomeSchema(settings)
     const shopProducts = await getShopCatalogProducts()
 
     return (

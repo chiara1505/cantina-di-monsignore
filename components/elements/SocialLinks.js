@@ -1,13 +1,21 @@
+'use client';
+
 import Link from 'next/link';
-import { SITE_SOCIAL_PROFILES } from '@/lib/siteNavigation';
+import { useRestaurantSettings } from '@/components/providers/RestaurantSettingsProvider';
 
 export default function SocialLinks({
   className = 'social-links clearfix',
   useSpan = false,
 }) {
+  const { social } = useRestaurantSettings();
+
+  if (!social.profiles.length) {
+    return null;
+  }
+
   return (
     <ul className={className}>
-      {SITE_SOCIAL_PROFILES.map(({ href, icon, mobileIcon, label }) => (
+      {social.profiles.map(({ href, icon, mobileIcon, label }) => (
         <li key={href}>
           <Link
             href={href}

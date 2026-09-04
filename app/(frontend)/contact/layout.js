@@ -1,10 +1,12 @@
 import { PAGE_METADATA } from '@/lib/pageMetadata';
 import { generateContactSchema } from '@/lib/generateContactSchema';
+import { getRestaurantSettings } from '@/lib/getRestaurantSettings';
 
 export const metadata = PAGE_METADATA.contact;
 
-export default function ContactLayout({ children }) {
-  const contactSchema = generateContactSchema();
+export default async function ContactLayout({ children }) {
+  const settings = await getRestaurantSettings();
+  const contactSchema = generateContactSchema(settings);
 
   return (
     <>

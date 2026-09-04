@@ -11,6 +11,7 @@ import { MenuDishes } from './collections/MenuDishes'
 import { Wines } from './collections/Wines'
 import { Media } from './collections/Media'
 import { ShopProducts } from './collections/ShopProducts'
+import { RestaurantSettings } from './globals/RestaurantSettings'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -33,6 +34,10 @@ export default buildConfig({
       key: 'sync:schema',
       scriptPath: path.resolve(dirname, 'scripts/sync-payload-schema.ts'),
     },
+    {
+      key: 'seed:settings',
+      scriptPath: path.resolve(dirname, 'scripts/seed-restaurant-settings.ts'),
+    },
   ],
   admin: {
     user: Users.slug,
@@ -45,6 +50,7 @@ export default buildConfig({
     },
   },
   collections: [Users, MenuDishes, Wines, Media, ShopProducts],
+  globals: [RestaurantSettings],
   plugins: [
     vercelBlobStorage({
       enabled: Boolean(process.env.BLOB_READ_WRITE_TOKEN),

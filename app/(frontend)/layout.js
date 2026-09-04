@@ -8,17 +8,25 @@ import "swiper/css/pagination"
 import 'swiper/css/free-mode';
 import { DEFAULT_METADATA, getMetadataBaseUrl } from '@/lib/pageMetadata';
 import CookieConsent from '@/components/elements/CookieConsent';
+import { RestaurantSettingsProvider } from '@/components/providers/RestaurantSettingsProvider';
+import { getRestaurantSettings } from '@/lib/getRestaurantSettings';
 
 export const metadata = {
   metadataBase: getMetadataBaseUrl(),
   ...DEFAULT_METADATA,
 };
 
-export default function FrontendLayout({ children }) {
+export const revalidate = 60
+
+export default async function FrontendLayout({ children }) {
+    const settings = await getRestaurantSettings()
+
     return (
         <html lang="it" suppressHydrationWarning>
             <body suppressHydrationWarning>
-                {children}
+                <RestaurantSettingsProvider settings={settings}>
+                    {children}
+                </RestaurantSettingsProvider>
                 <CookieConsent />
             </body>
         </html>

@@ -1,6 +1,6 @@
 import ScrollReveal from '@/components/elements/ScrollReveal';
 import BookingReservationForm from '@/components/sections/home1/BookingReservationForm';
-import { SITE_CONTACT_INFO } from '@/lib/siteNavigation';
+import OrderBookingContacts from '@/components/sections/home1/OrderBookingContacts';
 
 const amenities = [
   { label: 'Menù vegetariano', icon: 'fa-leaf' },
@@ -17,21 +17,6 @@ const amenities = [
   { label: 'Location per eventi privati', icon: 'fa-glass-cheers' },
 ]
 
-const bookingContacts = [
-  {
-    label: SITE_CONTACT_INFO.phone,
-    href: SITE_CONTACT_INFO.phoneHref,
-    icon: 'fa-phone',
-    iconStyle: 'fas',
-  },
-  {
-    label: SITE_CONTACT_INFO.whatsapp,
-    href: SITE_CONTACT_INFO.whatsappHref,
-    icon: 'fa-whatsapp',
-    iconStyle: 'fab',
-  },
-]
-
 export default function Order({ sectionClassName = '', sectionId = 'prenotazioni' }) {
   return (
     <section className={`order-section bg-color-panna ${sectionClassName}`.trim()} id={sectionId}>
@@ -43,22 +28,7 @@ export default function Order({ sectionClassName = '', sectionId = 'prenotazioni
               <h2>Compila il form o chiama per riservare il tuo tavolo</h2>
             </ScrollReveal>
             <ScrollReveal delay={150}>
-              <ul className="order-section__contacts clearfix">
-                {bookingContacts.map((contact) => (
-                  <li key={contact.label} className="order-section__contact">
-                    <span className="order-section__contact-icon" aria-hidden="true">
-                      <i className={`${contact.iconStyle} ${contact.icon}`}></i>
-                    </span>
-                    <a
-                      href={contact.href}
-                      className="order-section__contact-link"
-                      {...(contact.href.startsWith('https://') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                    >
-                      {contact.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+              <OrderBookingContacts />
             </ScrollReveal>
             <ScrollReveal delay={300}>
               <ul className="order-section__amenities clearfix">
