@@ -90,7 +90,7 @@ export default function ShopCartEmailForm({ isOpen, orderItems }) {
       ) : (
         <>
           <p className="shop-cart-page__email-form-intro">
-            Inserisci i tuoi dati: invieremo la richiesta al ristorante e ti risponderemo a questo indirizzo email.
+            Scrivi qui i tuoi dati per inviarci l&apos;ordine. Ti risponderemo al tuo indirizzo email.
           </p>
 
           <form className="shop-cart-page__email-form-fields" onSubmit={handleSubmit} noValidate>

@@ -81,8 +81,7 @@ function CartOrderSummary({ subtotal, whatsappHref, orderItems, isEmailFormOpen,
               </li>
             </ul>
             <p className="shop-cart-page__note">
-              Scegli come inviarci l&apos;ordine: completeremo insieme disponibilità, consegna o ritiro. I prezzi
-              sono indicativi.
+              Scegli come inviarci l&apos;ordine. I prezzi escludono eventuale spedizione.
             </p>
             <div className="shop-cart-page__order-actions">
               <Link
