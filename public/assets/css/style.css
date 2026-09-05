@@ -12991,6 +12991,8 @@ body:has(.legal-page){
 
 .shop-cart-page__order-action--email{
   background: #48372A;
+  border: none;
+  cursor: pointer;
 }
 
 .shop-cart-page__order-action--email:before{

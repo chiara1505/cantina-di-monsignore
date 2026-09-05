@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useShopCart } from '@/components/providers/ShopCartProvider';
 import ShopCartItemImage from '@/components/sections/shop/ShopCartItemImage';
-import { buildShopCartEmailHref, buildShopCartWhatsAppHref } from '@/lib/shopOrder';
+import { buildShopCartWhatsAppHref, openShopOrderEmail } from '@/lib/shopOrder';
 import { formatShopPrice } from '@/lib/shopProducts';
 import { getCartSubtotal } from '@/lib/shopCart';
 
@@ -66,7 +66,7 @@ function CartItemRemoveButton({ item, removeItem }) {
   );
 }
 
-function CartOrderSummary({ subtotal, whatsappHref, emailHref }) {
+function CartOrderSummary({ subtotal, whatsappHref, orderItems }) {
   return (
     <div className="cart-total shop-cart-page__summary">
       <div className="row clearfix">
@@ -95,11 +95,15 @@ function CartOrderSummary({ subtotal, whatsappHref, emailHref }) {
                   <i className="fab fa-whatsapp" aria-hidden="true" /> Ordina su WhatsApp
                 </span>
               </Link>
-              <a href={emailHref} className="theme-btn-one shop-cart-page__order-action shop-cart-page__order-action--email">
+              <button
+                type="button"
+                className="theme-btn-one shop-cart-page__order-action shop-cart-page__order-action--email"
+                onClick={() => openShopOrderEmail(orderItems)}
+              >
                 <span>
                   <i className="far fa-envelope" aria-hidden="true" /> Ordina per email
                 </span>
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -117,7 +121,6 @@ export default function ShopCartPageClient() {
     quantity: item.quantity,
   }));
   const whatsappHref = buildShopCartWhatsAppHref(orderItems);
-  const emailHref = buildShopCartEmailHref(orderItems);
 
   if (!isHydrated) {
     return (
@@ -231,7 +234,7 @@ export default function ShopCartPageClient() {
           ))}
         </div>
 
-        <CartOrderSummary subtotal={subtotal} whatsappHref={whatsappHref} emailHref={emailHref} />
+        <CartOrderSummary subtotal={subtotal} whatsappHref={whatsappHref} orderItems={orderItems} />
       </div>
     </section>
   );
