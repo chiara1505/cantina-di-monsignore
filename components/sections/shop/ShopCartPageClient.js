@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { useShopCart } from '@/components/providers/ShopCartProvider';
 import ShopCartItemImage from '@/components/sections/shop/ShopCartItemImage';
-import ShopCartEmailModal from '@/components/sections/shop/ShopCartEmailModal';
+import ShopCartEmailForm from '@/components/sections/shop/ShopCartEmailForm';
 import { buildShopCartWhatsAppHref } from '@/lib/shopOrder';
 import { formatShopPrice } from '@/lib/shopProducts';
 import { getCartSubtotal } from '@/lib/shopCart';
@@ -68,7 +68,7 @@ function CartItemRemoveButton({ item, removeItem }) {
   );
 }
 
-function CartOrderSummary({ subtotal, whatsappHref, onEmailClick }) {
+function CartOrderSummary({ subtotal, whatsappHref, orderItems, isEmailFormOpen, onEmailClick }) {
   return (
     <div className="cart-total shop-cart-page__summary">
       <div className="row clearfix">
@@ -97,14 +97,18 @@ function CartOrderSummary({ subtotal, whatsappHref, onEmailClick }) {
               </Link>
               <button
                 type="button"
-                className="theme-btn-one shop-cart-page__order-action shop-cart-page__order-action--email"
+                className={`theme-btn-one shop-cart-page__order-action shop-cart-page__order-action--email${isEmailFormOpen ? ' shop-cart-page__order-action--active' : ''}`}
                 onClick={onEmailClick}
+                aria-expanded={isEmailFormOpen}
+                aria-controls="shop-cart-email-form"
               >
                 <span>
                   <i className="far fa-envelope" aria-hidden="true" /> Ordina per email
                 </span>
               </button>
             </div>
+
+            <ShopCartEmailForm isOpen={isEmailFormOpen} orderItems={orderItems} />
           </div>
         </div>
       </div>
@@ -114,7 +118,7 @@ function CartOrderSummary({ subtotal, whatsappHref, onEmailClick }) {
 
 export default function ShopCartPageClient() {
   const { items, isHydrated, setItemQuantity, removeItem } = useShopCart();
-  const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
+  const [isEmailFormOpen, setIsEmailFormOpen] = useState(false);
 
   const subtotal = getCartSubtotal(items);
   const orderItems = items.map((item) => ({
@@ -238,15 +242,11 @@ export default function ShopCartPageClient() {
         <CartOrderSummary
           subtotal={subtotal}
           whatsappHref={whatsappHref}
-          onEmailClick={() => setIsEmailModalOpen(true)}
+          orderItems={orderItems}
+          isEmailFormOpen={isEmailFormOpen}
+          onEmailClick={() => setIsEmailFormOpen((current) => !current)}
         />
       </div>
-
-      <ShopCartEmailModal
-        isOpen={isEmailModalOpen}
-        onClose={() => setIsEmailModalOpen(false)}
-        orderItems={orderItems}
-      />
     </section>
   );
 }

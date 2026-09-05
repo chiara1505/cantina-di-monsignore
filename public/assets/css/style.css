@@ -12826,39 +12826,35 @@ body:has(.legal-page){
   font-size: 18px;
 }
 
-.shop-cart-email-modal__panel{
-  max-height: calc(100vh - 48px);
-  overflow-y: auto;
+.shop-cart-page__email-form{
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(72, 55, 42, 0.12);
 }
 
-.shop-cart-email-modal__item{
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  font-size: 15px;
-  line-height: 1.45;
+.shop-cart-page__email-form-title{
+  margin: 0 0 12px;
+  font-size: 18px;
+  line-height: 1.3;
+  font-weight: 700;
   color: #48372A;
 }
 
-.shop-cart-email-modal__item-name{
-  margin: 0;
-  flex: 1;
+.shop-cart-page__email-form-intro{
+  margin: 0 0 16px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #676767;
 }
 
-.shop-cart-email-modal__item-price{
-  margin: 0;
-  font-weight: 600;
-  white-space: nowrap;
-}
-
-.shop-cart-email-modal__form{
+.shop-cart-page__email-form-fields{
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
-.shop-cart-email-modal__field input,
-.shop-cart-email-modal__field textarea{
+.shop-cart-page__email-field input,
+.shop-cart-page__email-field textarea{
   width: 100%;
   border: 1px solid #E5E5E5;
   border-radius: 8px;
@@ -12867,25 +12863,30 @@ body:has(.legal-page){
   line-height: 1.4;
   color: #48372A;
   background: #fff;
+  box-sizing: border-box;
 }
 
-.shop-cart-email-modal__field textarea{
+.shop-cart-page__email-field textarea{
   min-height: 88px;
   resize: vertical;
 }
 
-.shop-cart-email-modal__field input:focus,
-.shop-cart-email-modal__field textarea:focus{
+.shop-cart-page__email-field input:focus,
+.shop-cart-page__email-field textarea:focus{
   outline: none;
   border-color: #8B6B4A;
 }
 
-.shop-cart-email-modal__consent{
+.shop-cart-page__email-consent{
   margin: 0;
 }
 
-.shop-cart-email-modal__honeypot{
+.shop-cart-page__email-honeypot{
   display: none;
+}
+
+.shop-cart-page__order-action--active{
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.35);
 }
 
 .shop-cart-page__empty{
