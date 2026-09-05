@@ -18,7 +18,7 @@ export default function Layout({ headerStyle, footerStyle, headTitle, breadcrumb
     const [fixedHeader, setFixedHeader] = useState(false);
     const [showBackToTop, setShowBackToTop] = useState(false);
     const [mobileHeaderHidden, setMobileHeaderHidden] = useState(false);
-    const disableFixedHeader = ['shop-product-page', 'legal-page'].some((cls) =>
+    const disableFixedHeader = ['shop-product-page', 'legal-page', 'shop-cart-page'].some((cls) =>
         wrapperCls?.split(/\s+/).includes(cls)
     );
     const [isMobileMenu, setMobileMenu] = useState(false);

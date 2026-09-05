@@ -2,12 +2,14 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
+import { useShopCart } from '@/components/providers/ShopCartProvider';
 import { RESERVATION_LINK, SITE_NAV_ITEMS } from '@/lib/siteNavigation';
 import { useRestaurantSettings } from '@/components/providers/RestaurantSettingsProvider';
 import SocialLinks from '@/components/elements/SocialLinks';
 
 export default function MobileMenu({ isSidebar, handleMobileMenu, handleSidebar }) {
   const { contact } = useRestaurantSettings();
+  const { itemCount, isHydrated } = useShopCart();
   const [openDropdown, setOpenDropdown] = useState('');
 
   const handleToggle = (key) => {
@@ -71,6 +73,13 @@ export default function MobileMenu({ isSidebar, handleMobileMenu, handleSidebar 
           </div>
 
           <div className="mobile-menu__cta">
+            <Link
+              href="/cart"
+              className="theme-btn-two mobile-menu__cta-btn mobile-menu__cart-btn"
+              onClick={handleMobileMenu}
+            >
+              Carrello{isHydrated && itemCount > 0 ? ` (${itemCount})` : ''}
+            </Link>
             <Link
               href={RESERVATION_LINK.href}
               className="theme-btn-one mobile-menu__cta-btn"

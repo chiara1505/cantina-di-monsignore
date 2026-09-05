@@ -38,7 +38,7 @@ Tipo più importante per SEO locale e Google Maps.
 | `servesCuisine` | Italian, Sicilian |
 | `openingHoursSpecification` | orari apertura (da definire) |
 | `geo` | `lib/contactInfo.js` (37.8826811, 15.1230643) |
-| `address` | Piazza Sant'Antonio n. 5, Castiglione di Sicilia (ME) |
+| `address` | Piazza Sant'Antonio n. 5, Castiglione di Sicilia (CT) |
 | `sameAs` | Instagram, Facebook (URL da definire) |
 | `acceptsReservations` | true |
 | `hasMenu` | /menu |

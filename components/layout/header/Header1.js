@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Menu from '../Menu';
 import MobileMenu from '../MobileMenu';
+import HeaderCartLink from './HeaderCartLink';
 import { RESERVATION_LINK } from '@/lib/siteNavigation';
 import { useRestaurantSettings } from '@/components/providers/RestaurantSettingsProvider';
 
@@ -72,6 +73,9 @@ export default function Header1({
                   </div>
                 </nav>
               </div>
+              <ul className="nav-right clearfix">
+                <HeaderCartLink />
+              </ul>
             </div>
           </div>
         </div>
@@ -91,6 +95,9 @@ export default function Header1({
                   <Menu />
                 </div>
               </nav>
+              <ul className="nav-right clearfix">
+                <HeaderCartLink />
+              </ul>
             </div>
           </div>
         </div>

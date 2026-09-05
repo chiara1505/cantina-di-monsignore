@@ -1,11 +1,13 @@
 'use client';
 
 import { useState } from 'react';
-import ShopOrderRecapModal from '@/components/sections/shop/ShopOrderRecapModal';
+import ShopCartAddedModal from '@/components/sections/shop/ShopCartAddedModal';
+import { useShopCart } from '@/components/providers/ShopCartProvider';
 
 export default function ShopProductOrder({ product }) {
   const [quantity, setQuantity] = useState(1);
-  const [isRecapOpen, setIsRecapOpen] = useState(false);
+  const [isAddedModalOpen, setIsAddedModalOpen] = useState(false);
+  const { addItem } = useShopCart();
 
   const decreaseQuantity = () => {
     setQuantity((current) => Math.max(1, current - 1));
@@ -21,7 +23,8 @@ export default function ShopProductOrder({ product }) {
   };
 
   const handleAddToCart = () => {
-    setIsRecapOpen(true);
+    addItem(product, quantity);
+    setIsAddedModalOpen(true);
   };
 
   return (
@@ -63,9 +66,9 @@ export default function ShopProductOrder({ product }) {
         </div>
       </div>
 
-      <ShopOrderRecapModal
-        isOpen={isRecapOpen}
-        onClose={() => setIsRecapOpen(false)}
+      <ShopCartAddedModal
+        isOpen={isAddedModalOpen}
+        onClose={() => setIsAddedModalOpen(false)}
         product={product}
         quantity={quantity}
       />

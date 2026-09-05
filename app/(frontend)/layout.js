@@ -9,6 +9,7 @@ import 'swiper/css/free-mode';
 import { DEFAULT_METADATA, getMetadataBaseUrl } from '@/lib/pageMetadata';
 import CookieConsent from '@/components/elements/CookieConsent';
 import { RestaurantSettingsProvider } from '@/components/providers/RestaurantSettingsProvider';
+import { ShopCartProvider } from '@/components/providers/ShopCartProvider';
 import { getRestaurantSettings } from '@/lib/getRestaurantSettings';
 
 export const metadata = {
@@ -25,7 +26,9 @@ export default async function FrontendLayout({ children }) {
         <html lang="it" suppressHydrationWarning>
             <body suppressHydrationWarning>
                 <RestaurantSettingsProvider settings={settings}>
-                    {children}
+                    <ShopCartProvider>
+                        {children}
+                    </ShopCartProvider>
                 </RestaurantSettingsProvider>
                 <CookieConsent />
             </body>
