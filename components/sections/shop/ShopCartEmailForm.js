@@ -103,7 +103,7 @@ export default function ShopCartEmailForm({ isOpen, orderItems }) {
             <div className="shop-cart-page__email-field">
               <textarea
                 name="notes"
-                placeholder="Note opzionali (consegna, ritiro, richieste…)"
+                placeholder="Note opzionali (scrivici l'indirizzo di spedizione o se preferisci ritirare da noi)"
                 disabled={isSubmitting}
               />
             </div>
