@@ -1,9 +1,11 @@
 'use client';
 
 import Link from 'next/link';
+import { useState } from 'react';
 import { useShopCart } from '@/components/providers/ShopCartProvider';
 import ShopCartItemImage from '@/components/sections/shop/ShopCartItemImage';
-import { buildShopCartWhatsAppHref, openShopOrderEmail } from '@/lib/shopOrder';
+import ShopCartEmailModal from '@/components/sections/shop/ShopCartEmailModal';
+import { buildShopCartWhatsAppHref } from '@/lib/shopOrder';
 import { formatShopPrice } from '@/lib/shopProducts';
 import { getCartSubtotal } from '@/lib/shopCart';
 
@@ -66,7 +68,7 @@ function CartItemRemoveButton({ item, removeItem }) {
   );
 }
 
-function CartOrderSummary({ subtotal, whatsappHref, orderItems }) {
+function CartOrderSummary({ subtotal, whatsappHref, onEmailClick }) {
   return (
     <div className="cart-total shop-cart-page__summary">
       <div className="row clearfix">
@@ -81,8 +83,6 @@ function CartOrderSummary({ subtotal, whatsappHref, orderItems }) {
             <p className="shop-cart-page__note">
               Scegli come inviarci l&apos;ordine: completeremo insieme disponibilità, consegna o ritiro. I prezzi
               sono indicativi.
-              Inviando la richiesta dichiari di aver letto i{' '}
-              <Link href="/termini-e-condizioni">Termini e condizioni</Link> dello Shop.
             </p>
             <div className="shop-cart-page__order-actions">
               <Link
@@ -98,7 +98,7 @@ function CartOrderSummary({ subtotal, whatsappHref, orderItems }) {
               <button
                 type="button"
                 className="theme-btn-one shop-cart-page__order-action shop-cart-page__order-action--email"
-                onClick={() => openShopOrderEmail(orderItems)}
+                onClick={onEmailClick}
               >
                 <span>
                   <i className="far fa-envelope" aria-hidden="true" /> Ordina per email
@@ -114,6 +114,7 @@ function CartOrderSummary({ subtotal, whatsappHref, orderItems }) {
 
 export default function ShopCartPageClient() {
   const { items, isHydrated, setItemQuantity, removeItem } = useShopCart();
+  const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
 
   const subtotal = getCartSubtotal(items);
   const orderItems = items.map((item) => ({
@@ -234,8 +235,18 @@ export default function ShopCartPageClient() {
           ))}
         </div>
 
-        <CartOrderSummary subtotal={subtotal} whatsappHref={whatsappHref} orderItems={orderItems} />
+        <CartOrderSummary
+          subtotal={subtotal}
+          whatsappHref={whatsappHref}
+          onEmailClick={() => setIsEmailModalOpen(true)}
+        />
       </div>
+
+      <ShopCartEmailModal
+        isOpen={isEmailModalOpen}
+        onClose={() => setIsEmailModalOpen(false)}
+        orderItems={orderItems}
+      />
     </section>
   );
 }

@@ -12826,6 +12826,68 @@ body:has(.legal-page){
   font-size: 18px;
 }
 
+.shop-cart-email-modal__panel{
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+}
+
+.shop-cart-email-modal__item{
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 15px;
+  line-height: 1.45;
+  color: #48372A;
+}
+
+.shop-cart-email-modal__item-name{
+  margin: 0;
+  flex: 1;
+}
+
+.shop-cart-email-modal__item-price{
+  margin: 0;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.shop-cart-email-modal__form{
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.shop-cart-email-modal__field input,
+.shop-cart-email-modal__field textarea{
+  width: 100%;
+  border: 1px solid #E5E5E5;
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 15px;
+  line-height: 1.4;
+  color: #48372A;
+  background: #fff;
+}
+
+.shop-cart-email-modal__field textarea{
+  min-height: 88px;
+  resize: vertical;
+}
+
+.shop-cart-email-modal__field input:focus,
+.shop-cart-email-modal__field textarea:focus{
+  outline: none;
+  border-color: #8B6B4A;
+}
+
+.shop-cart-email-modal__consent{
+  margin: 0;
+}
+
+.shop-cart-email-modal__honeypot{
+  display: none;
+}
+
 .shop-cart-page__empty{
   max-width: 560px;
   margin: 0 auto;
