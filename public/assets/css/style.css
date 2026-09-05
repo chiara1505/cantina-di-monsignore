@@ -9934,14 +9934,16 @@ select  {
   }
 
   .shop-product-page .main-header.header-style-one .header-lower .nav-right li,
-  .shop-cart-page .main-header.header-style-one .header-lower .nav-right li{
+  .shop-cart-page .main-header.header-style-one .header-lower .nav-right li,
+  .legal-page .main-header.header-style-one .header-lower .nav-right li{
     background: #ffffff;
     box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.08);
     color: #48372A;
   }
 
   .shop-product-page .main-header.header-style-one .header-lower .nav-right li a,
-  .shop-cart-page .main-header.header-style-one .header-lower .nav-right li a{
+  .shop-cart-page .main-header.header-style-one .header-lower .nav-right li a,
+  .legal-page .main-header.header-style-one .header-lower .nav-right li a{
     color: #48372A;
   }
 
@@ -10107,7 +10109,8 @@ select  {
   }
 
   .main-header.header-style-one .header-lower .nav-right{
-    display: none;
+    display: flex;
+    align-items: center;
   }
 
   .header-top .top-inner .right-column{
