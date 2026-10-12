@@ -14,12 +14,16 @@ import { PAGE_METADATA } from '@/lib/pageMetadata'
 import { generateHomeSchema } from '@/lib/generateHomeSchema'
 import { getShopCatalogProducts } from '@/lib/getShopProductsFromCms'
 import { getRestaurantSettings } from '@/lib/getRestaurantSettings'
+import { getHomeSettings } from '@/lib/getHomeSettings'
 
 export const metadata = PAGE_METADATA.home
 export const revalidate = 60
 
 export default async function Home() {
-    const settings = await getRestaurantSettings()
+    const [settings, homeSettings] = await Promise.all([
+        getRestaurantSettings(),
+        getHomeSettings(),
+    ])
     const homeSchema = generateHomeSchema(settings)
     const shopProducts = await getShopCatalogProducts()
 
@@ -33,9 +37,9 @@ export default async function Home() {
             <Layout headerStyle={1} footerStyle={1}>
                 <Banner />
                 <About />
-                <Menu />
+                <Menu kitchenHome={homeSettings.kitchenHome} />
                 <Philosophy />
-                <Promotion />
+                <Promotion specialtiesHome={homeSettings.specialtiesHome} />
                 <Testimonial />
                 <Team />
                 <Shop products={shopProducts} />

@@ -81,8 +81,15 @@ export const Wines: CollectionConfig = {
     {
       name: 'published',
       type: 'checkbox',
-      label: 'Pubblicato',
+      label: 'Visibile',
       defaultValue: true,
+      admin: {
+        description:
+          'Se deselezionato, il vino resta in admin ma non compare nella carta vini del sito.',
+        components: {
+          Cell: '/components/admin/VisibleToggleCell',
+        },
+      },
     },
   ],
 }

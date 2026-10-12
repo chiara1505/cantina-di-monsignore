@@ -15,7 +15,7 @@ export const Media: CollectionConfig = {
     read: () => true,
   },
   admin: {
-    group: 'Shop',
+    group: 'Sito',
     defaultColumns: ['filename', 'alt', 'updatedAt'],
   },
   fields: [

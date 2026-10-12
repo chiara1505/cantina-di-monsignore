@@ -6,12 +6,13 @@ import sharp from 'sharp'
 
 import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 
-import { Users } from './collections/Users'
-import { MenuDishes } from './collections/MenuDishes'
-import { Wines } from './collections/Wines'
-import { Media } from './collections/Media'
-import { ShopProducts } from './collections/ShopProducts'
-import { RestaurantSettings } from './globals/RestaurantSettings'
+import { Users } from './collections/Users.ts'
+import { MenuDishes } from './collections/MenuDishes.ts'
+import { Wines } from './collections/Wines.ts'
+import { Media } from './collections/Media.ts'
+import { ShopProducts } from './collections/ShopProducts.ts'
+import { RestaurantSettings } from './globals/RestaurantSettings.ts'
+import { Home } from './globals/Home.ts'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -50,7 +51,7 @@ export default buildConfig({
     },
   },
   collections: [Users, MenuDishes, Wines, Media, ShopProducts],
-  globals: [RestaurantSettings],
+  globals: [RestaurantSettings, Home],
   plugins: [
     vercelBlobStorage({
       enabled: Boolean(process.env.BLOB_READ_WRITE_TOKEN),
@@ -69,6 +70,8 @@ export default buildConfig({
     pool: {
       connectionString: process.env.DATABASE_URL || '',
     },
+    // Evita push interattivo/hang su Windows; le colonne si allineano a mano quando serve.
+    push: false,
   }),
   sharp,
 })

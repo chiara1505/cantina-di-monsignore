@@ -9,6 +9,14 @@ const DISH_CATEGORIES = [
   { label: 'Bevande', value: 'bevande' },
 ]
 
+const DISH_SEASONALITIES = [
+  { label: 'Invernale', value: 'invernale' },
+  { label: 'Autunnale', value: 'autunnale' },
+  { label: 'Primaverile', value: 'primaverile' },
+  { label: 'Estivo', value: 'estivo' },
+  { label: 'Tutte', value: 'tutte' },
+]
+
 export const MenuDishes: CollectionConfig = {
   slug: 'menu-dishes',
   labels: {
@@ -20,7 +28,7 @@ export const MenuDishes: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'name',
-    defaultColumns: ['name', 'category', 'price', 'published'],
+    defaultColumns: ['name', 'category', 'seasonality', 'price', 'published'],
     group: 'Menù',
   },
   fields: [
@@ -46,6 +54,26 @@ export const MenuDishes: CollectionConfig = {
       label: 'Categoria',
       required: true,
       options: DISH_CATEGORIES,
+    },
+    {
+      name: 'seasonality',
+      type: 'select',
+      label: 'Stagionalità',
+      options: DISH_SEASONALITIES,
+      filterOptions: ({ options, siblingData }) => {
+        if (siblingData?.category === 'bevande') {
+          return options
+        }
+
+        return options.filter((option) => {
+          const value = typeof option === 'string' ? option : option.value
+          return value !== 'tutte'
+        })
+      },
+      admin: {
+        description:
+          'Usata per filtrare i piatti per stagione nella lista. Per le Bevande è disponibile anche “Tutte”.',
+      },
     },
     {
       name: 'description',
@@ -96,8 +124,15 @@ export const MenuDishes: CollectionConfig = {
     {
       name: 'published',
       type: 'checkbox',
-      label: 'Pubblicato',
+      label: 'Visibile',
       defaultValue: true,
+      admin: {
+        description:
+          'Se deselezionato, il piatto resta in admin ma non compare nel menù del sito.',
+        components: {
+          Cell: '/components/admin/VisibleToggleCell',
+        },
+      },
     },
   ],
 }

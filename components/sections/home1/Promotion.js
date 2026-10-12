@@ -1,21 +1,34 @@
 import Link from 'next/link';
 import ScrollReveal from '@/components/elements/ScrollReveal';
+import { DEFAULT_SPECIALTIES_HOME } from '@/lib/homeSettingsDefaults';
 
-const specialtyDishes = [
-  {
-    name: 'Lingotto di Parmigiana',
-    image: 'assets/images/resource/promotion-1.jpg',
-    delay: 0,
-  },
-  {
-    name: 'Mezze lune “Home Made”',
-    image: 'assets/images/resource/promotion-2.jpg',
-    delay: 150,
-    imageZoom: true,
-  },
-];
+/**
+ * @param {{
+ *   specialtiesHome?: {
+ *     left?: { name?: string, image?: string, imageAlt?: string },
+ *     right?: { name?: string, image?: string, imageAlt?: string },
+ *   }
+ * }} props
+ */
+export default function Promotion({ specialtiesHome }) {
+  const specialties = specialtiesHome ?? DEFAULT_SPECIALTIES_HOME;
 
-export default function Promotion() {
+  const specialtyDishes = [
+    {
+      name: specialties.left?.name || DEFAULT_SPECIALTIES_HOME.left.name,
+      image: specialties.left?.image || DEFAULT_SPECIALTIES_HOME.left.image,
+      imageAlt: specialties.left?.imageAlt || DEFAULT_SPECIALTIES_HOME.left.imageAlt,
+      delay: 0,
+    },
+    {
+      name: specialties.right?.name || DEFAULT_SPECIALTIES_HOME.right.name,
+      image: specialties.right?.image || DEFAULT_SPECIALTIES_HOME.right.image,
+      imageAlt: specialties.right?.imageAlt || DEFAULT_SPECIALTIES_HOME.right.imageAlt,
+      delay: 150,
+      imageZoom: true,
+    },
+  ];
+
   return (
     <section className="promotion-section sec-pad">
       <div className="auto-container">
@@ -34,7 +47,7 @@ export default function Promotion() {
                 <div className="specialty-dish__image">
                   <img
                     src={dish.image}
-                    alt={`${dish.name} — La Cantina di Monsignore`}
+                    alt={dish.imageAlt}
                     className={dish.imageZoom ? 'specialty-dish__image-zoom' : undefined}
                   />
                 </div>

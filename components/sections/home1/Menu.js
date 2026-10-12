@@ -1,43 +1,52 @@
 import Link from 'next/link';
 import ScrollReveal from '@/components/elements/ScrollReveal';
+import { DEFAULT_KITCHEN_HOME_IMAGES } from '@/lib/homeSettingsDefaults';
 
 const menuCourses = [
   {
+    key: 'antipasti',
     title: 'Antipasti',
-    image: 'assets/images/resource/menu-antipasti.jpg',
-    imageAlt: 'Antipasti siciliani — La Cantina di Monsignore, Castiglione di Sicilia',
     imagePosition: 'center 68%',
     button: 'Scopri gli Antipasti',
     href: '/menu',
     delay: 0,
   },
   {
+    key: 'primi',
     title: 'Primi Piatti',
-    image: 'assets/images/resource/menu-primi.jpg',
-    imageAlt: 'Primi Piatti siciliani — La Cantina di Monsignore, Castiglione di Sicilia',
     button: 'Scopri i Primi',
     href: '/menu',
     delay: 100,
   },
   {
+    key: 'secondi',
     title: 'Secondi Piatti',
-    image: 'assets/images/resource/menu-secondi.jpg',
-    imageAlt: 'Secondi Piatti siciliani — La Cantina di Monsignore, Castiglione di Sicilia',
     button: 'Scopri i Secondi',
     href: '/menu',
     delay: 200,
   },
   {
+    key: 'dessert',
     title: 'Dessert',
-    image: 'assets/images/resource/menu-dolci.jpg',
-    imageAlt: 'Dolci — La Cantina di Monsignore, Castiglione di Sicilia',
     button: 'Scopri i Dolci',
     href: '/menu',
     delay: 300,
   },
 ];
 
-export default function Menu() {
+/**
+ * @param {{
+ *   kitchenHome?: {
+ *     antipasti?: { image?: string, imageAlt?: string },
+ *     primi?: { image?: string, imageAlt?: string },
+ *     secondi?: { image?: string, imageAlt?: string },
+ *     dessert?: { image?: string, imageAlt?: string },
+ *   }
+ * }} props
+ */
+export default function Menu({ kitchenHome }) {
+  const images = kitchenHome ?? DEFAULT_KITCHEN_HOME_IMAGES;
+
   return (
     <section className="menu-section bg-color-1">
       <div className="auto-container">
@@ -50,33 +59,37 @@ export default function Menu() {
             </p>
           </ScrollReveal>
           <div className="row clearfix menu-course-grid">
-            {menuCourses.map((course) => (
-              <div key={course.title} className="col-lg-3 col-md-6 col-sm-12 menu-course-column">
-                <ScrollReveal className="menu-course-card" delay={course.delay}>
-                  <div className="menu-course-card__shape" aria-hidden="true">
-                    <div
-                      className="menu-course-card__shape-top"
-                      style={{ backgroundImage: 'url(assets/images/shape/shape-3.png)' }}
-                    />
-                    <div
-                      className="menu-course-card__shape-bottom"
-                      style={{ backgroundImage: 'url(assets/images/shape/shape-4.png)' }}
-                    />
-                  </div>
-                  <h3 className="menu-course-card__title">{course.title}</h3>
-                  <figure className="menu-course-card__image">
-                    <img
-                      src={course.image}
-                      alt={course.imageAlt}
-                      style={course.imagePosition ? { objectPosition: course.imagePosition } : undefined}
-                    />
-                  </figure>
-                  <div className="menu-course-card__btn">
-                    <Link href={course.href} className="theme-btn-one">{course.button}</Link>
-                  </div>
-                </ScrollReveal>
-              </div>
-            ))}
+            {menuCourses.map((course) => {
+              const courseImage = images[course.key] ?? DEFAULT_KITCHEN_HOME_IMAGES[course.key];
+
+              return (
+                <div key={course.title} className="col-lg-3 col-md-6 col-sm-12 menu-course-column">
+                  <ScrollReveal className="menu-course-card" delay={course.delay}>
+                    <div className="menu-course-card__shape" aria-hidden="true">
+                      <div
+                        className="menu-course-card__shape-top"
+                        style={{ backgroundImage: 'url(assets/images/shape/shape-3.png)' }}
+                      />
+                      <div
+                        className="menu-course-card__shape-bottom"
+                        style={{ backgroundImage: 'url(assets/images/shape/shape-4.png)' }}
+                      />
+                    </div>
+                    <h3 className="menu-course-card__title">{course.title}</h3>
+                    <figure className="menu-course-card__image">
+                      <img
+                        src={courseImage.image}
+                        alt={courseImage.imageAlt}
+                        style={course.imagePosition ? { objectPosition: course.imagePosition } : undefined}
+                      />
+                    </figure>
+                    <div className="menu-course-card__btn">
+                      <Link href={course.href} className="theme-btn-one">{course.button}</Link>
+                    </div>
+                  </ScrollReveal>
+                </div>
+              );
+            })}
           </div>
           <ScrollReveal className="menu-wine-banner" delay={150}>
             <div className="menu-wine-banner__shape" aria-hidden="true">
