@@ -14,7 +14,8 @@ export default function VisibleToggleCell(props: DefaultCellComponentProps) {
     setChecked(Boolean(cellData))
   }, [cellData])
 
-  const fieldName = typeof field?.name === 'string' ? field.name : 'published'
+  const fieldName =
+    field && 'name' in field && typeof field.name === 'string' ? field.name : 'published'
   const apiBase = config?.routes?.api || '/api'
 
   const onToggle = async (event: React.ChangeEvent<HTMLInputElement>) => {
