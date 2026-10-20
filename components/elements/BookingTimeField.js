@@ -5,6 +5,7 @@ import { getAvailableTimeSlots } from '@/lib/bookingSchedule'
 
 export default function BookingTimeField({
   selectedDate,
+  weeklyHours,
   name = 'time',
   placeholder = 'Orario scelto',
   required = true,
@@ -12,8 +13,8 @@ export default function BookingTimeField({
   onChange,
 }) {
   const slots = useMemo(
-    () => getAvailableTimeSlots(selectedDate),
-    [selectedDate],
+    () => getAvailableTimeSlots(selectedDate, weeklyHours),
+    [selectedDate, weeklyHours],
   )
 
   const isDisabled = !selectedDate || slots.length === 0

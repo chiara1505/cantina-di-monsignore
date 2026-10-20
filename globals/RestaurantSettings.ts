@@ -1,4 +1,5 @@
 import type { GlobalConfig } from 'payload'
+import { WEEKDAY_OPTIONS } from '../lib/openingHours'
 
 export const RestaurantSettings: GlobalConfig = {
   slug: 'restaurant-settings',
@@ -47,28 +48,76 @@ export const RestaurantSettings: GlobalConfig = {
       },
     },
     {
-      name: 'closedDay',
-      type: 'text',
-      label: 'Giorno di chiusura',
-      required: true,
-      defaultValue: 'Martedì',
-      admin: {
-        description: 'Compare nella striscia in alto (“Chiuso il …”) e in Contatti.',
-      },
-    },
-    {
       name: 'openingHours',
       type: 'array',
       label: 'Orari di apertura',
+      labels: {
+        singular: 'Giorno',
+        plural: 'Giorni',
+      },
       admin: {
-        description: 'Una riga per ogni fascia oraria, come nel footer.',
+        description:
+          'Una riga per ogni giorno della settimana. Questi orari aggiornano footer, contatti e gli slot del modulo di prenotazione. Usa il formato HH:mm (es. 18:30).',
+        initCollapsed: true,
       },
       fields: [
         {
-          name: 'line',
-          type: 'text',
-          label: 'Voce orario',
+          name: 'weekday',
+          type: 'select',
+          label: 'Giorno',
           required: true,
+          options: WEEKDAY_OPTIONS,
+        },
+        {
+          name: 'closed',
+          type: 'checkbox',
+          label: 'Chiuso',
+          defaultValue: false,
+          admin: {
+            description: 'Se selezionato, quel giorno non è prenotabile e compare come chiuso.',
+          },
+        },
+        {
+          name: 'periods',
+          type: 'array',
+          label: 'Fasce orarie',
+          labels: {
+            singular: 'Fascia',
+            plural: 'Fasce',
+          },
+          admin: {
+            condition: (_data, siblingData) => !siblingData?.closed,
+            description: 'Es. pranzo 12:30–14:30 e cena 18:30–22:30.',
+          },
+          fields: [
+            {
+              type: 'row',
+              fields: [
+                {
+                  name: 'open',
+                  type: 'text',
+                  label: 'Apertura',
+                  required: true,
+                  admin: {
+                    width: '50%',
+                    description: 'Es. 12:30',
+                    placeholder: '12:30',
+                  },
+                },
+                {
+                  name: 'close',
+                  type: 'text',
+                  label: 'Chiusura',
+                  required: true,
+                  admin: {
+                    width: '50%',
+                    description: 'Es. 14:30',
+                    placeholder: '14:30',
+                  },
+                },
+              ],
+            },
+          ],
         },
       ],
     },

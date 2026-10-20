@@ -35,6 +35,7 @@ export default function BookingDateField({
   name = 'date',
   placeholder = 'Data',
   required = true,
+  weeklyHours,
   onChange,
 }) {
   const wrapperRef = useRef(null)
@@ -94,7 +95,7 @@ export default function BookingDateField({
   }
 
   function handleSelectDate(date) {
-    if (isDisabledBookingDate(date, today)) return
+    if (isDisabledBookingDate(date, weeklyHours, today)) return
     const nextDate = startOfDay(date)
     setSelectedDate(nextDate)
     onChange?.(nextDate)
@@ -141,7 +142,7 @@ export default function BookingDateField({
                 return <span key={`empty-${index}`} className="booking-date-field__day is-empty" aria-hidden="true" />
               }
 
-              const disabled = isDisabledBookingDate(date, today)
+              const disabled = isDisabledBookingDate(date, weeklyHours, today)
               const selected = selectedDate && isSameDay(date, selectedDate)
               const isToday = isSameDay(date, today)
 

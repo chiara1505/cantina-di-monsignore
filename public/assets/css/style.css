@@ -3960,6 +3960,7 @@ select  {
 
 .order-section .form-inner .form-group input[type='text'],
 .order-section .form-inner .form-group input[type='email'],
+.order-section .form-inner .form-group input[type='tel'],
 .order-section .form-inner .form-group textarea{
   position: relative;
   display: block;

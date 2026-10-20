@@ -4,10 +4,16 @@ import { useState } from 'react'
 import BookingDateField from '@/components/elements/BookingDateField'
 import BookingTimeField from '@/components/elements/BookingTimeField'
 import LegalFormConsent from '@/components/elements/LegalFormConsent'
+import { useRestaurantSettings } from '@/components/providers/RestaurantSettingsProvider'
+import {
+  isValidInternationalPhone,
+  normalizeInternationalPhone,
+} from '@/lib/reservationEmail'
 
 const INITIAL_STATUS = { type: 'idle', message: '' }
 
 export default function BookingReservationForm() {
+  const { weeklyHours } = useRestaurantSettings()
   const [selectedDate, setSelectedDate] = useState(null)
   const [selectedTime, setSelectedTime] = useState('')
   const [status, setStatus] = useState(INITIAL_STATUS)
@@ -28,11 +34,20 @@ export default function BookingReservationForm() {
 
     const form = event.currentTarget
     const formData = new FormData(form)
+    const phone = normalizeInternationalPhone(formData.get('phone'))
+
+    if (!isValidInternationalPhone(phone)) {
+      setStatus({
+        type: 'error',
+        message: 'Inserisci il telefono con prefisso internazionale (es. +39 per l’Italia).',
+      })
+      return
+    }
 
     const payload = {
       name: formData.get('name'),
       email: formData.get('email'),
-      phone: formData.get('phone'),
+      phone,
       guests: formData.get('guests'),
       date: formData.get('date'),
       time: formData.get('time'),
@@ -88,7 +103,14 @@ export default function BookingReservationForm() {
           <input type="email" name="email" placeholder="Indirizzo email" required />
         </div>
         <div className="col-lg-6 col-md-6 col-sm-12 form-group">
-          <input type="text" name="phone" placeholder="Numero di telefono" required />
+          <input
+            type="tel"
+            name="phone"
+            inputMode="tel"
+            autoComplete="tel"
+            placeholder="Telefono (es. +39…)"
+            required
+          />
         </div>
         <div className="col-lg-6 col-md-6 col-sm-12 form-group">
           <div className="select-box">
@@ -127,12 +149,14 @@ export default function BookingReservationForm() {
             name="date"
             placeholder="Data"
             required
+            weeklyHours={weeklyHours}
             onChange={handleDateChange}
           />
         </div>
         <div className="col-lg-6 col-md-6 col-sm-12 form-group">
           <BookingTimeField
             selectedDate={selectedDate}
+            weeklyHours={weeklyHours}
             value={selectedTime}
             onChange={handleTimeChange}
             placeholder="Orario scelto"

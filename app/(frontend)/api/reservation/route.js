@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server'
 import { Resend } from 'resend'
+import { isBookableDateTime } from '@/lib/bookingSchedule'
+import { getRestaurantSettings } from '@/lib/getRestaurantSettings'
 import {
   buildReservationEmailContent,
   getReservationFromEmail,
@@ -29,6 +31,14 @@ export async function POST(request) {
 
   if (!parsed.ok) {
     return NextResponse.json({ ok: false, error: parsed.error }, { status: 400 })
+  }
+
+  const settings = await getRestaurantSettings()
+  if (!isBookableDateTime(parsed.data.date, parsed.data.time, settings.weeklyHours)) {
+    return NextResponse.json(
+      { ok: false, error: 'Data o orario non disponibili. Scegli un altro slot di prenotazione.' },
+      { status: 400 },
+    )
   }
 
   const { subject, text, html } = buildReservationEmailContent(parsed.data)
